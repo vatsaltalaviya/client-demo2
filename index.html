@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sonal Shrivastava — Hormone Clinic</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-...omitted-for-clarity..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./header.css">
+
+  <style>
+    /* ---------- Theme Colors ---------- */
+    :root {
+      --sky: #38bdf8;
+      /* primary sky blue */
+      --sky-light: #eaf8ff;
+      /* page background for sections */
+      --sky-lighter: #dff3ff;
+      /* card backgrounds */
+      --sky-hover: #5cd4ff;
+      --navy: #0a1a44;
+      /* text / primary dark */
+      --navy-2: #0f2a55;
+      --muted: #1b3359;
+      --white: #ffffff;
+    }
+
+    /* ---------- Global ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--navy);
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: var(--white);
+      border-bottom: 1px solid rgba(10, 26, 68, 0.06);
+      top: 0;
+      z-index: 999;
+      font-family: "Inter", "Poppins", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .logo img {
+      height: 54px;
+      object-fit: contain;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    nav .menu li a {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    nav .menu li a i {
+      font-size: 16px;
+      opacity: 0.75;
+      transition: 0.25s ease;
+    }
+
+    nav .menu li a:hover {
+      background: rgba(0, 132, 255, 0.10);
+      color: #004085;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0, 132, 255, 0.18);
+    }
+
+    nav .menu li a:hover i {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    #menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--navy);
+      transition: transform 0.25s ease;
+    }
+
+    #menu-btn:hover {
+      transform: scale(1.1);
+    }
+
+
+    /* ---------- Hero / Swiper ---------- */
+    .hero-section {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 10s ease;
+    }
+
+    .hero-cta {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 2;
+      max-width: 1000px;
+      width: calc(100% - 40px);
+    }
+
+    .hero-cta h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--sky);
+      margin: 0 0 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-cta p {
+      font-size: 1.15rem;
+      color: rgba(10, 26, 68, 0.9);
+      margin: 0 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: var(--sky);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 8px 28px rgba(56, 189, 248, 0.18);
+      transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:hover {
+      background: var(--sky-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(56, 189, 248, 0.22);
+    }
+
+    /* ---------- About / Doctor Section ---------- */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 80px 20px;
+      background: var(--sky-light);
+      color: var(--navy);
+    }
+
+    .about-left {
+      flex: 1 1 300px;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-left img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 45px rgba(10, 26, 68, 0.08);
+      transition: transform 0.25s;
+    }
+
+    .about-left img:hover {
+      transform: scale(1.03);
+    }
+
+    .about-right {
+      flex: 2 1 500px;
+      max-width: 800px;
+    }
+
+    .about-right h2 {
+      margin: 0 0 8px;
+      font-size: 2.2rem;
+      color: var(--navy);
+    }
+
+    .about-right h4,
+    .about-right h5 {
+      margin: 0 0 12px;
+      font-weight: 500;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .about-right p {
+      line-height: 1.75;
+      margin-bottom: 18px;
+      color: rgba(10, 26, 68, 0.9);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .secondary {
+      background: linear-gradient(90deg, var(--sky), var(--sky-lighter));
+      color: var(--navy);
+    }
+
+    .ghost {
+      background: transparent;
+      border: 1px solid rgba(10, 26, 68, 0.08);
+      color: var(--navy);
+      box-shadow: none;
+    }
+
+    /* ---------- Expertise Section ---------- */
+    .expertise-section {
+      padding: 80px 20px;
+      background: var(--sky-light);
+      color: var(--navy);
+    }
+
+    .expertise-section h1 {
+      text-align: center;
+      font-size: 2.6rem;
+      color: var(--navy);
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: linear-gradient(145deg, var(--sky-lighter), #f9feff);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 8px 24px rgba(10, 26, 68, 0.05);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      perspective: 1000px;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--sky);
+    }
+
+    .service-card h3 {
+      margin: 14px 18px 6px;
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .service-card p {
+      margin: 0 18px 16px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      flex-grow: 1;
+    }
+
+    .service-card a {
+      margin: 0 18px 18px;
+      text-decoration: none;
+      background: var(--sky);
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 10px;
+      display: inline-block;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 48px rgba(10, 26, 68, 0.08);
+    }
+
+    /* ---------- Testimonials ---------- */
+    .testimonials-section {
+      padding: 70px 18px;
+      background: var(--white);
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .testimonials-section h1 {
+      font-size: 2.4rem;
+      color: var(--sky);
+      margin-bottom: 30px;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+
+    .testimonial-card {
+      flex: 0 0 32%;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .testimonial-card p {
+      font-size: 1rem;
+      color: rgba(10, 26, 68, 0.9);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-card h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--sky);
+      color: var(--white);
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+      z-index: 10;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.12);
+    }
+
+    .carousel-btn.prev {
+      left: 6px;
+    }
+
+    .carousel-btn.next {
+      right: 6px;
+    }
+
+    .carousel-dots {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .carousel-dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--sky);
+      border-radius: 50%;
+      margin: 0 8px;
+      cursor: pointer;
+      opacity: 0.85;
+    }
+
+    .carousel-dots span.active {
+      background: var(--navy);
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: linear-gradient(180deg, var(--sky-light), #ffffff);
+      color: var(--navy);
+      padding-top: 36px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      color: var(--navy);
+      margin-bottom: 10px;
+      border-left: 4px solid var(--sky);
+      padding-left: 8px;
+      font-weight: 700;
+    }
+
+    .footer-column p,
+    .footer-column li a {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--navy);
+      margin: 6px 0;
+    }
+
+    .phone strong {
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+      background: var(--sky);
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      transition: transform 0.15s, background 0.15s;
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.12);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px);
+      background: var(--navy);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 14px 10px;
+      background: var(--navy);
+      color: white;
+      font-size: 14px;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .testimonial-card {
+        flex: 0 0 48%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav .menu {
+        display: none;
+      }
+
+      #menu-btn {
+        display: block;
+      }
+
+      .hero-cta h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero-cta p {
+        font-size: 1rem;
+      }
+
+      .testimonial-card {
+        flex: 0 0 90%;
+      }
+
+      .about-section {
+        padding: 40px 18px;
+      }
+    }
+
+    .hero-section {
+      margin-top: 0;
+      min-height: 120vh;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        margin-top: 80px !important;
+        min-height: 150vh !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
+    </div>
+
+    <nav id="nav">
+      <ul class="menu">
+        <li>
+          <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-user-doctor"></i> About
+            <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="submenu">
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Vision & Mission</a></li>
+            <li>
+              <a href="#">History <i class="fa-solid fa-chevron-right"></i></a>
+              <ul class="submenu">
+                <li><a href="#">Founding</a></li>
+                <li><a href="#">Milestones</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-dna"></i> Disorders</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-pen-nib"></i> Blog</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
+  </header>
+
+  <!-- PREMIUM HERO SECTION -->
+  <section class="hero-section" style="
+    width:100%;
+  
+    position:relative;
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    background:url('https://images.pexels.com/photos/305565/pexels-photo-305565.jpeg') center/cover no-repeat;
+    overflow:auto;
+  ">
+
+    <!-- Soft Dark Overlay -->
+    <div style="
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      to bottom right,
+      rgba(6, 70, 154, 0.614),
+      rgba(0, 45, 85, 0.686)
+    );
+    z-index:1;
+  "></div>
+
+    <!-- MAIN FLEX WRAPPER -->
+    <div style="
+    position:relative;
+    z-index:5;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    padding:8vw 6vw;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+  ">
+
+      <!-- LEFT TEXT -->
+      <div style="
+      flex:1 1 380px;
+      max-width:620px;
+      color:white;
+    ">
+
+        <p style="
+        font-size:clamp(14px,1.7vw,22px);
+        color:#B9E5FF;
+        font-weight:300;
+        margin-bottom:14px;
+        text-transform:uppercase;
+        letter-spacing:1.8px;
+      ">
+          Consultant Endocrinologist
+        </p>
+
+        <h1 style="
+        font-size:clamp(34px,5.4vw,76px);
+        font-weight:900;
+        margin-bottom:20px;
+        line-height:1.08;
+        letter-spacing:-0.5px;
+      ">
+          Dr. Sonal Shrivastava
+        </h1>
+
+        <div style="
+        width:120px;
+        height:4px;
+        background:linear-gradient(90deg,#1E90FF,#4DB8FF);
+        border-radius:4px;
+        margin-bottom:28px;
+      "></div>
+
+        <p style="
+        font-size:clamp(15px,1.3vw,20px);
+        color:#E2EEF7;
+        line-height:1.75;
+        font-weight:300;
+        max-width:95%;
+        opacity:0.95;
+      ">
+          Delivering compassionate, evidence-based care for thyroid disorders, diabetes, PCOS,
+          obesity, and hormonal health with a personalized and holistic approach.
+        </p>
+
+      </div>
+
+      <!-- RIGHT EXPERTISE CARD -->
+      <div style="
+  flex:1 1 340px;
+  max-width:460px;
+  width:100%;
+  border-radius:20px;
+  padding:46px 40px;
+  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,0.90);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,0.17),
+    0 6px 18px rgba(0,0,0,0.08);
+  position:relative;
+  overflow:hidden;
+
+  /* BG images */
+  background-image:
+    url('https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg'),
+    url('https://www.drsonalshrivastava.com/img/slider_3.jpg');
+  background-repeat:no-repeat,no-repeat;
+  background-position:top left, bottom right;
+  background-size:cover, 38%;
+
+  /* Fade & float animation */
+  animation:fadeIn 1.4s ease-out, floatUp 6s ease-in-out infinite;
+">
+
+        <style>
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes floatUp {
+
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+
+          .exitem:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(0, 122, 204, 0.22);
+          }
+        </style>
+
+        <h3 style="
+    font-size:24px;
+    color:#002244;
+    font-weight:700;
+    margin-bottom:36px;
+    border-left:5px solid #007ACC;
+    padding-left:16px;
+    letter-spacing:0.4px;
+    background:rgba(255,255,255,0.65);
+    display:inline-block;
+    backdrop-filter:blur(6px);
+  ">Areas of Expertise</h3>
+
+
+        <div style="display:flex; flex-direction:column; gap:24px;">
+
+          <!-- ITEM 1 -->
+          <div class="exitem" style="
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      padding:16px 18px;
+      border-radius:14px;
+      background:rgba(240,248,255,0.75);
+      border:1px solid #D6E9FF;
+      transition:0.35s;
+      backdrop-filter:blur(6px);
+    ">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"
+                stroke="#007ACC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p style="
+        font-size:18px;
+        font-weight:700;
+        color:#003A63;
+        line-height:1.45;
+      ">Thyroid Disorders & Management</p>
+          </div>
+
+          <!-- ITEM 2 -->
+          <div class="exitem" style="
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      padding:16px 18px;
+      border-radius:14px;
+      background:rgba(240,248,255,0.75);
+      border:1px solid #D6E9FF;
+      transition:0.35s;
+      backdrop-filter:blur(6px);
+    ">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 21C16.4183 21 20 17.4183 20 13C20 8.58172 16.4183 5 12 5C7.58172 5 4 8.58172 4 13C4 17.4183 7.58172 21 12 21Z"
+                stroke="#007ACC" stroke-width="2" />
+              <path d="M12 9V13L14.5 15.5" stroke="#007ACC" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <p style="
+        font-size:18px;
+        font-weight:700;
+        color:#003A63;
+        line-height:1.45;
+      ">Diabetes Care & Metabolism</p>
+          </div>
+
+          <!-- ITEM 3 -->
+          <div class="exitem" style="
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      padding:16px 18px;
+      border-radius:14px;
+      background:rgba(240,248,255,0.75);
+      border:1px solid #D6E9FF;
+      transition:0.35s;
+      backdrop-filter:blur(6px);
+    ">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="#007ACC" stroke-width="2" />
+              <path d="M6 20C6 16.6863 8.68629 14 12 14C15.3137 14 18 16.6863 18 20" stroke="#007ACC" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
+            <p style="
+        font-size:18px;
+        font-weight:700;
+        color:#003A63;
+        line-height:1.45;
+      ">PCOS & Women's Hormonal Health</p>
+          </div>
+
+        </div>
+
+
+        <!-- CTA BUTTON -->
+        <a href="#appointment" style="
+    display:inline-block;
+    margin-top:38px;
+    background:linear-gradient(135deg,#0066C8,#00A7E9);
+    color:white;
+    padding:17px 48px;
+    font-size:18px;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:14px;
+    letter-spacing:0.5px;
+    box-shadow:0 16px 40px rgba(0,105,188,0.35);
+    transition:0.35s;
+    backdrop-filter:blur(8px);
+  " onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          Book Expert Consultation
+        </a>
+
+      </div>
+
+
+    </div>
+  </section>
+
+
+
+
+  <!-- UNIQUE PREMIUM ABOUT SECTION -->
+  <section id="about" style="
+  width:100%;
+  padding:80px 20px;
+background:linear-gradient(135deg,
+  #e8f1ff,
+  #dbe8ff,
+  #cfdcff
+);
+font-family:'Inter',sans-serif;
+  display:flex;
+  justify-content:center;
+">
+
+    <div style="
+      width:100%;
+      max-width:1100px;
+      position:relative;
+    ">
+
+      <!-- FLOATING BADGE -->
+      <div style="
+        position:absolute;
+        top:-20px;
+        right:20px;
+        background:#06204A;
+        color:#fff;
+        padding:12px 20px;
+        border-radius:40px;
+        font-size:14px;
+        font-weight:600;
+        box-shadow:0 6px 20px rgba(0,0,0,0.15);
+        letter-spacing:0.5px;
+        z-index: 99;
+      ">
+        ✓ Trusted Endocrinologist
+      </div>
+
+      <!-- MAIN CARD -->
+      <div style="
+        background:#fff;
+        border-radius:26px;
+        overflow:hidden;
+        box-shadow:0 12px 35px rgba(0,0,0,0.12);
+        display:flex;
+        flex-wrap:wrap;
+        align-items:stretch;
+      ">
+
+        <!-- LEFT IMAGE PANEL -->
+        <div style="
+          flex:1;
+          min-width:310px;
+          position:relative;
+          background:#000;
+        ">
+          <img src='https://www.drsonalshrivastava.com/img/doctor.jpg' alt='Dr. Sonal Shrivastava' style="
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            opacity:0.92;
+          " />
+
+          <!-- GRADIENT OVERLAY -->
+          <div style="
+            position:absolute;
+            inset:0;
+            background:linear-gradient(180deg,rgba(0,0,0,0.0),rgba(0,0,0,0.4));
+          "></div>
+        </div>
+
+        <!-- RIGHT CONTENT PANEL -->
+        <div style="
+          flex:1.3;
+          min-width:310px;
+          padding:40px 38px;
+        ">
+
+          <h2 style="
+            font-size:36px;
+            margin:0 0 8px 0;
+            color:#06204A;
+            font-weight:800;
+          ">
+            Dr. Sonal Shrivastava
+          </h2>
+
+          <div style="
+            font-size:18px;
+            margin-bottom:14px;
+            font-weight:600;
+            color:#1666C5;
+            line-height:1.5;
+          ">
+            Endocrinologist • Thyroid • Diabetes • PCOS • Hormone Specialist
+          </div>
+
+          <div style="
+            font-size:15px;
+            color:#444;
+            margin-bottom:25px;
+            line-height:1.7;
+            font-weight:500;
+          ">
+            MD (Medicine) Baroda • DNB (Endocrinology) Cochin • MNAMS •
+            Speciality Certificate (Endo) RCP, UK
+          </div>
+
+          <p style="
+            font-size:16px;
+            color:#333;
+            line-height:1.8;
+            margin-bottom:30px;
+          ">
+            Dr. Sonal Shrivastava is a renowned Endocrinologist (Diabetes, Thyroid,
+            Obesity, PCOS, Infertility & Hormone Specialist). She is the founder of
+            <strong>Hormone Health Awareness</strong>, an initiative for public awareness.
+            Based in Indore, she is the Founder & Director of Sovin Hormone Clinic and
+            attached to CHL Hospitals, one of the best in the region.
+            <br><br>
+            <strong style="color:#06204A;">For consultation in Indore call +91-9165017732</strong>
+          </p>
+
+          <!-- CTA BUTTONS -->
+          <div style="display:flex;flex-wrap:wrap;gap:14px;">
+
+            <a href="#" style="
+              background:#1666C5;
+              color:#fff;
+              padding:12px 24px;
+              border-radius:10px;
+              text-decoration:none;
+              font-size:15px;
+              font-weight:600;
+              box-shadow:0 4px 14px rgba(22,102,197,0.4);
+            ">Request an Appointment</a>
+
+            <a href="#" style="
+              background:#fff;
+              color:#1666C5;
+              padding:12px 24px;
+              border-radius:10px;
+              text-decoration:none;
+              font-size:15px;
+              font-weight:600;
+              border:2px solid #1666C5;
+            ">Contact Us</a>
+
+            <a href="#" style="
+              background:#06204A;
+              color:#fff;
+              padding:12px 24px;
+              border-radius:10px;
+              text-decoration:none;
+              font-size:15px;
+              font-weight:600;
+            ">Read More...</a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- EXPERTISE -->
+  <section class="expertise-section">
+    <div class="container">
+      <h1>Expertise</h1>
+      <div class="services-grid" id="services-grid">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Card data
+    const services = [
+      {
+        title: "Hypoglycemia",
+        img: "https://www.drsonalshrivastava.com/img/ht.jpg",
+        desc: "Hypoglycemia is a condition that occurs when your blood sugar (glucose) is too low.",
+        link: "#",
+      },
+      {
+        title: "Diabetic Ketoacidosis",
+        img: "https://www.drsonalshrivastava.com/img/dk.jpg",
+        desc: "Diabetic ketoacidosis (DKA) is a medical emergency that can occur in people with diabetes.",
+        link: "#",
+      },
+      {
+        title: "Diabetic Kidney Disease",
+        img: "https://www.drsonalshrivastava.com/img/dm.jpg",
+        desc: "Diabetes is the most common cause of kidney failure, accounting for nearly half of cases.",
+        link: "#",
+      },
+      {
+        title: "Diabetic Foot Care",
+        img: "https://www.drsonalshrivastava.com/img/dfc.jpg",
+        desc: "Diabetes can be dangerous to your feet – even a small cut can produce serious complications.",
+        link: "#",
+      },
+      {
+        title: "Pituitary Disorders",
+        img: "https://www.drsonalshrivastava.com/img/pituitary-disorders.jpg",
+        desc: "Growth hormone excess – Results in gigantism and acromegaly. Hyperprolactinemia may occur.",
+        link: "#",
+      },
+      {
+        title: "Adrenal Disorder",
+        img: "https://www.drsonalshrivastava.com/img/adrenal-disorder.jpg",
+        desc: "Cushing's Syndrome: Most commonly occurs as a side effect of steroid use.",
+        link: "#",
+      },
+      {
+        title: "Prediabetes",
+        img: "https://www.drsonalshrivastava.com/img/Prediabetes.jpg",
+        desc: "Prediabetes occurs when a person's blood glucose levels are higher than normal but not yet diabetic.",
+        link: "#",
+      },
+      {
+        title: "Hyperthyroidism",
+        img: "https://www.drsonalshrivastava.com/img/Hyperprolactinemia.jpg",
+        desc: "Hyperthyroidism is a condition in which the thyroid gland makes too much thyroid hormone.",
+        link: "#",
+      },
+      {
+        title: "Hypothyroidism",
+        img: "https://www.drsonalshrivastava.com/img/Hypothyroidism.jpg",
+        desc: "Hypothyroidism is a condition in which the thyroid gland does not make enough thyroid hormone.",
+        link: "#",
+      },
+      {
+        title: "Female Hormone Disorders",
+        img: "https://www.drsonalshrivastava.com/img/femalehormonedisorders.jpg",
+        desc: "PCOD, also called polycystic ovary syndrome (PCOS), is one of the most common hormonal disorders in women.",
+        link: "#",
+      },
+      {
+        title: "Polycystic Ovarian Syndrome",
+        img: "https://www.drsonalshrivastava.com/img/Polycysticovariansyndrome.jpg",
+        desc: "PCOS affects an estimated 5-10 percent of women of childbearing age and can cause hormonal imbalance.",
+        link: "#",
+      },
+      {
+        title: "Growth Hormone Deficiency",
+        img: "https://www.drsonalshrivastava.com/img/Growthhormonedeficiency.jpg",
+        desc: "Growth hormone deficiency is a disorder that involves the pituitary gland not producing enough growth hormone.",
+        link: "#",
+      },
+    ];
+
+    // Render cards
+    const grid = document.getElementById("services-grid");
+    services.forEach((s) => {
+      const card = document.createElement("div");
+      card.className = "service-card";
+      card.innerHTML = `
+          <img src="${s.img}" alt="${s.title}">
+          <h3>${s.title}</h3>
+          <p>${s.desc}</p>
+          <a href="${s.link}">Read More</a>
+        `;
+      grid.appendChild(card);
+
+      // Gentle tilt effect (limited)
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        // smaller rotation for subtlety
+        const rotateX = ((y - centerY) / centerY) * 8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    });
+  </script>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h1>Testimonials</h1>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+        <div class="carousel-track" id="testimonialTrack"></div>
+        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Testimonial Data
+    const testimonials = [
+      {
+        text: "Sonal mam is very understanding... I feel completely normal now.",
+        author: "Mrs Nirmala J, 43 years, Jabalpur",
+      },
+      {
+        text: "I was suffering from PCOS and overweight... Now my periods are regular.",
+        author: "Miss Anshu S, 23 years, Indore",
+      },
+      {
+        text: "I had infertility and thyroid problem... I have conceived now.",
+        author: "Mrs Sushila B, 37 years, Ujjain",
+      },
+      {
+        text: "I have diabetes since 15 years... Now my sugar is controlled.",
+        author: "Mr Babulal J, 54 years, Indore",
+      },
+      {
+        text: "My child was very short in height... now reached normal height.",
+        author: "Child Piyush S, 8 years, Khandwa",
+      },
+      {
+        text: "I had pimples and facial hair... My face is clear and I lost weight.",
+        author: "Pinky M, 25 years, Indore",
+      },
+      {
+        text: "I have PCOS for 2 years... After 6 months periods became regular.",
+        author: "Manisha P, 20 years, Indore",
+      },
+    ];
+
+    const track = document.getElementById("testimonialTrack");
+    const dotsContainer = document.getElementById("carouselDots");
+
+    testimonials.forEach((t, i) => {
+      const card = document.createElement("div");
+      card.className = "testimonial-card";
+      card.innerHTML = `<p>"${t.text}"</p><h3>- ${t.author}</h3>`;
+      track.appendChild(card);
+
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => moveToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    let currentIndex = 0;
+
+    function updateDots() {
+      document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    function moveToSlide(index) {
+      const cardEl = track.querySelector(".testimonial-card");
+      if (!cardEl) return;
+      const cardWidth = cardEl.offsetWidth + 20; // card + gap
+      track.style.transform = `translateX(-${cardWidth * index}px)`;
+      currentIndex = index;
+      updateDots();
+    }
+
+    document.querySelector(".next").addEventListener("click", () => {
+      if (currentIndex < testimonials.length - 1) currentIndex++;
+      else currentIndex = 0;
+      moveToSlide(currentIndex);
+    });
+
+    document.querySelector(".prev").addEventListener("click", () => {
+      if (currentIndex > 0) currentIndex--;
+      else currentIndex = testimonials.length - 1;
+      moveToSlide(currentIndex);
+    });
+
+    // Auto Slide
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      moveToSlide(currentIndex);
+    }, 5000);
+  </script>
+
+  <!-- FOOTER -->
+  <footer style="
+    background:#081c34;
+    color:#dbe7ff;
+    padding:70px 20px 35px;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  ">
+    <div style="
+      max-width:1250px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:50px;
+      justify-content:space-between;
+    ">
+      <!-- CONTACT -->
+      <div style="flex:1 1 330px;min-width:260px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+          letter-spacing:0.3px;
+        ">
+          Quick Contact
+        </h3>
+
+        <p style="margin:0 0 12px;font-size:18px;color:#fff;font-weight:600;">
+          +91-91650-17732
+        </p>
+
+        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Dehradun</strong><br />
+            G14/15, Race Course, Near MLA Hostel, Uttarakhand
+          </p>
+
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Indore</strong><br />
+            2nd Floor, Above JMB Sweets, MIG Main Road, Indore 452011 (M.P.)
+          </p>
+
+          <p style="margin:0;">
+            <strong style="color:#fff;">Avanti Hospital — Ujjain</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- SOCIAL ICONS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Follow Us
+        </h3>
+
+        <div style="display:flex;gap:14px;">
+          <!-- FB -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M22 12.07C22 6.48 17.52 2 11.93 2C6.35 2 1.87 6.48 1.87 12.07C1.87 17 5.26 21.06 9.84 22V14.9H7.08V12.07H9.84V9.92C9.84 7.2 11.41 5.74 13.9 5.74C15.09 5.74 16.34 5.95 16.34 5.95V8.63H15.06C13.8 8.63 13.42 9.4 13.42 10.19V12.07H16.22L15.78 14.9H13.42V22C18 21.06 22 17 22 12.07Z" />
+            </svg>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="#ffffff">
+              <path
+                d="M16 3C9.37 3 4 8.37 4 15c0 2.89.94 5.56 2.52 7.73L5 29l6.45-1.48C13.21 28.49 14.56 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm7.19 16.39c-.3.85-1.76 1.62-2.41 1.72-.62.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.07-.78-3.64-1.58-6-5.26-6.18-5.51-.18-.25-1.48-1.97-1.48-3.75 0-1.79.94-2.67 1.28-3.03.34-.36.74-.45.98-.45.24 0 .49 0 .7.01.22.01.53-.09.83.63.3.72 1.01 2.51 1.1 2.69.09.18.15.4.03.65-.12.25-.18.4-.36.62-.18.22-.38.48-.54.64-.18.18-.37.38-.16.74.21.36.94 1.57 2.02 2.54 1.39 1.25 2.58 1.65 2.94 1.83.36.18.57.15.78-.09.21-.25.9-1.05 1.15-1.41.25-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.88-.21 1.73z" />
+            </svg>
+          </a>
+
+          <!-- YOUTUBE -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.8-1.7-.9-2.1-.9-3-.2-7.5-.2-7.5-.2s-4.5 0-7.5.2c-.4 0-1.3.1-2.1.9-.7.7-.9 2.3-.9 2.3S2 8.1 2 10v4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.8 1.8.8 2.3.9 1.7.2 7.4.2 7.4.2s4.5 0 7.5-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-4c0-1.9-.2-3.8-.2-3.8zM10 15.3V8.7l5.8 3.3-5.8 3.3z" />
+            </svg>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Quick Links
+        </h3>
+
+        <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Home</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#about" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+          </li>
+          <li>
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="
+      max-width:1250px;
+      margin:45px auto 0;
+      padding-top:25px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+      font-size:14px;
+      color:#aabbd9;
+    ">
+      © 2025 Sovin Hormone Clinic — Designed by
+      <strong style="color:#fff;">YourBrand</strong>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width:600px) {
+      footer {
+        padding: 45px 16px 25px !important;
+      }
+
+      footer h3 {
+        font-size: 18px !important;
+      }
+
+      footer p,
+      footer a {
+        font-size: 14px !important;
+      }
+    }
+  </style>
+
+
+  <!-- Swiper JS (once) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script>
+    // Initialize Swiper
+    const swiper = new Swiper(".mySwiper", {
+      loop: true,
+      speed: 1400,
+      effect: "fade",
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      fadeEffect: { crossFade: true },
+      on: {
+        slideChangeTransitionStart: function () {
+          const slides = document.querySelectorAll(".swiper-slide img");
+          slides.forEach((slide) => (slide.style.transform = "scale(1)"));
+        },
+        slideChangeTransitionEnd: function () {
+          const activeImg = document.querySelector(".swiper-slide-active img");
+          if (activeImg) activeImg.style.transform = "scale(1.08)";
+        },
+      },
+    });
+
+    // Safe initialize first slide zoom
+    const firstActive = document.querySelector(".swiper-slide-active img");
+    if (firstActive) firstActive.style.transform = "scale(1.08)";
+  </script>
+
+  <!-- Optional header.js if you have menu toggling logic -->
+  <script>
+    // minimal mobile menu toggler if needed
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.querySelector("nav .menu");
+    menuBtn && menuBtn.addEventListener("click", () => {
+      if (!menu) return;
+      if (menu.style.display === "flex") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "flex";
+        menu.style.flexDirection = "column";
+        menu.style.background = "white";
+        menu.style.position = "absolute";
+        menu.style.right = "0";
+        menu.style.top = "64px";
+        menu.style.padding = "12px";
+        menu.style.borderRadius = "10px";
+        menu.style.boxShadow = "0 10px 30px rgba(10,26,68,0.08)";
+      }
+    });
+
+    // hide menu on window resize (desktop)
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768 && menu) {
+        menu.style.display = "";
+        menu.style.position = "";
+        menu.style.right = "";
+        menu.style.top = "";
+        menu.style.padding = "";
+        menu.style.flexDirection = "";
+        menu.style.boxShadow = "";
+        menu.style.background = "";
+      }
+    });
+  </script>
+</body>
+
+</html>

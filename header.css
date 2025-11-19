@@ -1,0 +1,191 @@
+:root {
+  --primary: #00baff; /* Sky blue accent */
+  --primary-light: #33cfff;
+  --bg-dark: rgb(20, 28, 45);
+  --text-light: #f8f9fa;
+  --text-muted: #a8b2c1;
+  --header-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  --submenu-bg: rgba(25, 35, 60, 0.95);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 5%;
+  background: var(--bg-dark);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--header-shadow);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 1000;
+  transition: all 0.4s ease;
+  margin-bottom: 36px;
+}
+
+/* LOGO */
+.logo img {
+    height: 50px;
+    width: auto; /* keep aspect ratio */
+    border-radius: 12px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.15); /* subtle light glass behind logo */
+    box-shadow: 0 4px 20px rgba(19, 175, 232, 0.35); /* soft skyblue glow */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    cursor: pointer;
+    backdrop-filter: blur(6px); /* glass effect */
+}
+
+.logo img:hover {
+    transform: scale(1.1) rotate(-2deg); /* subtle rotation + scale */
+    box-shadow: 0 6px 28px rgba(0, 186, 255, 0.6); /* intensified glow */
+    background: rgba(255, 255, 255, 0.25); /* slightly brighter on hover */
+}
+
+
+/* MAIN MENU */
+nav ul.menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+nav ul.menu li {
+  position: relative;
+}
+
+nav ul.menu li a {
+  color: var(--bg-dark);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+nav ul.menu li a:hover {
+  color: var(--primary);
+}
+
+/* SUBMENU */
+nav ul.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: var(--text-light);
+  list-style: none;
+  padding: 12px 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+nav ul.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  font-weight: 400;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+nav ul.submenu li a:hover {
+  background: rgba(0,186,255,0.1);
+  color: var(--primary);
+}
+
+/* Show submenu on hover */
+nav ul.menu li:hover > ul.submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Nested submenu slide right */
+nav ul.submenu li:hover > ul.submenu {
+  top: 0;
+  left: 100%;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Hamburger */
+#menu-btn {
+  display: none;
+  font-size: 2rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+@media screen and (max-width: 1024px) {
+  nav ul.menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    padding: 100px 20px;
+    gap: 20px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(20px);
+    box-shadow: -6px 0 24px rgba(0,0,0,0.2);
+    transition: right 0.4s ease;
+    overflow-y: auto;
+  }
+  nav ul.menu.show {
+    right: 0;
+  }
+
+  nav ul.menu li a {
+    font-size: 1.2rem;
+  }
+
+  nav ul.submenu {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    display: block;
+    transition: max-height 0.3s ease;
+  }
+  nav ul.menu li.active > ul.submenu {
+    max-height: 500px;
+  }
+  nav ul.submenu li.active > ul.submenu {
+    max-height: 500px;
+  }
+
+  #menu-btn {
+    display: block;
+  }
+}
+
