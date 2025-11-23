@@ -507,14 +507,6 @@
     }
 
     @media (max-width: 768px) {
-      nav .menu {
-        display: none;
-      }
-
-      #menu-btn {
-        display: block;
-      }
-
       .hero-cta h1 {
         font-size: 1.9rem;
       }
@@ -555,39 +547,64 @@
     <nav id="nav">
       <ul class="menu">
         <li>
-          <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
         </li>
 
         <li>
-          <a href="#"><i class="fa-solid fa-user-doctor"></i> About
-            <i class="fa-solid fa-chevron-down"></i></a>
-          <ul class="submenu">
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Vision & Mission</a></li>
-            <li>
-              <a href="#">History <i class="fa-solid fa-chevron-right"></i></a>
-              <ul class="submenu">
-                <li><a href="#">Founding</a></li>
-                <li><a href="#">Milestones</a></li>
+          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
+           <i class="fa-solid fa-chevron-down"></i></a>
+           <ul class="submenu">
+            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
+                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
               </ul>
             </li>
+            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+              </ul>
+            </li>
+            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
           </ul>
         </li>
-
         <li>
-          <a href="#"><i class="fa-solid fa-dna"></i> Disorders</a>
+          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="submenu">
+                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
+                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+              </ul>
         </li>
         <li>
-          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a>
+          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
         </li>
         <li>
-          <a href="#"><i class="fa-solid fa-pen-nib"></i> Blog</a>
+          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
         </li>
         <li>
-          <a href="#"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
-        </li>
-        <li>
-          <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
         </li>
       </ul>
     </nav>
@@ -916,7 +933,7 @@ font-family:'Inter',sans-serif;
           position:relative;
           background:#000;
         ">
-          <img src='https://www.drsonalshrivastava.com/img/doctor.jpg' alt='Dr. Sonal Shrivastava' style="
+          <img src='./images/dr-sonal.jpg' alt='Dr. Sonal Shrivastava' style="
             width:100%;
             height:100%;
             object-fit:cover;
@@ -986,7 +1003,7 @@ font-family:'Inter',sans-serif;
           <!-- CTA BUTTONS -->
           <div style="display:flex;flex-wrap:wrap;gap:14px;">
 
-            <a href="#" style="
+            <!-- <a href="#" style="
               background:#1666C5;
               color:#fff;
               padding:12px 24px;
@@ -995,9 +1012,9 @@ font-family:'Inter',sans-serif;
               font-size:15px;
               font-weight:600;
               box-shadow:0 4px 14px rgba(22,102,197,0.4);
-            ">Request an Appointment</a>
+            ">Request an Appointment</a> -->
 
-            <a href="#" style="
+            <a href="./contact.html" style="
               background:#fff;
               color:#1666C5;
               padding:12px 24px;
@@ -1008,7 +1025,7 @@ font-family:'Inter',sans-serif;
               border:2px solid #1666C5;
             ">Contact Us</a>
 
-            <a href="#" style="
+            <a href="./aboutus.html" style="
               background:#06204A;
               color:#fff;
               padding:12px 24px;
@@ -1042,73 +1059,73 @@ font-family:'Inter',sans-serif;
         title: "Hypoglycemia",
         img: "https://www.drsonalshrivastava.com/img/ht.jpg",
         desc: "Hypoglycemia is a condition that occurs when your blood sugar (glucose) is too low.",
-        link: "#",
+        link: "./harmondisorder.html?page=hypoglycemia",
       },
       {
         title: "Diabetic Ketoacidosis",
         img: "https://www.drsonalshrivastava.com/img/dk.jpg",
         desc: "Diabetic ketoacidosis (DKA) is a medical emergency that can occur in people with diabetes.",
-        link: "#",
+        link: "./harmondisorder.html?page=dka",
       },
       {
         title: "Diabetic Kidney Disease",
         img: "https://www.drsonalshrivastava.com/img/dm.jpg",
         desc: "Diabetes is the most common cause of kidney failure, accounting for nearly half of cases.",
-        link: "#",
+        link: "./harmondisorder.html?page=kidney-disease",
       },
       {
         title: "Diabetic Foot Care",
         img: "https://www.drsonalshrivastava.com/img/dfc.jpg",
         desc: "Diabetes can be dangerous to your feet – even a small cut can produce serious complications.",
-        link: "#",
+        link: "./harmondisorder.html?page=foot-care",
       },
       {
         title: "Pituitary Disorders",
         img: "https://www.drsonalshrivastava.com/img/pituitary-disorders.jpg",
         desc: "Growth hormone excess – Results in gigantism and acromegaly. Hyperprolactinemia may occur.",
-        link: "#",
+        link: "./harmondisorder.html?page=pituitary",
       },
       {
         title: "Adrenal Disorder",
         img: "https://www.drsonalshrivastava.com/img/adrenal-disorder.jpg",
         desc: "Cushing's Syndrome: Most commonly occurs as a side effect of steroid use.",
-        link: "#",
+        link: "./harmondisorder.html?page=adrenal",
       },
       {
         title: "Prediabetes",
         img: "https://www.drsonalshrivastava.com/img/Prediabetes.jpg",
         desc: "Prediabetes occurs when a person's blood glucose levels are higher than normal but not yet diabetic.",
-        link: "#",
+        link: "./harmondisorder.html?page=prediabetes",
       },
       {
         title: "Hyperthyroidism",
         img: "https://www.drsonalshrivastava.com/img/Hyperprolactinemia.jpg",
         desc: "Hyperthyroidism is a condition in which the thyroid gland makes too much thyroid hormone.",
-        link: "#",
+        link: "./harmondisorder.html?page=hyperthyroidism",
       },
       {
         title: "Hypothyroidism",
         img: "https://www.drsonalshrivastava.com/img/Hypothyroidism.jpg",
         desc: "Hypothyroidism is a condition in which the thyroid gland does not make enough thyroid hormone.",
-        link: "#",
+        link: "./harmondisorder.html?page=hypothyroidism",
       },
       {
         title: "Female Hormone Disorders",
         img: "https://www.drsonalshrivastava.com/img/femalehormonedisorders.jpg",
         desc: "PCOD, also called polycystic ovary syndrome (PCOS), is one of the most common hormonal disorders in women.",
-        link: "#",
+        link: "./harmondisorder.html?page=female-hormones",
       },
       {
         title: "Polycystic Ovarian Syndrome",
         img: "https://www.drsonalshrivastava.com/img/Polycysticovariansyndrome.jpg",
         desc: "PCOS affects an estimated 5-10 percent of women of childbearing age and can cause hormonal imbalance.",
-        link: "#",
+        link: "./harmondisorder.html?page=pcos-detail",
       },
       {
         title: "Growth Hormone Deficiency",
         img: "https://www.drsonalshrivastava.com/img/Growthhormonedeficiency.jpg",
         desc: "Growth hormone deficiency is a disorder that involves the pituitary gland not producing enough growth hormone.",
-        link: "#",
+        link: "./harmondisorder.html?page=ghd",
       },
     ];
 
@@ -1402,27 +1419,11 @@ font-family:'Inter',sans-serif;
       font-size:14px;
       color:#aabbd9;
     ">
-      © 2025 Sovin Hormone Clinic — Designed by
-      <strong style="color:#fff;">YourBrand</strong>
+      © 2025 Sovin Hormone Clinic
     </div>
   </footer>
 
-  <style>
-    @media (max-width:600px) {
-      footer {
-        padding: 45px 16px 25px !important;
-      }
-
-      footer h3 {
-        font-size: 18px !important;
-      }
-
-      footer p,
-      footer a {
-        font-size: 14px !important;
-      }
-    }
-  </style>
+ 
 
 
   <!-- Swiper JS (once) -->

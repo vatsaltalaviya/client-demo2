@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endocrinology Information</title>
+    <!-- Use Inter font for a modern look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="header.css">
+
+    <style>
+      /* --- 1. Custom Color Palette --- */
+      :root {
+        --sky: #38bdf8; /* primary sky blue */
+        --sky-light: #eaf8ff; /* page background for sections */
+        --sky-lighter: #dff3ff; /* card backgrounds */
+        --sky-hover: #5cd4ff;
+        --navy: #0a1a44; /* text / primary dark */
+        --navy-2: #0f2a55;
+        --muted: #1b3359;
+        --white: #ffffff;
+
+        /* Typography */
+        --font-primary: "Inter", sans-serif;
+      }
+
+      /* --- 2. Base & Utility Styles --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: 1.7;
+        color: var(--navy);
+        background-color: var(--white);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      a {
+        color: var(--sky);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--sky-hover);
+      }
+
+      /* --- 3. Component Styles (Tailwind-like Classes) --- */
+
+      /* header-div */
+      .header-div {
+        background-color: var(--navy);
+        padding: 96px 0;
+        color: var(--white);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-div h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .header-div-div p {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--sky);
+      }
+
+      /* Section Container */
+      .content-section {
+        padding: 80px 0;
+        transition: background-color 0.5s;
+      }
+
+      .bg-sky-light {
+        background-color: var(--sky-light);
+      }
+
+      /* Section Content (The element we animate) */
+      .section-content {
+        /* Initial state for GSAP: opacity: 0, y: 50, scale: 0.98 */
+        padding: 0 40px;
+        border-radius: 16px;
+      }
+
+      /* Section Headings */
+      .content-section h2 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--navy-2);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      /* Highlight Card (Container for lists and key info) */
+      .highlight-card {
+        background-color: var(--sky-lighter);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(var(--navy) / 0.1);
+        border-left: 6px solid var(--sky); /* Rich accent line */
+        margin-top: 40px;
+      }
+
+      /* Standard Paragraph Text */
+      .section-content p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* --- Custom DKA List Styling --- */
+      .styled-list-container {
+        margin-bottom: 2rem;
+        padding-top: 15px;
+      }
+
+      .styled-list-container h3 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--navy-2);
+        margin-bottom: 1rem;
+        /* Reset default heading border for internal card styling */
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .styled-list-container h4 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed var(--sky);
+      }
+
+      .dka-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .dka-list-item {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        color: var(--navy);
+        line-height: 1.4;
+      }
+
+      /* --- List Type: numbered-sky (For Triad) --- */
+      .numbered-sky .dka-list {
+        counter-reset: list-counter;
+      }
+      .numbered-sky .dka-list-item {
+        counter-increment: list-counter;
+        font-weight: 600;
+        color: var(--navy-2);
+      }
+      .numbered-sky .dka-list-item::before {
+        content: counter(list-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 28px;
+        height: 28px;
+        background-color: var(--sky);
+        color: var(--white);
+        border-radius: 50%;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 28px;
+        box-shadow: 0 4px 8px rgba(56, 189, 248, 0.5); /* Rich shadow effect */
+      }
+
+      /* --- List Type: icon-arrow (For Causes/Symptoms/Treatment) --- */
+      .icon-arrow .dka-list-item::before {
+        content: "→"; /* Right arrow icon */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--sky);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      /* --- List Type: icon-check (For Corrective Changes) --- */
+      .icon-check .dka-list-item::before {
+        content: "✓"; /* Checkmark icon */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #10b981; /* Tailwind Green for emphasis */
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      /* --- Footer and Error Styles --- */
+      .footer {
+        background-color: var(--navy-2);
+        color: #ddd;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .status-message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--navy);
+        background-color: var(--sky-light);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .header-div h1 {
+          font-size: 2.5rem;
+        }
+        .header-div p {
+          font-size: 1.25rem;
+        }
+        .content-section h2 {
+          font-size: 1.75rem;
+        }
+        .highlight-card {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+     <header>
+    <div class="logo">
+      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
+    </div>
+
+    <nav id="nav">
+      <ul class="menu">
+        <li>
+          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+
+        <li>
+          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
+           <i class="fa-solid fa-chevron-down"></i></a>
+           <ul class="submenu">
+            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
+                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+              </ul>
+            </li>
+            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="submenu">
+                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
+                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+              </ul>
+        </li>
+        <li>
+          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
+        </li>
+        <li>
+          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
+        </li>
+        <li>
+          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
+  </header>
+
+    <div id="app-root">
+      <div class="status-message" id="loading-screen">
+        Loading Client Data...
+      </div>
+    </div>
+
+    <script>
+      // --- 1. Master Data Structure for Dynamic Pages ---
+
+      const mockClientData = {
+        // New Default Page: Hypoglycemia (Page 1)
+        hypoglycemia: {
+          id: "hypoglycemia",
+          title: "Hypoglycemia",
+          subtitle: "Low Blood Sugar: Symptoms, Dangers, and Treatment",
+          sections: [
+            {
+              id: "hypo-overview",
+              heading: "What is Hypoglycemia?",
+              content: `Hypoglycemia is a condition that occurs when your blood sugar (glucose) is too low. Blood sugar below 70 mg/dL is considered low but poorly controlled diabetes can have symptoms of hypoglycemia at higher blood glucose levels.`,
+              listTitle: "Hypoglycemia: When & How? (Causes)",
+              listItems: [
+                "Delaying or skipping meals or when you do not eat enough food.",
+                "Wrongly taking excess dose of medicine or insulin.",
+                "Wrongly timing insulin/medication with meal.",
+                "Unaccustomed physical activity or exercise.",
+                "Alcohol intake.",
+                "Vomiting / other illness (e.g. Fever), kidney disease.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "hypo-recognize",
+              heading: "How to Recognize?",
+              listTitle: "Symptoms:",
+              listItems: [
+                "Abnormal hunger, feeling restless without food.",
+                "Blurry vision, dizziness, headache.",
+                "Fast or pounding heartbeat – palpitation, shaking or trembling.",
+                "Sweating, tingling or numbness of hands and legs.",
+                "Tiredness or weakness, acting aggressive, feeling nervous, unclear thinking.",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Danger Signs:",
+              listItems2: [
+                "Very low blood glucose may cause one to faint, have a seizure or become unconscious.",
+                "Hospitalize immediately for administering intravenous dextrose.",
+              ],
+              listType2: "numbered-sky",
+            },
+            {
+              id: "hypo-action",
+              heading: "What to do?",
+              listTitle: "Immediate Corrective Steps:",
+              listItems: [
+                "If there is ready access to glucometer check blood glucose or move onto next step.",
+                "Add 4 teaspoons of glucose or sugar to a glass of water and drink it immediately (other options: honey, fruit juice, glucose biscuits).",
+                "If symptoms still persist or blood glucose is still low after 15 mins, take additional 4 teaspoons of glucose or sugar in a glass of water.",
+                "Take a snack (2 slices of bread or 1 apple or a glass of milk) to prevent recurrence of hypoglycemia.",
+                "If hypoglycemia occurs while travelling, take any available sweet drink or food.",
+                "Try to find out the reason which might have caused hypoglycemia. Most common reason is irregularity in your meals. If hypoglycemia occurs in spite of a normal routine talk to your doctor.",
+              ],
+              listType: "icon-check",
+              listTitle2: "Preventive Tips:",
+              listItems2: [
+                "If blood glucose level before exercise is less than 100 mg/dL, take a light snack (a piece of brown bread, or a glass of milk or an apple).",
+                "Carry some snacks (biscuits, lozenges) while going for exercise.",
+                "Ask your doctor or nurse if you need a bedtime snack (e.g. a glass of milk) to prevent low blood sugar at night.",
+                "Eat meals at regular intervals, and balance extra exercise with extra food or lower your insulin dose by consulting your doctor.",
+                "Call a local emergency number if hypoglycemia does not improve after basic corrective steps.",
+                "Always carry some identification of you being a diabetic as it will help others identify the problem in case of emergency.",
+                "Ask your doctor about usage of glucagon injection.",
+              ],
+              listType2: "icon-arrow",
+            },
+          ],
+        }, // Diabetic Ketoacidosis (Page 2)
+
+        dka: {
+          id: "dka",
+          title: "Diabetic Ketoacidosis (DKA)",
+          subtitle: "A Medical Emergency in Diabetes Management", // Kept here for header-div but removed in renderClientPage
+          sections: [
+            {
+              id: "dka-overview",
+              heading: "What is Diabetic Ketoacidosis?",
+              content: `Diabetic ketoacidosis (DKA) is a medical emergency that can occur in people with diabetes. It occurs when the body cannot use sugar (glucose) as a fuel source because there is deficiency of insulin. Fat is used for fuel instead. Byproducts of fat breakdown, called ketones, build up in the body. Ketone bodies are acidic in nature and their accumulation shifts the pH of blood towards acidic range.`,
+              listTitle: "By definition DKA is characterized by the triad of:",
+              listItems: [
+                "Uncontrolled hyperglycemia (high blood glucose)",
+                "Metabolic acidosis",
+                "Increased total body ketone concentration.",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "dka-causes",
+              heading: "Causes and Risk Factors",
+              content: `DKA results from the combination of absolute or relative insulin deficiency and an increase in counterregulatory hormones (glucagon, catecholamines, cortisol, and growth hormone). Most patients with DKA have type 1 diabetes; however, patients with type 2 diabetes are also at risk during the stress of acute illness such as trauma, surgery, or infections.`,
+              listTitle: "Common causes or precipitating factors:",
+              listItems: [
+                "Omission of Insulin dose",
+                "Inadequate insulin dose",
+                "Infections",
+                "Heart attack",
+                "Stroke",
+                "Use of drugs like steroids, antipsychotic drugs, phenytoin, etc.",
+                "Can be first manifestation of type 1 diabetes",
+                "Previously blockage of continuous insulin pumps (unlikely with modern pumps)",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "dka-suspect",
+              heading: "When to suspect?",
+              content: `Usually occurs in the setting of uncontrolled blood glucose (the person might complain of history of polyuria, polydipsia and weight loss in the preceding days). <p style="margin-top: 10px; font-weight: 600; color: var(--navy-2);">Blood glucose is usually more than 250 mg/dL.</p> Infections in persons with type 1 diabetes.`,
+              listTitle: "Common clinical features (Symptoms):",
+              listItems: [
+                "Vomiting and abdominal pain",
+                "Dehydration",
+                "Rapid breathing, Fruity odour in breath",
+                "Extreme fatigue and drowsiness – can progress to coma",
+                "Low blood pressure, Increased pulse rate, Increased respiratory rate",
+                "Dry skin and mouth",
+                "Mental status can vary from full alertness to profound lethargy or coma",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "dka-treatment",
+              heading: "Treatment",
+              content: `The goal of treatment is to correct the high blood sugar level with insulin. Another goal is to replace fluids lost through urination and vomiting. Most of the time, the person will need to go to the hospital.`,
+              listTitle: "Hospital Treatment:",
+              listItems: [
+                "Insulin replacement",
+                "Fluid and electrolyte replacement",
+                "The cause of the condition (such as infection) will be found and treated",
+              ],
+              listType: "icon-arrow",
+              listTitle2:
+                "Early corrective changes at home (Only to be undertaken in close consultation with the doctor)",
+              listItems2: [
+                "Loss of appetite, nausea and vomiting, abdominal pain, fatigue (Early warning signs)",
+                "Check blood glucose with glucometer",
+                "Check urine ketones with dip stick",
+                "Increase water intake",
+                "An additional dose of short acting insulin can be injected in consultation with the doctor",
+              ],
+              listType2: "icon-check",
+            },
+          ],
+        }, // Diabetic Kidney Disease (Page 3)
+
+        "kidney-disease": {
+          id: "kidney-disease",
+          title: "Diabetic Kidney Disease (CKD)",
+          subtitle: "The most common cause of kidney failure.",
+          sections: [
+            {
+              id: "ckd-overview",
+              heading: "Overview and Course of the Disease",
+              content:
+                "Diabetes is the most common cause of kidney failure, accounting for nearly 44 percent of new cases. The chance of developing kidney failure can be prevented to a large extent by control of blood glucose (sugar). People with kidney failure undergo either dialysis, an artificial blood-cleaning process, or transplantation to receive a healthy kidney from a donor. High blood pressure and high levels of blood glucose increase the risk that a person with diabetes will progress to kidney failure.",
+              listTitle: "The Course of Kidney Disease:",
+              listItems: [
+                "Diabetic kidney disease takes many years to develop. Initially, the filtering function may be higher than normal.",
+                "The first stage, microalbuminuria, involves small amounts of the blood protein albumin leaking into the urine, with normal kidney filtration function.",
+                "As the disease progresses to macroalbuminuria (or proteinuria), more albumin leaks, and the kidney’s filtering function (eGFR) usually begins to drop, retaining wastes.",
+                "Overall, kidney damage rarely occurs in the first 10 years of diabetes, and usually 15 to 25 years will pass before kidney failure occurs. For people who live with diabetes for more than 25 years without any signs of kidney failure, the risk of ever developing it decreases.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ckd-diagnosis",
+              heading: "Diagnosis of CKD",
+              content:
+                "People with diabetes should be screened regularly for kidney disease. The two key markers for kidney disease are eGFR and urine albumin.",
+              listTitle: "Key Markers:",
+              listItems: [
+                "eGFR (estimated glomerular filtration rate): Calculation is based on the amount of creatinine, a waste product, in a blood sample. As creatinine rises, eGFR falls. Kidney disease is present when eGFR is less than 60 milliliters per minute.",
+                "Urine albumin: Measured by comparing the amount of albumin to the amount of creatinine in a single urine sample. Kidney disease is present when urine contains more than 30 milligrams of albumin per gram of creatinine, with or without decreased eGFR.",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "ckd-hypertension",
+              heading: "Effects of High Blood Pressure",
+              content:
+                "High blood pressure, or hypertension, is a major factor in the development of kidney problems in people with diabetes. Both family history and presence of hypertension appear to increase the chances of developing kidney disease. Hypertension also accelerates the progress of kidney disease when it already exists. Hypertension can also be a result of kidney damage, leading to a dangerous spiral of rising blood pressure.",
+              listTitle: "Blood Pressure Targets:",
+              listItems: [
+                "Blood pressure is recorded using systolic (pressure as the heart beats) and diastolic (pressure between heartbeats) numbers.",
+                "Recent recommendation suggests that people with diabetes keep their blood pressure below 130/80.",
+                "Early detection and treatment of even mild hypertension are essential, as physical changes in the kidneys can lead to a dangerous spiral of rising blood pressure.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ckd-prevention",
+              heading: "Preventing and Slowing Kidney Disease",
+              content:
+                "Scientists have made great progress in developing methods that slow the onset and progression of kidney disease.",
+              listTitle: "Treatment Modalities:",
+              listItems: [
+                "Blood Pressure Medicines (ACE inhibitors & ARBs): Drugs like enalapril, lisinopril, ramipril (ACE inhibitors) and losartan, telmisartan, olmesartan (ARBs) slow the progression of kidney disease significantly, even in people without high blood pressure. Other drugs like diuretics, beta blockers, and calcium channel blockers may also be needed for blood pressure control.",
+                "Moderate-protein Diets: Excessive consumption of protein may be harmful. Experts recommend consuming the recommended dietary allowance, avoiding high-protein diets, and potentially reducing protein further with dietitian consultation for greatly reduced kidney function.",
+                "Intensive Management of Blood Glucose: A treatment regimen that aims to keep blood glucose levels close to normal through frequent testing, balanced insulin dosing, diet, and regular consultation. Sustained lowering of blood glucose levels is highly beneficial in the early stages of CKD.",
+              ],
+              listType: "icon-check",
+            },
+            {
+              id: "ckd-dialysis",
+              heading: "Dialysis and Transplantation",
+              content:
+                "When people with diabetes experience kidney failure, they must undergo either dialysis or a kidney transplant. The survival of transplanted kidneys is about the same in people with and without diabetes. However, people with diabetes who receive transplants or dialysis experience higher morbidity and mortality because of coexisting complications of diabetes, such as damage to the heart, eyes, and nerves.",
+            },
+            {
+              id: "ckd-good-care",
+              heading: "Good Care Makes a Difference",
+              listTitle: "People with diabetes should:",
+              listItems: [
+                "Have their health care provider measure their A1C level 2 to 4 times a year (aim for less than 7 percent), and work with their provider on insulin, medicines, meal planning, and activity.",
+                "Have their blood pressure checked several times a year (aim for less than 130/80).",
+                "Ask their provider to measure their eGFR at least once a year.",
+                "Ask their provider to measure the amount of protein in their urine at least once a year.",
+                "Ask about taking an ACE inhibitor or ARB.",
+                "Ask about reducing protein in their diet and seeing a dietitian.",
+              ],
+              listType: "icon-check",
+              listTitle2: "Points to Remember",
+              listItems2: [
+                "Diabetes is the leading cause of chronic kidney disease (CKD) and kidney failure.",
+                "People with diabetes should be screened regularly for kidney disease. The two key markers are eGFR and urine albumin.",
+                "Drugs (ACE inhibitors/ARBs) and intensive glycemic management can significantly slow the progression of the disease.",
+              ],
+              listType2: "icon-arrow",
+            },
+          ],
+        }, // Diabetic Foot Care (Page 4)
+
+        "foot-care": {
+          id: "foot-care",
+          title: "Diabetic Foot Care",
+          subtitle: "Essential steps to prevent serious complications.",
+          sections: [
+            {
+              id: "foot-care-steps",
+              heading: "How to take care of your feet?",
+              content: `Diabetes can be dangerous to your feet – even a small cut can produce serious consequences due to potential nerve damage (loss of feeling) and reduced blood flow. Contact your doctor for even minor problems.`,
+              listTitle: "Daily and Preventative Care Checklist:",
+              listItems: [
+                " Inspect your feet daily:  Check for cuts, blisters, redness, swelling, or nail problems. Use a mirror for the bottom of your feet.",
+                " Wash your feet:  Use water at normal or lukewarm (not hot!) temperature. Dry by blotting or patting, and carefully dry between the toes.",
+                " Moisturize your feet – but not between your toes:  Use moisturizer daily to keep dry skin from cracking. DON’T moisturize between the toes as it encourages fungal infection.",
+                " Cut nails carefully:  Cut them straight across. Don’t cut nails too short, to avoid ingrown toe nails.",
+                " Never treat corns or calluses yourself:  Visit your doctor for appropriate treatment.",
+                " Wear clean, dry socks:  Change them daily.",
+                " Avoid the wrong type of socks:  Avoid tight elastic bands (they reduce circulation) and thick/bulky socks (they can fit poorly and irritate the skin).",
+                " NEVER use a heating pad or hot water bottle:  If your feet get cold, wear socks.",
+                " Shake out your shoes and feel the inside before wearing:  Your feet may not be able to feel a pebble or foreign object.",
+                " Never walk barefoot:  Not even at home!",
+                " Don’t smoke:  Smoking restricts blood flow in your feet.",
+                " Get periodic foot exams:  See your doctor on a regular basis to prevent complications.",
+                " Use proper footwear:  Ask your doctor about what type of footwear you require.",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        }, // Pituitary Disorders (Page 5)
+
+        pituitary: {
+          id: "pituitary",
+          title: "Pituitary Disorders",
+          subtitle: "Conditions related to the body's master gland.",
+          sections: [
+            {
+              id: "pituitary-excess",
+              heading: "Disorders of Pituitary Hormone Excess",
+              listTitle: "Examples:",
+              listItems: [
+                " Growth hormone excess:  Results in gigantism (childhood) and acromegaly (adulthood).",
+                " Hyperprolactinemia (high prolactin):  Common causes include prolactinoma (prolactin secreting tumor), other tumors, certain medicines, and hypothyroidism.",
+                " Cushing’s disease:  Results from excess adrenocorticotrophic hormone (ACTH) secretion, leading to features of steroid hormone excess.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "pituitary-deficiency",
+              heading: "Disorders of Pituitary Hormone Deficiency",
+              listTitle: "Examples:",
+              listItems: [
+                " Growth hormone deficiency:  Results in short stature (childhood) or is detrimental for heart and bone health (adult).",
+                " Secondary hypothyroidism:  Rare cause of thyroid hormone deficiency from inadequate Thyroid Stimulating Hormone (TSH) secretion.",
+                " Secondary hypoadrenalism:  Results from deficiency of Adrenocorticotrophic Hormone (ACTH) secretion.",
+                " Hypogonadism:  Results from deficiency of LH and FSH, leading to issues with gonadal development and function.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "pituitary-other",
+              heading: "Tumors and Inflammation",
+              listTitle: "Pituitary Tumors:",
+              listItems: [
+                " Non-functioning tumors:  Do not secrete any active hormonal components.",
+                " Functioning tumors:  Secrete hormones, as discussed in the hormone excess section.",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Pituitary Inflammation:",
+              listItems2: [
+                " Lymphocytic hypophysitis:  An autoimmune inflammatory condition often occurring after pregnancy.",
+                "Tuberculosis and other infections can also affect the pituitary.",
+              ],
+              listType2: "icon-arrow",
+            },
+          ],
+        }, // Adrenal Disorder (Page 6)
+
+        adrenal: {
+          id: "adrenal",
+          title: "Adrenal Disorders",
+          subtitle: "Conditions related to Adrenal Gland Hormones.",
+          sections: [
+            {
+              id: "adrenal-cushings",
+              heading: "1. Cushing’s Syndrome",
+              content: `Most commonly occurs as a side effect of steroid (glucocorticoid) therapy. Other rare causes are pituitary tumors (ACTH), ectopic ACTH secretion (lungs tumors), adrenal adenoma and carcinoma.`,
+              listTitle: "Symptoms:",
+              listItems: [
+                "Rapid weight gain, particularly of the trunk and face (central obesity) with sparing of the limbs.",
+                "Growth of fat pads along the collar bone and on the back of the neck ('buffalo hump').",
+                "A round face, often referred to as a 'moon face'.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "adrenal-insufficiency",
+              heading: "2. Adrenal Insufficiency",
+              content: `May result from sudden withdrawal of steroids, tuberculosis, fungal infection, autoimmune, genetic causes, or sepsis.`,
+              listTitle: "Symptoms:",
+              listItems: [
+                "Loss of appetite, abdominal pain, diarrhea, vomiting.",
+                "Profound muscle weakness and fatigue, extremely low blood pressure, weight loss.",
+                "Electrolyte imbalance (hyponatremia and hyperkalemia) and shock.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "adrenal-other",
+              heading: "Other Adrenal Conditions",
+              listTitle: "3. Primary hyperaldosteronism:",
+              listItems: [
+                "Associated with excess mineralocorticoid hormone (aldosterone) secretion.",
+                "Results in resistant hypertension, often associated with hypokalemia (low potassium).",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "4. Pheochromocytoma:",
+              listItems2: [
+                "A tumor of adrenal medulla causing hypertension.",
+                "Paroxysms of headache, palpitation and sweating.",
+              ],
+              listType2: "icon-arrow",
+            },
+          ],
+        }, // Prediabetes (Page 7)
+
+        prediabetes: {
+          id: "prediabetes",
+          title: "Prediabetes",
+          subtitle: "Understanding and Treating the Pre-Diabetic State.",
+          sections: [
+            {
+              id: "pre-overview",
+              heading: "What is Prediabetes?",
+              content: `Prediabetes is the state that occurs when a person’s blood glucose levels are higher than normal but not high enough for a diagnosis of diabetes. About 10 percent of people with prediabetes develop type 2 diabetes each year over the next 3 years. Doctors sometimes refer to this state as Impaired Glucose Tolerance or Impaired Fasting Glucose (IGT/IFG).`,
+              listTitle: "Risk and Prevention:",
+              listItems: [
+                "People with prediabetes are at higher risk of cardiovascular disease (1.5-fold risk compared to normal).",
+                "Studies show that people with prediabetes can  prevent or delay the development of type 2 diabetes by up to 58 percent  through lifestyle changes.",
+                "Experts recommend reducing weight by 5-10 percent and participating in modest physical activity for 30 minutes daily.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "pre-treatment",
+              heading: "Treatment for Prediabetes",
+              content: `Treatment consists of losing a modest amount of weight (5-10 percent of total body weight) through diet and moderate exercise, such as walking, 30 minutes a day, 5 days a week.`,
+              listTitle: "Key Treatment & Monitoring:",
+              listItems: [
+                "A loss of just 10 to 15 pounds can make a huge difference.",
+                "If you have prediabetes, you are at a 50 percent increased risk for heart disease or stroke, so your doctor may wish to treat or counsel you about cardiovascular risk factors (tobacco, high blood pressure, high cholesterol).",
+                "People with prediabetes often have  no symptoms  at all, which is why screening is vital.",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        }, // Hyperthyroidism (Page 8)
+
+        hyperthyroidism: {
+          id: "hyperthyroidism",
+          title: "Hyperthyroidism",
+          subtitle: "Overactive Thyroid: Causes, Symptoms, and Treatment.",
+          sections: [
+            {
+              id: "hyper-causes",
+              heading: "Causes and Risk Factors",
+              content: `Hyperthyroidism occurs when the thyroid gland releases too much of its hormones (T4 and T3) over a short or long period of time, controlling every cell's metabolism too quickly.`,
+              listTitle: "Causes:",
+              listItems: [
+                "Getting too much iodine",
+                "Graves disease (accounts for most cases)",
+                "Inflammation (thyroiditis) due to viral infections or other causes",
+                "Noncancerous growths of the thyroid gland or pituitary gland",
+                "Taking large amounts of thyroid hormone",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "hyper-symptoms",
+              heading: "Symptoms",
+              listTitle: "Common Symptoms:",
+              listItems: [
+                "Difficulty concentrating, Fatigue",
+                "Frequent bowel movements",
+                "Goiter (visibly enlarged thyroid gland) or thyroid nodules",
+                "Heat intolerance, Increased appetite, Increased sweating",
+                "Irregular menstrual periods in women",
+                "Nervousness, Restlessness",
+                "Weight loss",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Other Symptoms:",
+              listItems2: [
+                "Breast development in men",
+                "Clammy skin, Diarrhea, Hair loss, Hand tremor",
+                "High blood pressure",
+                "Protruding eyes (exophthalmos)",
+                "Pounding, rapid, or irregular pulse/heartbeat (palpitations)",
+              ],
+              listType2: "icon-arrow",
+            },
+            {
+              id: "hyper-treatment",
+              heading: "Treatment and Prognosis",
+              listTitle: "Treatment Options:",
+              listItems: [
+                "Antithyroid medications",
+                "Radioactive iodine (destroys the thyroid gland)",
+                "Surgery to remove the thyroid (requires lifelong hormone replacement)",
+                "Beta-blockers (e.g., propranolol) are used to manage symptoms like rapid heart rate, sweating, and anxiety until the condition is controlled.",
+              ],
+              listType: "icon-check",
+              listTitle2: "Complications:",
+              listItems2: [
+                " Thyroid crisis (storm):  Sudden severe worsening, requiring immediate hospitalization.",
+                "Heart-related complications: Rapid heart rate, Congestive heart failure, Atrial fibrillation.",
+                "Increased risk for osteoporosis (if chronic).",
+              ],
+              listType2: "numbered-sky",
+            },
+          ],
+        }, // Hypothyroidism (Page 9)
+
+        hypothyroidism: {
+          id: "hypothyroidism",
+          title: "Hypothyroidism",
+          subtitle: "Underactive Thyroid: Causes, Symptoms, and Treatment.",
+          sections: [
+            {
+              id: "hypo-causes",
+              heading: "Causes and Risk Factors",
+              content: `Hypothyroidism is a condition in which the thyroid gland does not make enough thyroid hormone. It is more common in women and people over age 50.`,
+              listTitle: "Causes (Most common is Thyroiditis):",
+              listItems: [
+                "Attack of the thyroid gland by the immune system",
+                "Cold or other respiratory infection",
+                "Pregnancy ('postpartum thyroiditis')",
+                "Certain drugs (lithium and amiodarone)",
+                "Radiation treatments to the neck or brain",
+                "Surgical removal of part or all of the thyroid gland",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "hypo-symptoms",
+              heading: "Symptoms",
+              listTitle: "Early Symptoms:",
+              listItems: [
+                "Hard stools or constipation",
+                "Increased sensitivity to cold",
+                "Fatigue or feeling slowed down",
+                "Heavier menstrual periods",
+                "Joint or muscle pain",
+                "Paleness or dry skin, Thin, brittle hair or fingernails",
+                "Sadness or depression, Weakness, Weight gain",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Late Symptoms (if left untreated):",
+              listItems2: [
+                "Decreased taste and smell",
+                "Hoarseness",
+                "Puffy face, hands, and feet",
+                "Slow speech",
+                "Thickening of the skin, Thinning of eyebrows",
+              ],
+              listType2: "icon-arrow",
+            },
+            {
+              id: "hypo-treatment",
+              heading: "Treatment and Prognosis",
+              content: `The purpose of treatment is to replace the thyroid hormone that is lacking. Levothyroxine is the most commonly used medication, usually requiring lifelong therapy.`,
+              listTitle: "Important Treatment Reminders:",
+              listItems: [
+                "Do NOT stop taking the medication when you feel better; continue exactly as prescribed.",
+                "Do NOT take thyroid hormone with fiber supplements, calcium, iron, multivitamins, or aluminum hydroxide antacids.",
+                "Take thyroid medicine on an empty stomach, 1 hour before any other medications.",
+                "Thyroid hormone levels should be monitored at least every 3-6 months after stabilization.",
+              ],
+              listType: "icon-check",
+              listTitle2: "Prognosis & Complication:",
+              listItems2: [
+                "In most cases, thyroid levels return to normal with proper treatment.",
+                " Myxedema coma  is a medical emergency that can result in death.",
+              ],
+              listType2: "numbered-sky",
+            },
+          ],
+        }, // Female Hormone Disorders (Page 10)
+
+        "female-hormones": {
+          id: "female-hormones",
+          title: "Female Hormone Disorders",
+          subtitle: "Key conditions including PCOD, CAH, and PMS.",
+          sections: [
+            {
+              id: "fh-pcod",
+              heading: "Polycystic Ovary Disease (PCOD/PCOS)",
+              content: `PCOD/PCOS is one of the most common female endocrine disorders, affecting 5% to 10% of women of reproductive age. It is the leading cause of female subfertility.`,
+              listTitle: "Principal Features:",
+              listItems: [
+                " Anovulation:  Irregular menstruation, amenorrhea, infertility, and polycystic ovaries.",
+                " Excess Androgens:  Resulting in acne and hirsutism (excessive hair).",
+                " Insulin Resistance:  Often associated with obesity, type 2 diabetes, and high cholesterol levels.",
+                "Women with PCOS have a higher chance of developing endometrial cancer.",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "fh-cah",
+              heading: "Non-classic Congenital Adrenal Hyperplasia (CAH)",
+              content: `CAH is a defect in the adrenal gland's hormone synthesis. People with nonclassic (late-onset) CAH make enough cortisol and aldosterone but make excess androgens. Symptoms typically begin in late childhood or early adulthood and often mimic PCOD. Girls usually need treatment to suppress excess androgens.`,
+              listTitle: "Hyperprolactinemia (Elevated Prolactin):",
+              listItems: [
+                "Primary function of Prolactin is breast development and lactation.",
+                "Elevated prolactin results in oligomenorrhea (infrequent periods), amenorrhea (no periods), or infertility.",
+                "Galactorrhea (abnormal milk secretion) is common.",
+                "Causes include pituitary tumor, drugs, medicinal herbs, heavy metals, or diseases of other organs (liver, kidney, thyroid).",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "fh-pms",
+              heading: "Premenstrual Syndrome (PMS)",
+              listTitle: "Symptoms:",
+              listItems: [
+                "Typically occur 5 to 11 days before a menstrual cycle and stop shortly after menstruation begins.",
+                " Mood changes:  depression, irritability, anxiety, confusion, social withdrawal, angry outbursts.",
+                " Somatic disturbances:  breast tenderness, abdominal bloating, headache and swelling of hands and feet.",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Treatment:",
+              listItems2: [
+                "Numerous pharmacologic agents and complementary therapies are tested.",
+                "Selective serotonin reuptake inhibitors (SSRIs) are approved for managing severe PMS.",
+                "Continuous SSRI dosing regimens may result in better symptom control than intermittent luteal dosing.",
+              ],
+              listType2: "icon-check",
+            },
+          ],
+        }, // PCOS In-Depth (Page 11) - Combining 10 and 11 content
+
+        "pcos-detail": {
+          id: "pcos-detail",
+          title: "Polycystic Ovary Syndrome (PCOS)",
+          subtitle: "In-Depth Q&A on Diagnosis, Causes, and Pregnancy.",
+          sections: [
+            {
+              id: "pcos-symptoms",
+              heading: "How common is PCOS & What are the symptoms?",
+              content: `PCOS affects an estimated 5-10 percent of women of childbearing age and is a leading cause of infertility.`,
+              listTitle: "Key Symptoms:",
+              listItems: [
+                " Hirsutism:  Excess hair growth (face, chest, abdomen).",
+                " Menstrual Irregularities:  Amenorrhea (no period), infrequent menses, and/or oligomenorrhea (irregular bleeding).",
+                " Alopecia:  Scalp hair loss, more common on the top of the head.",
+                " Acne/Oily Skin:  Oil production stimulated by overproduction of androgens.",
+                " Infertility:  Usually due to ovulatory dysfunction.",
+                " Obesity or weight gain:  Excess weight concentrated around the abdomen.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "pcos-cause-diagnosis",
+              heading: "Cause and Diagnosis",
+              content: `PCOS is generally considered a  syndrome  rather than a disease because it manifests through a group of signs and symptoms. The exact cause is unknown, but elevated insulin levels are strongly implicated as they contribute to increased androgen production.`,
+              listTitle: "Diagnosis & Polycystic Ovaries:",
+              listItems: [
+                "PCOS should be diagnosed based on  physical exam, ultrasound of the ovaries, and various blood tests .",
+                "About 15-20 percent of normal women can have the appearance of polycystic ovaries; the appearance alone is  not  the sole criterion for diagnosis.",
+                "[Image of ovary with multiple cysts in cross-section]",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "pcos-pregnancy",
+              heading: "Chances of Pregnancy and Miscarriage in PCOS",
+              content: `Infertility related to PCOS is treatable in the majority of cases. Women can and do still get pregnant—sometimes naturally, sometimes with help.`,
+              listTitle: "Reducing Miscarriage Risk:",
+              listItems: [
+                "The primary way to reduce miscarriage associated with PCOS is to  normalize hormone levels .",
+                "Improving ovulation (using clomiphene citrate, injectable FSH/LH) can help low progesterone levels.",
+                "Normalizing blood sugar and glucose levels may help, leading to lower androgen levels.",
+                " Metformin  (originally a diabetic drug) is widely used to treat PCOS as it lowers insulin resistance and may lead to lower rates of miscarriage if continued throughout pregnancy.",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        }, // Growth Hormone Deficiency (Page 12)
+
+        ghd: {
+          id: "ghd",
+          title: "Growth Hormone Deficiency (GHD)",
+          subtitle: "Disorders related to the pituitary gland.",
+          sections: [
+            {
+              id: "ghd-overview",
+              heading: "What is GHD?",
+              content: `GHD is a disorder involving the pituitary gland (a small gland at the base of the brain) not producing enough growth hormone. If other pituitary hormones are also insufficient, the condition is called panhypopituitarism. GHD can occur at any age.`,
+              listTitle: "Causes:",
+              listItems: [
+                "Present at birth (congenital)",
+                "Develop after birth due to trauma, infections, radiation to the head, or other conditions (e.g., tumors).",
+                "Adult GHD usually has a history of pituitary tumors treated with surgery or radiation.",
+                "In some cases, no cause can be identified.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ghd-child-symptoms",
+              heading: "Symptoms in Children",
+              content: `Growth hormone is necessary for normal growth and development in children. The best way to evaluate a child’s growth is to plot height and weight on a growth chart.`,
+              listTitle: "Signs of GHD in Children:",
+              listItems: [
+                "Slowing of growth and short height for the child’s age.",
+                "Increased fat around the waist and in the face.",
+                "The child may look younger than other children his or her age.",
+                "Delayed onset of puberty, Delayed tooth development.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ghd-adult-symptoms",
+              heading: "Symptoms in Adults & Diagnosis",
+              listTitle: "Signs of GHD in Adults:",
+              listItems: [
+                "Low energy, Tiredness, Lethargy, and lack of motivation.",
+                "Decreased strength and exercise tolerance.",
+                "Decreased muscle mass, Weight gain.",
+                "Increased level of total cholesterol, LDL cholesterol, and triglycerides.",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Diagnosis & Treatment:",
+              listItems2: [
+                "Diagnosis involves blood tests and X-rays (for children, to check bone size).",
+                "Treatment is with  growth hormone replacement therapy  (somatropin), injected underneath the skin.",
+                "The FDA has approved GHD therapy for various conditions, including Turner syndrome, chronic renal insufficiency, and Idiopathic Short Stature.",
+              ],
+              listType2: "icon-check",
+            },
+          ],
+        },
+
+        // --- NEW PAGES ADDED BELOW ---
+
+        // Vitamin D Deficiency (Page 13)
+        "vitamin-d": {
+          id: "vitamin-d",
+          title: "Vitamin D Deficiency",
+          subtitle: "The Global Epidemic of Low 'Sunshine Hormone'.",
+          sections: [
+            {
+              id: "vd-overview",
+              heading: "What is Vitamin D?",
+              content: `Vitamin D is a fat soluble vitamin recently gained the status of a hormone and is essential for calcium and phosphate metabolism. Vitamin D plays an integral role in the development of bone and muscles. The skeletal health consequences of vitamin D deficiency (calcium malabsorption and skeletal fragility) have long been recognized. More recently it has become appreciated that low vitamin D status leads to muscle weakness, falls, and potentially a multitude of nonskeletal morbidities.`,
+              listTitle: "Prevalence & Manifestations:",
+              listItems: [
+                "Prevalence: Vitamin D deficiency is a world-wide epidemic, with recent estimates indicating greater than 50% of the global population is at risk.",
+                "Asymptomatic: Deficiency can remain asymptomatic and may be picked up only on routine testing.",
+                "Rickets: A childhood disease characterized by impeded growth, and deformity, of the long bones. The earliest sign is Craniotabes (softening of the skull).",
+                "Osteomalacia: A bone-thinning disorder in adults characterized by proximal muscle weakness and bone fragility.",
+                "Osteoporosis: A condition characterized by reduced bone mineral density and increased bone fragility.",
+                "Muscle: Muscle aches and weakness (in particular proximal limb girdle).",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "vd-sunlight",
+              heading: "Sunlight and Vitamin D",
+              content: `Humans make 90 percent of vitamin D naturally from sunlight exposure to skin – specifically, from ultraviolet B (UVB) exposure to the skin, which naturally initiates the conversion of cholesterol in the skin to vitamin D3. Sunlight is the best and only natural source of vitamin D.`,
+              listTitle: "Key Sunlight Facts:",
+              listItems: [
+                "Self-Regulating: Unlike dietary or supplementary vitamin D, when you get your ‘D’ from sunshine your body takes what it needs, and de-metabolizes any extra, preventing overdose.",
+                "Variable Production: The amount of vitamin D produced in the skin depends on the intensity of the UVB in the sun and many other factors.",
+                "Skin Tone: Darker-skinned individuals may need 5-10 times more exposure than a fair-skinned person to make the same amount of vitamin D.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "vd-treatment",
+              heading: "Treatment of Vitamin D Deficiency",
+              content: `The need for treating vitamin D deficiency arises either when patients present with musculoskeletal symptoms attributable to hypovitaminosis D or when screening of individuals at high risk reveals the presence of vitamin D deficiency, as defined by serum 25(OH)D levels <20 ng/ml.`,
+              listTitle: "Treatment Dosing Strategy:",
+              listItems: [
+                "Initial Correction: Requires higher daily doses, e.g., 50,000 units per week for 8 weeks for adults.",
+                "Maintenance Dose (Adults): Followed by a maintenance dose of 2000 IU per day (or an equivalent weekly/monthly dose) to achieve sufficiency (30 ng/ml).",
+                "Increased Needs: The required dose increases 2- to 3-fold when the individual is on anti-convulsant drugs, glucocorticoids, anti-fungal agents, and anti-retroviral therapy.",
+                "Elderly Benefit: In the elderly, therapy targeting serum 25(OH)D levels $\\ge 60$ nmol/l is associated with fall prevention and fracture risk reduction.",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        },
+
+        // Erectile Dysfunction (Page 14)
+        "erectile-dysfunction": {
+          id: "erectile-dysfunction",
+          title: "Erectile Dysfunction (ED)",
+          subtitle:
+            "Inability to attain or maintain an erection for satisfactory sexual intercourse.",
+          sections: [
+            {
+              id: "ed-overview",
+              heading: "Overview and Risk Factors",
+              content: `Erectile dysfunction (ED), also referred to as impotence, is the inability to attain and/or maintain an erection sufficient for satisfactory sexual intercourse. Sexual dysfunction is a more general term that also includes disorders of libido, orgasmic dysfunction, and ejaculatory dysfunction.`,
+              listTitle: "Key Predictors & Risk Factors:",
+              listItems: [
+                "Prevalence: Affects approximately 52% of men between the ages of 40 and 70.",
+                "Age: Advancing age is an important risk factor; less than 10% of men younger than 40 years, and more than 50% of men older than 70 years have ED.",
+                "Diabetes Mellitus: The most important risk factor. The age-adjusted risk of complete ED is three times higher in men with diabetes (50% of men with diabetes will experience ED).",
+                "Cardiovascular Health: Heart disease, hypertension (high blood pressure), and hyperlipidemia (high cholesterol) are all associated with significantly increased risk.",
+                "Physical Activity: Associated with reduced risk of ED.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ed-medication-links",
+              heading: "Medication and Other Links",
+              content: `Several prescription medications have been emphasized to relate to the occurrence of ED, primarily due to their high prevalence of use.`,
+              listTitle: "Associated Factors:",
+              listItems: [
+                "Common Drugs: Thiazide diuretics and psychotropic drugs (used to treat depression) are among the most common drugs associated with ED.",
+                "Other Drugs: Almost all antihypertensives, digoxin, H2-receptor antagonists, anticholinergics, cytotoxic agents, and androgen antagonists have been implicated.",
+                "Urinary Tract Symptoms: Lower urinary tract symptoms (LUTS) are an independent predictor of ED, suggesting a potential mechanistic link between the two conditions.",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "ed-diagnosis-treatment",
+              heading: "Diagnosis and Treatment Approach",
+              content: `The diagnostic evaluation of ED typically involves checking overall health markers.`,
+              listTitle: "Initial Evaluation & Treatment:",
+              listItems: [
+                "Initial Tests: Measurements of hemoglobin, white blood count, blood glucose, BUN and creatinine, plasma lipids, and testosterone levels.",
+                "First-Line Treatment: If no obvious medical concerns need further workup, a cost-effective approach is a trial of oral PDE5 inhibitor, provided there are no contraindications (e.g., nitrate use).",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        },
+
+        // Male Infertility (Page 15)
+        "male-infertility": {
+          id: "male-infertility",
+          title: "Male Infertility",
+          subtitle:
+            "Causes and common diagnoses in couples unable to conceive.",
+          sections: [
+            {
+              id: "mi-overview",
+              heading: "Infertility Definition and Prevalence",
+              content: `The World Health Organization (WHO) defines infertility as the inability of a sexually active couple to achieve pregnancy despite unprotected intercourse during the fertile phase of the menstrual cycle for a period of greater than 12 months.`,
+              listTitle: "Key Statistics:",
+              listItems: [
+                "Conception Rate: The probability of conception is 20% per cycle, or $\\sim 85\%$ to $90\%$ per year.",
+                "Persistence: Even among couples who do not conceive within 12 months, 55% have a live birth within the next 36 months.",
+                "Male Contribution: The male partner contributes to infertility in about half of infertile couples (20% primary male problem; 26% problem in both partners).",
+              ],
+              listType: "icon-arrow",
+            },
+            {
+              id: "mi-diagnoses",
+              heading: "Common Diagnoses in Men with Infertility",
+              content: `While treatable causes exist, the problem often remains idiopathic. Varicocele's exact role is still unclear.`,
+              listTitle: "Diagnostic Categories (Incidence %):",
+              listItems: [
+                "Idiopathic infertility: 50-60%",
+                "Primary testicular failure: 10-20% (includes Klinefelter’s syndrome, Y chromosome microdeletions, undescended testis, irradiation, drugs)",
+                "Genital tract obstruction: 5% (congenital absence of vas, vasectomy, epididymal obstruction)",
+                "Varicocele: 15-35% (role remains unclear)",
+                "Hypogonadotropic hypogonadism: 3-4% (pituitary adenomas, panhypopituitarism, hyperprolactinemia)",
+                "Other: 5% (sperm autoimmunity, drugs, toxins, systemic illness)",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "mi-correctable",
+              heading: "Treatable and Genetic Causes",
+              listTitle: "Important Considerations:",
+              listItems: [
+                "Treatable Causes: Correctable or treatable causes, such as gonadotropin deficiency and obstruction, are present in a small number of men but are important to recognize due to available effective treatment.",
+                "Genetic Disorders: Klinefelter’s syndrome and Y chromosome microdeletions are the most prevalent genetic disorders, accounting for 10% to 20% of patients.",
+                "Antisperm Antibodies: The mechanisms by which antisperm antibodies cause infertility are unclear, despite a higher prevalence in infertile men.",
+              ],
+              listType: "icon-check",
+            },
+          ],
+        },
+
+        // Diabetic Neuropathy (Page 16)
+        "diabetic-neuropathy": {
+          id: "diabetic-neuropathy",
+          title: "Diabetic Neuropathy",
+          subtitle: "Nerve damage caused by long-term high blood sugar levels.",
+          sections: [
+            {
+              id: "dn-overview",
+              heading: "What is Diabetic Neuropathy?",
+              content: `Long term high blood glucose (sugar) levels can cause damage to the nerve fibers and give rise to various manifestations of diabetic neuropathy. The diabetic neuropathies are heterogeneous, with diverse clinical manifestations, and may be focal or diffuse.`,
+              listTitle: "Most Common Neuropathies:",
+              listItems: [
+                "Chronic Sensorimotor Distal Symmetric Polyneuropathy (affects feet/legs symmetrically)",
+                "Autonomic Neuropathy (affects organs/systems like heart, gut, bladder)",
+              ],
+              listType: "numbered-sky",
+            },
+            {
+              id: "dn-peripheral",
+              heading: "Diabetic Peripheral Neuropathy (DPN)",
+              content: `The areas of the body most commonly affected by DPN are the feet and legs. Nerve damage here can result in a loss of foot sensation, significantly increasing the risk of foot problems, as injuries and sores may go unrecognized.`,
+              listTitle: "Symptoms of DPN:",
+              listItems: [
+                "Tingling, Numbness (can become permanent)",
+                "Burning (especially in the evening)",
+                "Pain",
+              ],
+              listType: "icon-arrow",
+              listTitle2: "Treatment and Importance:",
+              listItems2: [
+                "Early symptoms will become less when blood sugar is under control.",
+                "Medications can be taken to help control the discomfort if needed.",
+                "Up to 50% of DPN may be asymptomatic, risking insensate injury to the feet, emphasizing the need for regular evaluation.",
+              ],
+              listType2: "icon-check",
+            },
+            {
+              id: "dn-autonomic",
+              heading: "Diabetic Autonomic Neuropathy (DAN)",
+              content: `DAN affects the nerves that control involuntary bodily functions. Cardiovascular Autonomic Neuropathy (CAN) is associated with substantial morbidity and even mortality.`,
+              listTitle: "Major Clinical Manifestations:",
+              listItems: [
+                "Cardiovascular: Resting tachycardia ($\gt 100$ bpm), exercise intolerance, orthostatic hypotension (lowering of blood pressure on standing).",
+                "Gastrointestinal: Constipation (most common), gastroparesis (delayed gastric emptying), diarrhea, fecal incontinence. Suspect gastroparesis with erratic glucose control.",
+                "Genitourinary: Erectile dysfunction, retrograde ejaculation (in men), bladder dysfunction (recurrent UTIs, incontinence).",
+                "Other: Sudomotor dysfunction (dry or moist skin), impaired neurovascular function, autonomic failure in response to hypoglycemia.",
+              ],
+              listType: "icon-arrow",
+            },
+          ],
+        },
+      };
+
+      // --- 2. Dynamic Data and Rendering Functions ---
+
+      /*
+       * Parses a query parameter from the URL (updated to use 'page').
+       */
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      /*
+       * Helper function to render styled lists based on type.
+       */
+      function renderList(title, items, type, isSubtitle = false) {
+        if (!items || items.length === 0) return "";
+
+        const listItemsHtml = items
+          .map((item) => `<li class="dka-list-item">${item}</li>`)
+          .join("");
+        const TitleTag = isSubtitle ? "h4" : "h3";
+
+        return `
+                <div class="styled-list-container ${type}">
+                    <${TitleTag}>${title}</${TitleTag}>
+                    <ul class="dka-list">
+                        ${listItemsHtml}
+                    </ul>
+                </div>
+            `;
+      }
+
+      /*
+       * Renders the HTML structure for a single content section.
+       */
+      function renderSection(section, index) {
+        const isAlternate = index % 2 === 0;
+        const bgClass = isAlternate ? "bg-sky-light" : "bg-white";
+
+        // Render primary list
+        const primaryList = section.listItems
+          ? renderList(
+              section.listTitle || "",
+              section.listItems,
+              section.listType
+            )
+          : "";
+
+        // Render secondary list
+        const secondaryList = section.listItems2
+          ? renderList(
+              section.listTitle2 || "",
+              section.listItems2,
+              section.listType2,
+              true
+            )
+          : "";
+
+        // Use standard content if provided, otherwise empty
+        const contentHtml = section.content ? `<p>${section.content}</p>` : "";
+
+        return `
+                <section id="${section.id}" class="content-section ${bgClass}">
+                    <div class="container">
+                        <div class="section-content">
+                            <h2>${section.heading}</h2>
+                            ${contentHtml}
+                            <div class="highlight-card">
+                                ${primaryList}
+                                ${secondaryList}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+      }
+
+      /*
+       * Renders the main application structure based on client data.
+       */
+      function renderClientPage(data) {
+        const sectionsHtml = data.sections.map(renderSection).join("");
+
+        // Special handling for DKA subtitle removal
+        let subtitleText = data.subtitle;
+        if (data.id === "dka") {
+          subtitleText = data.subtitle
+            .replace("A Medical Emergency in Diabetes Management", "")
+            .trim();
+        }
+
+        // Removed dynamic identifier line as requested
+        const html = `
+                <div class="header-div">
+                    <div class="container">
+                        <h1>${data.title}</h1>
+                        <p>${subtitleText}</p>
+                    </div>
+                </div>
+                <main id="main-content">
+                    ${sectionsHtml}
+                </main>
+                <footer style="
+    background:#081c34;
+    color:#dbe7ff;
+    padding:70px 20px 35px;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  ">
+    <div style="
+      max-width:1250px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:50px;
+      justify-content:space-between;
+    ">
+      <!-- CONTACT -->
+      <div style="flex:1 1 330px;min-width:260px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+          letter-spacing:0.3px;
+        ">
+          Quick Contact
+        </h3>
+
+        <p style="margin:0 0 12px;font-size:18px;color:#fff;font-weight:600;">
+          +91-91650-17732
+        </p>
+
+        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Dehradun</strong><br />
+            G14/15, Race Course, Near MLA Hostel, Uttarakhand
+          </p>
+
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Indore</strong><br />
+            2nd Floor, Above JMB Sweets, MIG Main Road, Indore 452011 (M.P.)
+          </p>
+
+          <p style="margin:0;">
+            <strong style="color:#fff;">Avanti Hospital — Ujjain</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- SOCIAL ICONS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Follow Us
+        </h3>
+
+        <div style="display:flex;gap:14px;">
+          <!-- FB -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M22 12.07C22 6.48 17.52 2 11.93 2C6.35 2 1.87 6.48 1.87 12.07C1.87 17 5.26 21.06 9.84 22V14.9H7.08V12.07H9.84V9.92C9.84 7.2 11.41 5.74 13.9 5.74C15.09 5.74 16.34 5.95 16.34 5.95V8.63H15.06C13.8 8.63 13.42 9.4 13.42 10.19V12.07H16.22L15.78 14.9H13.42V22C18 21.06 22 17 22 12.07Z" />
+            </svg>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="#ffffff">
+              <path
+                d="M16 3C9.37 3 4 8.37 4 15c0 2.89.94 5.56 2.52 7.73L5 29l6.45-1.48C13.21 28.49 14.56 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm7.19 16.39c-.3.85-1.76 1.62-2.41 1.72-.62.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.07-.78-3.64-1.58-6-5.26-6.18-5.51-.18-.25-1.48-1.97-1.48-3.75 0-1.79.94-2.67 1.28-3.03.34-.36.74-.45.98-.45.24 0 .49 0 .7.01.22.01.53-.09.83.63.3.72 1.01 2.51 1.1 2.69.09.18.15.4.03.65-.12.25-.18.4-.36.62-.18.22-.38.48-.54.64-.18.18-.37.38-.16.74.21.36.94 1.57 2.02 2.54 1.39 1.25 2.58 1.65 2.94 1.83.36.18.57.15.78-.09.21-.25.9-1.05 1.15-1.41.25-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.88-.21 1.73z" />
+            </svg>
+          </a>
+
+          <!-- YOUTUBE -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.8-1.7-.9-2.1-.9-3-.2-7.5-.2-7.5-.2s-4.5 0-7.5.2c-.4 0-1.3.1-2.1.9-.7.7-.9 2.3-.9 2.3S2 8.1 2 10v4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.8 1.8.8 2.3.9 1.7.2 7.4.2 7.4.2s4.5 0 7.5-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-4c0-1.9-.2-3.8-.2-3.8zM10 15.3V8.7l5.8 3.3-5.8 3.3z" />
+            </svg>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Quick Links
+        </h3>
+
+        <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Home</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#about" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+          </li>
+          <li>
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="
+      max-width:1250px;
+      margin:45px auto 0;
+      padding-top:25px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+      font-size:14px;
+      color:#aabbd9;
+    ">
+      © ${new Date().getFullYear()} Sovin Hormone Clinic
+  </footer>
+            `;
+
+        const appRoot = document.getElementById("app-root");
+        appRoot.innerHTML = html;
+      }
+
+      /*
+       * Initializes GSAP ScrollTrigger animations for the content sections.
+       */
+      function initializeGSAP() {
+        if (
+          typeof gsap === "undefined" ||
+          typeof ScrollTrigger === "undefined"
+        ) {
+          console.error(
+            "GSAP or ScrollTrigger library not loaded. Animations skipped."
+          );
+          return;
+        }
+
+        const sections = document.querySelectorAll(".section-content");
+
+        sections.forEach((content) => {
+          // 1. Set initial state
+          gsap.set(content, {
+            opacity: 0,
+            y: 50,
+            scale: 0.98,
+          });
+
+          // 2. Create the ScrollTrigger animation
+          gsap.to(content, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: content.closest(".content-section"),
+              start: "top 70%",
+              end: "bottom 30%",
+            },
+          });
+        });
+      }
+
+      // --- 3. Initialization Logic ---
+
+      window.onload = function () {
+        document.getElementById("loading-screen").style.display = "none";
+
+        // Get client ID from URL (UPDATED: uses 'page' parameter, defaults to 'hypoglycemia')
+        const clientId = getQueryParam("page") || "hypoglycemia";
+        const clientData = mockClientData[clientId];
+
+        if (clientData) {
+          renderClientPage(clientData);
+          initializeGSAP();
+        } else {
+          const appRoot = document.getElementById("app-root");
+          appRoot.innerHTML = `<div class="status-message">Information Page "${clientId}" not found. Please check the URL parameter 'page'.</div>`;
+        }
+      };
+    </script>
+  </body>
+</html>

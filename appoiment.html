@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Dr. Sonal Shrivastava Clinic</title>
+    <!-- Use Inter font for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="header.css">
+    
+    <style>
+        /* --- 1. Custom Color Palette (from prior files) --- */
+        :root {
+            --sky: #38bdf8;         /* primary sky blue */
+            --sky-light: #eaf8ff;   /* page background for sections */
+            --sky-lighter: #dff3ff; /* card backgrounds */
+            --sky-hover: #5cd4ff;
+            --navy: #0a1a44;        /* text / primary dark */
+            --navy-2: #0f2a55;
+            --muted: #1b3359;
+            --white: #ffffff;
+
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+        }
+
+        /* --- 2. Base & Utility Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--navy);
+            background-color: var(--white);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--sky);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* --- 3. header-div & Main Call-to-Action --- */
+
+        .header-div {
+            background-color: var(--navy);
+            padding: 80px 0;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .header-div h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-div p {
+            font-size: 1.25rem;
+            color: var(--sky);
+            font-weight: 300;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--navy-2);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--sky-lighter);
+            padding-bottom: 10px;
+        }
+        
+        /* --- 4. Booking Alert Box --- */
+
+        .booking-alert {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            padding: 30px;
+            border-radius: 12px;
+            background-color: var(--sky);
+            color: var(--white);
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+            border: 2px solid var(--white);
+        }
+
+        .booking-alert h2 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+
+        .booking-alert .phone-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 15px;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .booking-alert .warning-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+
+        /* --- 5. Location Cards --- */
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .clinic-card {
+            background-color: var(--sky-lighter);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .clinic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .clinic-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--sky);
+            padding-bottom: 5px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--muted);
+        }
+
+        .detail-row i {
+            color: var(--sky);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            padding-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .detail-row strong {
+            color: var(--navy-2);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            background-color: var(--navy-2);
+            color: #ddd;
+            padding: 40px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+    <div class="logo">
+      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
+    </div>
+
+    <nav id="nav">
+      <ul class="menu">
+        <li>
+          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+
+        <li>
+          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
+           <i class="fa-solid fa-chevron-down"></i></a>
+           <ul class="submenu">
+            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
+                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+              </ul>
+            </li>
+            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="submenu">
+                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
+                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+              </ul>
+        </li>
+        <li>
+          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
+        </li>
+        <li>
+          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
+        </li>
+        <li>
+          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
+  </header>
+
+    <div class="header-div">
+        <div class="container">
+            <h1>Book Your Appointment</h1>
+            <p>Dr. Sonal Shrivastava</p>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Call to Action & Warning -->
+        <section class="section" style="background-color: var(--sky-light);">
+            <div class="container">
+                <div class="booking-alert">
+                    <h2>For Appointments Call</h2>
+                    <a href="tel:+919165017732" class="phone-number">
+                        <i class="fas fa-phone-alt"></i> +91-9165017732
+                    </a>
+                    <p class="warning-text">
+                        <i class="fas fa-exclamation-triangle"></i> Important: For avoiding inconvenience please book appointment on this number before coming.
+                    </p>
+                </div>
+
+                <h2 class="section-title">Available Clinic Locations & Timings</h2>
+
+                <div class="location-grid">
+                    
+                    <!-- Location 1: Sovin Hormone Clinic (Indore 1) -->
+                    <div class="clinic-card">
+                        <h3><i class="fas fa-hospital-alt"></i> Sovin Hormone Clinic (Indore)</h3>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-location-dot"></i>
+                            <div>
+                                <strong>Address:</strong>
+                                E-35, HIG colony, Behind Rohit Eye Hospital, Near LIG square
+                            </div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Day & Time:</strong>
+                                Mon, Tue, Thu, Fri afternoon 3:30 to 5:00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location 2: CHL Hospital (Indore 2) -->
+                    <div class="clinic-card">
+                        <h3><i class="fas fa-hospital"></i> CHL Hospital (Indore)</h3>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-location-dot"></i>
+                            <div>
+                                <strong>Address:</strong>
+                                LIG square, AB Road Indore (M.P.)
+                            </div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Day & Time:</strong>
+                                Mon, Tue, Thu, Fri - morning 10:30 to 1:00 & evening 5:30 to 6:30 | Sat - morning 10:30 to 1
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location 3: CHL Hospital (Ujjain) -->
+                    <div class="clinic-card">
+                        <h3><i class="fas fa-hospital-alt"></i> CHL Hospital (Ujjain)</h3>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-location-dot"></i>
+                            <div>
+                                <strong>Address:</strong>
+                                Ujjain (M.P.)
+                            </div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Day & Time:</strong>
+                                Every Wednesday 10:30 to 3:30 (only by prior appointment)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="container">
+                © 2024 Sovin Hormone Clinic. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

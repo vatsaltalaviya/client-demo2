@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endocrinology FAQs</title>
+    <!-- Use Inter font for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- 1. Custom Color Palette (from prior files) --- */
+        :root {
+            --sky: #38bdf8;         /* primary sky blue */
+            --sky-light: #eaf8ff;   /* page background for sections */
+            --sky-lighter: #dff3ff; /* card backgrounds */
+            --sky-hover: #5cd4ff;
+            --navy: #0a1a44;        /* text / primary dark */
+            --navy-2: #0f2a55;
+            --muted: #1b3359;
+            --white: #ffffff;
+
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+        }
+
+        /* --- 2. Base & Utility Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--navy);
+            background-color: var(--white);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 3. Layout and Section Styling --- */
+
+        .header-div {
+            background-color: var(--navy);
+            padding: 80px 0;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .header-div h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-div p {
+            font-size: 1.25rem;
+            color: var(--sky);
+            font-weight: 300;
+        }
+
+        .section {
+            padding: 60px 0;
+            background-color: var(--sky-light);
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--navy-2);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* --- 4. Accordion/FAQ Styling (Rich/Modern) --- */
+
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .accordion-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background-color: var(--sky-lighter);
+            color: var(--navy);
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-left: 5px solid transparent;
+            transition: background-color 0.3s, border-left 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--sky-light);
+        }
+
+        .accordion-header.active {
+            background-color: var(--sky);
+            color: var(--white);
+            border-left-color: var(--navy);
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+            color: var(--white);
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: var(--sky);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding: 0 25px;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        /* Rich text formatting inside answers */
+        .accordion-content ul, .accordion-content ol {
+            padding-left: 20px;
+            margin: 10px 0 15px 0;
+        }
+        .accordion-content ul li, .accordion-content ol li {
+            margin-bottom: 5px;
+        }
+        .accordion-content strong {
+            color: var(--navy-2);
+        }
+
+        /* --- 5. Footer and Error Styles --- */
+        .footer {
+            background-color: var(--navy-2);
+            color: #ddd;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .status-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--navy);
+            background-color: var(--sky-light);
+        }
+    </style>
+</head>
+<body>
+     <header>
+    <div class="logo">
+      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
+    </div>
+
+    <nav id="nav">
+      <ul class="menu">
+        <li>
+          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+
+        <li>
+          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
+        </li>
+
+        <li>
+          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
+           <i class="fa-solid fa-chevron-down"></i></a>
+           <ul class="submenu">
+            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
+                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
+             <ul class="submenu">
+                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+              </ul>
+            </li>
+            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="submenu">
+                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
+                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+              </ul>
+        </li>
+        <li>
+          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
+        </li>
+        <li>
+          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
+        </li>
+        <li>
+          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
+  </header>
+
+    <div id="app-root">
+        <div class="status-message" id="loading-screen">Loading FAQ Content...</div>
+    </div>
+
+    <script>
+        // --- 1. FAQ Data Structure (Q&A Pairs) ---
+        const faqData = {
+            'prediabetes': {
+                title: "Prediabetes",
+                subtitle: "Common questions about diagnosis, risk, and prevention.",
+                items: [
+                    {
+                        q: "What is prediabetes and how is it different from diabetes?",
+                        a: "Prediabetes is the state that occurs when a person’s blood glucose levels are higher than normal but not high enough for a diagnosis of diabetes. About 10 percent of people with prediabetes develop type 2 diabetes each year over the next 3 years."
+                    },
+                    {
+                        q: "Is prediabetes the same as Impaired Glucose Tolerance or Impaired Fasting Glucose?",
+                        a: "Yes. Doctors sometimes refer to this state of elevated blood glucose levels as Impaired Glucose Tolerance or Impaired Fasting Glucose (IGT/IFG), depending on which test was used to detect it."
+                    },
+                    {
+                        q: "What problems can arise from prediabetes?",
+                        a: "People with prediabetes are at higher risk of cardiovascular disease (e.g. heart disease, stroke etc.). People with prediabetes have a 1.5-fold risk of cardiovascular disease compared to people with normal blood glucose. People with diabetes have a 2- to 4-fold increased risk of cardiovascular disease. We now know that people with prediabetes can delay or prevent the onset of type 2 diabetes through lifestyle changes."
+                    },
+                    {
+                        q: "Why do I need to know if I have prediabetes?",
+                        a: "If you have prediabetes, you can and should do something about it. Studies have shown that people with prediabetes can prevent or delay the development of type 2 diabetes by up to 58 percent through changes to their lifestyle that include modest weight loss and regular exercise. The experts recommends that people with prediabetes reduce their weight by 5-10 percent and participate in some type of modest physical activity for 30 minutes daily. For some people with prediabetes, intervening early can actually turn back the clock and return elevated blood glucose levels to the normal range."
+                    },
+                    {
+                        q: "What is the treatment for prediabetes?",
+                        a: "Treatment consists of losing a modest amount of weight (5-10 percent of total body weight) through diet and moderate exercise, such as walking, 30 minutes a day, 5 days a week. Don’t worry if you can’t get to your ideal body weight. A loss of just 10 to 15 pounds can make a huge difference. If you have prediabetes, you are at a 50 percent increased risk for heart disease or stroke, so your doctor may wish to treat or counsel you about cardiovascular risk factors, such as tobacco use, high blood pressure, and high cholesterol."
+                    },
+                    {
+                        q: "Could I have prediabetes and not know it?",
+                        a: "Absolutely. People with prediabetes don’t often have symptoms. In fact, millions of people have diabetes and don’t know it because symptoms develop so gradually, people often don’t recognize them. Some people have no symptoms at all. Symptoms of diabetes include unusual thirst, a frequent desire to urinate, blurred vision, or a feeling of being tired most of the time for no apparent reason."
+                    }
+                ]
+            },
+            
+            // Non-Q&A List transformed into Accordion items
+            'thyroid-topics': {
+                title: "Thyroid Disorders",
+                subtitle: "Key conditions and related topics.",
+                items: [
+                    { q: "Hypothyroidism", a: "A condition in which the thyroid gland does not make enough thyroid hormone." },
+                    { q: "Hyperthyroidism", a: "A condition in which the thyroid gland makes too much thyroid hormone." },
+                    { q: "Goiter", a: "An abnormal enlargement of your thyroid gland." },
+                    { q: "Thyroiditis", a: "Inflammation of the thyroid gland, which can cause either high or low thyroid hormone levels." },
+                    { q: "Thyroid Malignancy", a: "Cancer of the thyroid gland." },
+                    { q: "Iodine Deficiency Disorders", a: "Health problems caused by insufficient iodine intake, critical for thyroid hormone production." }
+                ]
+            },
+
+            // Gestational Diabetes Mellitus (GDM)
+            'gdm': {
+                title: "Gestational Diabetes Mellitus (GDM)",
+                subtitle: "Information on diagnosis and management during pregnancy.",
+                items: [
+                    {
+                        q: "What is gestational diabetes mellitus (GDM)?",
+                        a: "GDM is defined as any degree of glucose intolerance with onset or first recognition during pregnancy."
+                    },
+                    {
+                        q: "What is the frequency of GDM?",
+                        a: "Approximately 7% of all pregnancies are complicated by GDM, but incidence of GDM is on the rise."
+                    },
+                    {
+                        q: "When should GDM be evaluated?",
+                        a: "Risk assessment for GDM should be undertaken at the first prenatal visit. Women with clinical characteristics consistent with a high risk of GDM (marked obesity, personal history of GDM, glycosuria, or a strong family history of diabetes) should undergo testing as soon as feasible. In pregnant women not known to have diabetes, screen for GDM at 24–28 weeks of gestation, using an oral glucose tolerance test."
+                    },
+                    {
+                        q: "What is the initial management for GDM?",
+                        a: "All women with GDM should receive nutritional counseling. Programs of moderate physical exercise have been shown to lower maternal glucose concentrations in women with GDM. Women without medical or obstetrical contraindications are encouraged to start or continue a program of moderate exercise."
+                    },
+                    {
+                        q: "What are blood glucose targets in case of GDM?",
+                        a: "Target maternal capillary glucose concentrations (tested by glucometer) in pregnant ladies with GDM are: <ul><li>Preprandial (pre-meal): &le;95 mg/dl</li><li>1-h postmeal: &le;140 mg/dl or 2-h postmeal: &le;120 mg/dl</li></ul>"
+                    },
+                    {
+                        q: "What if diet and exercise fails to control blood glucose?",
+                        a: "If dietary and lifestyle changes fail to bring down maternal blood glucose levels, insulin is recommended. Insulin is the agent that has most consistently been shown to reduce fetal morbidity due to GDM. It is also the safest drug available to reduce blood glucose in pregnancy. Human insulin should be preferred, and self-monitored blood glucose values should guide the doses."
+                    },
+                    {
+                        q: "How can we know whether the fetus is having any damage from GDM?",
+                        a: "Assessment for asymmetric fetal growth or large sized fetus by ultrasonography, particularly in early third trimester, may aid in identifying fetuses that can benefit from maternal insulin therapy."
+                    },
+                    {
+                        q: "Can medicines be used for treatment of GDM?",
+                        a: "Medicines like metformin and glibenclamide are approved for treatment of GDM in some countries. If you are advised these medicines have a detailed discussion with your doctor regarding its advantages and disadvantages relative to insulin."
+                    },
+                    {
+                        q: "Do I need to undergo cesarean delivery if I have GDM?",
+                        a: "GDM is not of itself an indication for cesarean delivery or for delivery before 38 completed weeks of gestation. Prolongation of gestation past 38 weeks increases the risk of fetal macrosomia (large sized baby) without reducing cesarean rates, so that delivery during the 38th week is recommended unless obstetric considerations dictate otherwise."
+                    },
+                    {
+                        q: "What are the risks to the newborn from GDM?",
+                        a: "GDM of any severity increases the risk of fetal macrosomia. The presence of fasting hyperglycemia (>105 mg/dl) may be associated with an increase in the risk of intrauterine fetal death during the last 4–8 weeks of gestation. Other complications in the neonate can be hypoglycemia (low neonatal blood glucose), jaundice, polycythemia (increased RBC), hypocalcemia (low calcium), and respiratory distress."
+                    },
+                    {
+                        q: "When should I undergo my next check up for diabetes after delivery?",
+                        a: "Screen women with GDM for persistent diabetes 6–12 weeks postpartum."
+                    },
+                    {
+                        q: "Can I breast feed my baby?",
+                        a: "Breast-feeding, as always, should be encouraged in women with GDM."
+                    },
+                    {
+                        q: "What are the problems I may have in future after GDM?",
+                        a: "Women with GDM are at increased risk for the development of diabetes, usually type 2, after pregnancy. Women with a history of GDM should have lifelong screening for the development of diabetes or prediabetes at least every 3 years."
+                    },
+                    {
+                        q: "What are the problems my baby can have in future?",
+                        a: "Offspring of women with GDM are at increased risk of obesity, glucose intolerance, and diabetes in late adolescence and young adulthood."
+                    }
+                ]
+            },
+
+            // Obesity & Overweight
+            'obesity': {
+                title: "Obesity & Overweight",
+                subtitle: "Understanding Body Mass Index (BMI), causes, and treatment.",
+                items: [
+                    {
+                        q: "What is obesity?",
+                        a: "Obesity is a condition where there is excess fat in your body. Obesity is associated with many other problems like high blood pressure (hypertension), diabetes, heart disease, osteoarthritis, sleep apnea, etc."
+                    },
+                    {
+                        q: "How do I know if I am obese or just overweight?",
+                        a: "The World Health Organisation (WHO) classification states: <ul><li>Healthy Weight: BMI between 18.5 and 24.9</li><li>Overweight: BMI between 25 and 29.9</li><li>Obese: BMI between 30 and 39.9 (qualifies for treatment)</li><li>Morbidly Obese: BMI of 40 or more (should strongly consider treatment)</li></ul>"
+                    },
+                    {
+                        q: "What is my body mass index (BMI)?",
+                        a: "BMI is a way medical professionals check if you are at a healthy weight for your height. The formula is: BMI = Weight in kilograms &divide; (height in meter)&sup2;. For example, a weight of 65kg and height of 1.65m results in a BMI of 23.8 (ideal range)."
+                    },
+                    {
+                        q: "Is obesity hereditary?",
+                        a: "Obesity often runs in families, suggesting a genetic link. Parents also pass on common dietary and lifestyle habits. However, these factors contribute but do not make obesity a certainty."
+                    },
+                    {
+                        q: "What other factors contribute to the development of obesity?",
+                        a: "A main cause is a poor diet coupled with a lack of exercise. Consuming large portions of fatty foods, sweet foods, and sugary drinks leads to rapid weight gain. Other possible causes include: stress or insomnia; the use of medications (like antidepressants and steroids); and hormone problems (such as polycystic ovarian syndrome or Cushing’s syndrome)."
+                    },
+                    {
+                        q: "Does being obese put my health at risk?",
+                        a: "Serious health complications can arise if obesity is left untreated. Short-term problems include breathlessness, difficulty sleeping, and aches and pains. Long-term problems may include type 2 diabetes, high blood pressure, and coronary heart disease. Women who are obese are also more likely to have problems during and after pregnancy."
+                    },
+                    {
+                        q: "How can I prevent obesity from developing?",
+                        a: "Arrange an appointment with your doctor for an appropriate health plan. This plan may involve following a healthy eating plan, decreasing the size of your meals, more regular exercise, regular monitoring of your weight, and potentially the use of a medical treatment."
+                    },
+                    {
+                        q: "What methods of treatment are available?",
+                        a: "Obesity can be treated by proper diet and exercise. If a specific medical condition is causing obesity, that needs to be corrected. Oral medicines are also available. Those with morbid obesity can benefit from bariatric surgery."
+                    },
+                    {
+                        q: "Is surgery a worthwhile risk?",
+                        a: "Weight loss surgery is carried out to restrict the amount of food a person can eat. Common methods include gastric band surgery, gastric bypass, bilopancreatic diversion, and sleeve gastrectomy. Procedures can cost as much as Rs. 1,50,000 or more, and should be considered only after consulting a professional surgeon."
+                    }
+                ]
+            },
+
+            // Osteoporosis
+            'osteoporosis': {
+                title: "Osteoporosis",
+                subtitle: "Understanding bone loss, risks, and prevention.",
+                items: [
+                    {
+                        q: "What is Osteoporosis?",
+                        a: "Osteoporosis (or porous bone) is a disease in which bones become weak and can result in fractures often from a trivial trauma. It results from loss of bone density over time. Fractures commonly occur in the hip, spine, and wrist."
+                    },
+                    {
+                        q: "What Causes Osteoporosis?",
+                        a: "Old bone is constantly broken down (bony resorption), and new bone is deposited. Osteoporosis occurs any time bone is broken down faster than it is deposited, leading to low bone mass (osteopenia)."
+                    },
+                    {
+                        q: "What are the Symptoms of Osteoporosis?",
+                        a: "In most people, low bone mass and osteoporosis occur without any symptoms and can only be detected on testing (DEXA or BMD). For others, a simple everyday movement can cause a sudden onset of back pain. As it progresses, collapsed vertebrae may be felt as severe back pain or seen as loss of height or spine deformities such as a hunchback."
+                    },
+                    {
+                        q: "When Does Osteoporosis Occur?",
+                        a: "Osteoporosis is common in people older than 50 years. Maximum bone density is reached at age 20-25 years. Bone density loss begins after age 30. For women, bone loss is fastest in the first few years after menopause. This process is slower by 10 years in men."
+                    },
+                    {
+                        q: "Who is at Risk for Osteoporosis?",
+                        a: "Risk factors are divided into two categories: <ul><li>Unmodifiable Risks: Sex (Women are more likely), Age, Physical build (small and thin bones), Race (White and Asian women are at the highest risk), and Family History.</li><li>Modifiable Risks: Low levels of sex hormones (low estrogen/testosterone), Diets low in calcium and phosphate, Low vitamin D levels, Use of medications (Glucocorticoids, antiseizure drugs, etc.), Inactive lifestyle, and Excessive alcohol intake.</li></ul>"
+                    },
+                    {
+                        q: "How is Osteoporosis Detected?",
+                        a: "Many people do not know they have osteoporosis until they experience a broken bone. It can be prevented by early detection using specialized tests called bone density tests (or DEXA scan of Bone Mineral Density - BMD), which measure bone density in the hip, spine, and wrist. These tests are quick, painless, and noninvasive."
+                    },
+                    {
+                        q: "How Can Osteoporosis Be Prevented?",
+                        a: "Prevention involves reaching peak bone mass during childhood and continuing to build bone density. Key steps include: <ul><li>Get enough calcium and vitamin D (via diet or supplements).</li><li>Exercise regularly.</li><li>Do not smoke and avoid excessive alcohol intake.</li><li>Be aware of medications like glucocorticoids that can cause bone loss; discuss prevention with your doctor.</li></ul>"
+                    },
+                    {
+                        q: "How is Osteoporosis Treated?",
+                        a: "Treatment includes both lifestyle changes and medications. Treatment programs focus on nutrition, exercise, and safety to prevent falls. Medications include: <ul><li>Oral Medications: alendronate, risedronate, and raloxifene.</li><li>Injectable: Teriperatide (self-injectable) for postmenopausal women and men.</li><li>Hormone Therapy: Estrogen or hormone replacement therapy (ET/HRT) and calcitonin.</li></ul> All medicines require calcium and vitamin D supplementation in adequate dosage to be effective."
+                    }
+                ]
+            },
+
+            // Polycystic Ovary Syndrome (PCOS)
+            'pcos-faq': {
+                title: "Polycystic Ovary Syndrome (PCOS)",
+                subtitle: "In-depth questions about diagnosis, causes, and pregnancy.",
+                items: [
+                    {
+                        q: "How common is PCOS?",
+                        a: "PCOS affects an estimated 5-10 percent of women of childbearing age and it is a leading cause of infertility."
+                    },
+                    {
+                        q: "What are the symptoms of PCOS?",
+                        a: "Symptoms include: Hirsutism (excess hair on face, chest, abdomen), Menstrual Irregularities (amenorrhea, infrequent menses, irregular bleeding), Alopecia (scalp hair loss), Acne/Oily Skin, Infertility (usually due to ovulatory dysfunction), and Obesity or weight gain (commonly concentrated around the abdomen)."
+                    },
+                    {
+                        q: "Is PCOS a Syndrome or a Disease?",
+                        a: "PCOS is generally considered a syndrome rather than a disease because it manifests itself through a group of signs and symptoms that can occur in any combination, rather than having one known cause or presentation."
+                    },
+                    {
+                        q: "What causes PCOS?",
+                        a: "The exact cause of PCOS is unknown, but a strong focus is on the body’s ability to process insulin. Elevated insulin levels contribute to increased androgen production, worsening PCOS symptoms. There may also be a genetic link. It can also be caused or worsened by medications like valproate."
+                    },
+                    {
+                        q: "How should PCOS be diagnosed?",
+                        a: "PCOS should be diagnosed based on physical exam, ultrasound of the ovaries, and the results of various blood tests."
+                    },
+                    {
+                        q: "Is it possible to have polycystic ovaries without having the syndrome?",
+                        a: "Yes. About 15-20 percent of normal women can have the appearance of polycystic ovaries. Diagnosis of PCOS is based on signs and symptoms along with corroborative laboratory results, not solely on the appearance of the ovaries."
+                    },
+                    {
+                        q: "What are the chances of pregnancy in PCOS?",
+                        a: "Infertility related to PCOS is treatable in the majority of cases. Women can and do still get pregnant—sometimes naturally, sometimes with help. Lifestyle changes, such as losing weight, can trigger body changes that improve pregnancy rates."
+                    },
+                    {
+                        q: "Is the miscarriage rate higher in women with PCOS?",
+                        a: "There does appear to be a higher miscarriage rate in women with PCOS, though the exact reason is still under investigation. One possibility is that PCOS may be associated with poor follicle development and decreased egg quality."
+                    },
+                    {
+                        q: "Is there anything that can be done to reduce the chance of miscarriage in a woman with PCOS?",
+                        a: "The primary way is to normalize hormone levels. Improving ovulation (using clomiphene citrate, injectable FSH/LH) can help. Normalizing blood sugar and glucose levels may also help, leading to lower androgen levels. Metformin is increasingly used during pregnancy to reduce miscarriage rates."
+                    },
+                    {
+                        q: "Isn’t metformin a diabetic drug?",
+                        a: "Metformin was originally prescribed to diabetes patients, but is widely used to treat PCOS because PCOS patients commonly have insulin resistance. Lowering of insulin resistance by metformin provides symptomatic benefits in PCOS."
+                    }
+                ]
+            },
+
+            // Growth Hormone Deficiency (GHD)
+            'ghd-faq': {
+                title: "Growth Hormone Deficiency (GHD)",
+                subtitle: "Questions on causes, diagnosis, and treatment.",
+                items: [
+                    {
+                        q: "What is growth hormone deficiency?",
+                        a: "GHD is a disorder involving the pituitary gland not producing enough growth hormone. If other pituitary hormones are also insufficient, the condition is called panhypopituitarism. GHD can occur at any age."
+                    },
+                    {
+                        q: "What causes growth hormone deficiency?",
+                        a: "GHD is caused by low or absent secretion of growth hormone from the pituitary gland. It may be present at birth or develop after birth due to trauma, infections, radiation to the head, or tumors. In adults, it is usually related to a history of pituitary tumors treated with surgery or radiation."
+                    },
+                    {
+                        q: "How do I know if my child has a growth disorder?",
+                        a: "The best way to evaluate a child’s growth is to plot the child’s height and weight on a growth chart over time. Any departure from a prior growth pattern appropriate for the child’s genetic background may signal a disease. Contact a specialist if the child’s growth or height is a concern."
+                    },
+                    {
+                        q: "What are the symptoms of growth hormone deficiency?",
+                        a: "Symptoms differ by age: <ul><li>Children: Slowing of growth, short height for age, increased fat around the waist and face, delayed puberty, and delayed tooth development.</li><li>Adults: Low energy, decreased strength and exercise tolerance, decreased muscle mass, weight gain, and increased total cholesterol/LDL cholesterol.</li></ul>"
+                    },
+                    {
+                        q: "How is growth hormone deficiency diagnosed?",
+                        a: "Diagnosis involves a doctor evaluating the child’s growth patterns (via growth chart) and medical history. Blood tests determine hormone deficiency. X-rays may be taken for children to check bone size. In adults, MRI of the brain may also be performed."
+                    },
+                    {
+                        q: "How is growth hormone deficiency treated?",
+                        a: "GHD is treated with growth hormone replacement therapy (a drug called somatropin or growth hormone) injected into the fat underneath the skin. This therapy is also approved for conditions like Turner syndrome and chronic renal insufficiency."
+                    },
+                    {
+                        q: "What is a growth disorder?",
+                        a: "A growth disorder is any problem in infants, children, or teenagers that prevents normal growth. Endocrine (hormonal) causes include thyroid hormone deficiency (hypothyroidism), growth hormone deficiency, and hypopituitarism. Normal variants include genetic short height (familial short stature) and slow growth/delayed puberty (constitutional growth delay)."
+                    }
+                ]
+            }
+        };
+
+        // --- 2. Dynamic Rendering and Accordion Logic ---
+        
+        /*
+         * Parses the query parameter from the URL.
+         */
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        /*
+         * Renders the FAQ page based on the selected data.
+         */
+        function renderFAQPage(data) {
+            const appRoot = document.getElementById('app-root');
+            const itemsHtml = data.items.map((item, index) => {
+                // Sanitize answer to handle simple HTML tags (like ul/ol/strong)
+                const answerHtml = `<p>${item.a}</p>`; 
+
+                return `
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="header-${index}">
+                            ${item.q}
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content" id="content-${index}">
+                            ${answerHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const html = `
+                <div class="header-div">
+                    <div class="container">
+                        <h1>FAQ: ${data.title}</h1>
+                        <p>${data.subtitle}</p>
+                    </div>
+                </div>
+                <main class="section">
+                    <div class="container">
+                        <div class="faq-accordion">
+                            ${itemsHtml}
+                        </div>
+                    </div>
+                </main>
+               <footer style="
+    background:#081c34;
+    color:#dbe7ff;
+    padding:70px 20px 35px;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  ">
+    <div style="
+      max-width:1250px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:50px;
+      justify-content:space-between;
+    ">
+      <!-- CONTACT -->
+      <div style="flex:1 1 330px;min-width:260px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+          letter-spacing:0.3px;
+        ">
+          Quick Contact
+        </h3>
+
+        <p style="margin:0 0 12px;font-size:18px;color:#fff;font-weight:600;">
+          +91-91650-17732
+        </p>
+
+        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Dehradun</strong><br />
+            G14/15, Race Course, Near MLA Hostel, Uttarakhand
+          </p>
+
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic — Indore</strong><br />
+            2nd Floor, Above JMB Sweets, MIG Main Road, Indore 452011 (M.P.)
+          </p>
+
+          <p style="margin:0;">
+            <strong style="color:#fff;">Avanti Hospital — Ujjain</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- SOCIAL ICONS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Follow Us
+        </h3>
+
+        <div style="display:flex;gap:14px;">
+          <!-- FB -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M22 12.07C22 6.48 17.52 2 11.93 2C6.35 2 1.87 6.48 1.87 12.07C1.87 17 5.26 21.06 9.84 22V14.9H7.08V12.07H9.84V9.92C9.84 7.2 11.41 5.74 13.9 5.74C15.09 5.74 16.34 5.95 16.34 5.95V8.63H15.06C13.8 8.63 13.42 9.4 13.42 10.19V12.07H16.22L15.78 14.9H13.42V22C18 21.06 22 17 22 12.07Z" />
+            </svg>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="#ffffff">
+              <path
+                d="M16 3C9.37 3 4 8.37 4 15c0 2.89.94 5.56 2.52 7.73L5 29l6.45-1.48C13.21 28.49 14.56 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm7.19 16.39c-.3.85-1.76 1.62-2.41 1.72-.62.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.07-.78-3.64-1.58-6-5.26-6.18-5.51-.18-.25-1.48-1.97-1.48-3.75 0-1.79.94-2.67 1.28-3.03.34-.36.74-.45.98-.45.24 0 .49 0 .7.01.22.01.53-.09.83.63.3.72 1.01 2.51 1.1 2.69.09.18.15.4.03.65-.12.25-.18.4-.36.62-.18.22-.38.48-.54.64-.18.18-.37.38-.16.74.21.36.94 1.57 2.02 2.54 1.39 1.25 2.58 1.65 2.94 1.83.36.18.57.15.78-.09.21-.25.9-1.05 1.15-1.41.25-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.88-.21 1.73z" />
+            </svg>
+          </a>
+
+          <!-- YOUTUBE -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.8-1.7-.9-2.1-.9-3-.2-7.5-.2-7.5-.2s-4.5 0-7.5.2c-.4 0-1.3.1-2.1.9-.7.7-.9 2.3-.9 2.3S2 8.1 2 10v4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.8 1.8.8 2.3.9 1.7.2 7.4.2 7.4.2s4.5 0 7.5-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-4c0-1.9-.2-3.8-.2-3.8zM10 15.3V8.7l5.8 3.3-5.8 3.3z" />
+            </svg>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.06);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          ">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path
+                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:22px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Quick Links
+        </h3>
+
+        <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Home</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#about" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+          </li>
+          <li style="margin:0 0 12px;">
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+          </li>
+          <li>
+            <a href="#" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="
+      max-width:1250px;
+      margin:45px auto 0;
+      padding-top:25px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+      font-size:14px;
+      color:#aabbd9;
+    ">
+      © ${new Date().getFullYear()} Sovin Hormone Clinic
+    </div>
+  </footer>
+            `;
+
+            appRoot.innerHTML = html;
+            attachAccordionListeners();
+        }
+
+        /*
+         * Attaches click listeners to the accordion headers.
+         */
+        function attachAccordionListeners() {
+            const headers = document.querySelectorAll('.accordion-header');
+            
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+
+                    // Close all other open items
+                    headers.forEach(otherHeader => {
+                        if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.style.maxHeight = 0;
+                        }
+                    });
+
+                    // Toggle the clicked item
+                    header.classList.toggle('active');
+
+                    if (header.classList.contains('active')) {
+                        // Open the accordion
+                        // Use scrollHeight to set the exact height for smooth transition
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        // Close the accordion
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // --- 3. Initialization Logic ---
+        
+        window.onload = function() {
+            document.getElementById('loading-screen').style.display = 'none';
+
+            // Get client ID from URL (uses 'faq' parameter, defaults to 'prediabetes')
+            const faqId = getQueryParam('faq') || 'prediabetes';
+            const data = faqData[faqId];
+
+            if (data) {
+                renderFAQPage(data);
+            } else {
+                const appRoot = document.getElementById('app-root');
+                appRoot.innerHTML = `<div class="status-message">FAQ page "${faqId}" not found. Available pages are: ${Object.keys(faqData).join(', ')}.</div>`;
+            }
+        };
+
+    </script>
+</body>
+</html>
