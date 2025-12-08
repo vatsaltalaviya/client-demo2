@@ -16,117 +16,7 @@
 
   <style>
     /* ---------- Theme Colors ---------- */
-    :root {
-      --sky: #38bdf8;
-      /* primary sky blue */
-      --sky-light: #eaf8ff;
-      /* page background for sections */
-      --sky-lighter: #dff3ff;
-      /* card backgrounds */
-      --sky-hover: #5cd4ff;
-      --navy: #0a1a44;
-      /* text / primary dark */
-      --navy-2: #0f2a55;
-      --muted: #1b3359;
-      --white: #ffffff;
-    }
-
-    /* ---------- Global ---------- */
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      color: var(--navy);
-      background: #ffffff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      background: var(--white);
-      border-bottom: 1px solid rgba(10, 26, 68, 0.06);
-      top: 0;
-      z-index: 999;
-      font-family: "Inter", "Poppins", "Helvetica Neue", Arial, sans-serif;
-    }
-
-    .logo img {
-      height: 54px;
-      object-fit: contain;
-    }
-
-    nav .menu {
-      display: flex;
-      gap: 18px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-
-    nav .menu li a {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 9px 12px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--navy);
-      font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 0.2px;
-      transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    nav .menu li a i {
-      font-size: 16px;
-      opacity: 0.75;
-      transition: 0.25s ease;
-    }
-
-    nav .menu li a:hover {
-      background: rgba(0, 132, 255, 0.10);
-      color: #004085;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0, 132, 255, 0.18);
-    }
-
-    nav .menu li a:hover i {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    #menu-btn {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--navy);
-      transition: transform 0.25s ease;
-    }
-
-    #menu-btn:hover {
-      transform: scale(1.1);
-    }
-
-
+    
     /* ---------- Hero / Swiper ---------- */
     .hero-section {
       width: 100%;
@@ -531,7 +421,7 @@
 
     @media (max-width: 768px) {
       .hero-section {
-        margin-top: 80px !important;
+        /* margin-top: 80px !important; */
         min-height: 150vh !important;
       }
     }
@@ -539,78 +429,168 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
+
+<header class="site-header">
+
+  <!-- DESKTOP SECTION (visible >= 1025px) -->
+  <div class="header-desktop desktop-only">
+    <div class="container-desktop">
+      <div class="logo">
+        <a href="./index.html" aria-label="Home">
+          <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
+        </a>
+      </div>
+
+      <nav class="nav-desktop" aria-label="Primary navigation">
+        <ul class="menu-desktop">
+          <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
+
+          <li class="has-children">
+            <a href="#" aria-haspopup="true"><i class="fa-solid fa-dna"></i> Disorders <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="submenu">
+              <li>
+                <a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+                <ul class="submenu">
+                  <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                  <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                  <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                  <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
+                  <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+                <ul class="submenu">
+                  <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                  <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Andrology<i class="fa-solid fa-chevron-right"></i></a>
+                <ul class="submenu">
+                  <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                  <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+                </ul>
+              </li>
+              <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+              <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+              <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+              <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
+            </ul>
+          </li>
+
+          <li class="has-children">
+            <a href="#" aria-haspopup="true"><i class="fa-solid fa-question-circle"></i> FAQ <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="submenu">
+              <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+              <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+              <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+              <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+              <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+              <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
+              <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+            </ul>
+          </li>
+
+          <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
+          <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MOBILE SECTION (visible <= 1024px) -->
+  <div class="header-mobile mobile-only">
+    <div class="mobile-inner">
+      <div class="logo-mobile">
+        <a href="./index.html" aria-label="Home">
+          <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
+        </a>
+      </div>
+
+      <button id="menu-btn-mobile" class="menu-btn" aria-controls="mobile-panel" aria-expanded="false" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
 
-    <nav id="nav">
-      <ul class="menu">
-        <li>
-          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
-        </li>
+    <!-- Mobile sliding panel -->
+    <nav id="mobile-panel" class="mobile-panel" aria-hidden="true" aria-label="Mobile navigation">
+      <div class="mobile-panel-header">
+        <button id="mobile-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+      </div>
 
-        <li>
-          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
-        </li>
+      <ul class="menu-mobile">
+        <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
 
+        <!-- Use details/summary for accordion submenus on mobile -->
         <li>
-          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
-           <i class="fa-solid fa-chevron-down"></i></a>
-           <ul class="submenu">
-            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
+          <details class="mobile-details">
+            <summary><i class="fa-solid fa-dna"></i> Disorders <span class="caret">▸</span></summary>
+
+            <details class="mobile-details nested">
+              <summary>Diabetes Millitus <span class="inner-caret">▸</span></summary>
+              <ul class="submenu-mobile">
                 <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
                 <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
                 <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
-                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
+                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
                 <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
               </ul>
-            </li>
-            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
+            </details>
+
+            <details class="mobile-details nested">
+              <summary>Thyroid Disorders <span class="inner-caret">▸</span></summary>
+              <ul class="submenu-mobile">
                 <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
                 <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
               </ul>
-            </li>
-            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
+            </details>
+            <details class="mobile-details nested">
+              <summary>Andrology <span class="inner-caret">▸</span></summary>
+              <ul class="submenu-mobile">
                 <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
                 <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
               </ul>
-            </li>
-            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
-            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
-            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
-            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
-          </ul>
+            </details>
+
+            <ul class="submenu-mobile">
+              <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+              <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+              <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+              <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
+            </ul>
+          </details>
         </li>
+
         <li>
-          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
-          <ul class="submenu">
-                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
-                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
-                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
-                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
-                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
-                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
-                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
-              </ul>
+          <details class="mobile-details">
+            <summary><i class="fa-solid fa-question-circle"></i> FAQ <span class="caret">▸</span></summary>
+            <ul class="submenu-mobile">
+              <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+              <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+              <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+              <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+              <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+              <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
+              <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+            </ul>
+          </details>
         </li>
-        <li>
-          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
-        </li>
-        <li>
-          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
-        </li>
-        <li>
-          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
-        </li>
+
+        <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+        <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
+        <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
+  </div>
 
-    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
-  </header>
+  <!-- spacer (keeps page content visible below header) -->
+  <div class="header-spacer" aria-hidden="true"></div>
+</header>
+
 
   <!-- PREMIUM HERO SECTION -->
   <section class="hero-section" style="
@@ -1258,7 +1238,7 @@ font-family:'Inter',sans-serif;
   </script>
 
   <!-- FOOTER -->
-  <footer style="
+   <footer style="
     background:#081c34;
     color:#dbe7ff;
     padding:70px 20px 35px;
@@ -1392,25 +1372,25 @@ font-family:'Inter',sans-serif;
 
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Home</a>
+            <a href="./index.html" style="color:#c7d4ec;text-decoration:none;">Home</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#about" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+            <a href="./aboutus.html" style="color:#c7d4ec;text-decoration:none;">About Us</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+            <a href="./appoiment.html" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+            <a href="https://drsonalshrivastavaindore.blogspot.com/" style="color:#c7d4ec;text-decoration:none;">Blog</a>
           </li>
           <li>
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+            <a href="./contact.html" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div style="
+    <div id="copyright" style="
       max-width:1250px;
       margin:45px auto 0;
       padding-top:25px;
@@ -1419,7 +1399,7 @@ font-family:'Inter',sans-serif;
       font-size:14px;
       color:#aabbd9;
     ">
-      © 2025 Sovin Hormone Clinic
+      
     </div>
   </footer>
 
@@ -1466,41 +1446,7 @@ font-family:'Inter',sans-serif;
   </script>
 
   <!-- Optional header.js if you have menu toggling logic -->
-  <script>
-    // minimal mobile menu toggler if needed
-    const menuBtn = document.getElementById("menu-btn");
-    const menu = document.querySelector("nav .menu");
-    menuBtn && menuBtn.addEventListener("click", () => {
-      if (!menu) return;
-      if (menu.style.display === "flex") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "flex";
-        menu.style.flexDirection = "column";
-        menu.style.background = "white";
-        menu.style.position = "absolute";
-        menu.style.right = "0";
-        menu.style.top = "64px";
-        menu.style.padding = "12px";
-        menu.style.borderRadius = "10px";
-        menu.style.boxShadow = "0 10px 30px rgba(10,26,68,0.08)";
-      }
-    });
-
-    // hide menu on window resize (desktop)
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768 && menu) {
-        menu.style.display = "";
-        menu.style.position = "";
-        menu.style.right = "";
-        menu.style.top = "";
-        menu.style.padding = "";
-        menu.style.flexDirection = "";
-        menu.style.boxShadow = "";
-        menu.style.background = "";
-      }
-    });
-  </script>
+  <script src="header.js"></script>
 </body>
 
 </html>

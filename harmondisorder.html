@@ -9,11 +9,18 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-...omitted-for-clarity..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- Load GSAP and ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header.css" />
 
     <style>
       /* --- 1. Custom Color Palette --- */
@@ -253,84 +260,397 @@
     </style>
   </head>
   <body>
-     <header>
-    <div class="logo">
-      <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Logo" />
-    </div>
+    <header class="site-header">
+      <!-- DESKTOP SECTION (visible >= 1025px) -->
+      <div class="header-desktop desktop-only">
+        <div class="container-desktop">
+          <div class="logo">
+            <a href="./index.html" aria-label="Home">
+              <img
+                src="https://www.drsonalshrivastava.com/img/logo.png"
+                alt="Sovin Clinics logo"
+              />
+            </a>
+          </div>
 
-    <nav id="nav">
-      <ul class="menu">
-        <li>
-          <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
-        </li>
+          <nav class="nav-desktop" aria-label="Primary navigation">
+            <ul class="menu-desktop">
+              <li>
+                <a href="./index.html"
+                  ><i class="fa-solid fa-house"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="./aboutus.html"
+                  ><i class="fa-solid fa-user-doctor"></i> About</a
+                >
+              </li>
 
-        <li>
-          <a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a>
-        </li>
+              <li class="has-children">
+                <a href="#" aria-haspopup="true"
+                  ><i class="fa-solid fa-dna"></i> Disorders
+                  <i class="fa-solid fa-chevron-down"></i
+                ></a>
+                <ul class="submenu">
+                  <li>
+                    <a href="#"
+                      >Diabetes Millitus
+                      <i class="fa-solid fa-chevron-right"></i
+                    ></a>
+                    <ul class="submenu">
+                      <li>
+                        <a href="./harmondisorder.html?page=hypoglycemia"
+                          >Hypoglycemia</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=dka"
+                          >Diabetic Ketoacidosis</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=kidney-disease"
+                          >Diabetic Kidney Disease</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=diabetic-neuropathy"
+                          >Diabetic Neuropathy</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=foot-care"
+                          >Diabetic Footcare</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >Thyroid Disorders
+                      <i class="fa-solid fa-chevron-right"></i
+                    ></a>
+                    <ul class="submenu">
+                      <li>
+                        <a href="./harmondisorder.html?page=hyperthyroidism"
+                          >Hyperthyroidism</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=hypothyroidism"
+                          >Hypothyroidism</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"
+                      >Andrology<i class="fa-solid fa-chevron-right"></i
+                    ></a>
+                    <ul class="submenu">
+                      <li>
+                        <a
+                          href="./harmondisorder.html?page=erectile-dysfunction"
+                          >Erectile Dysfunction</a
+                        >
+                      </li>
+                      <li>
+                        <a href="./harmondisorder.html?page=male-infertility"
+                          >Male Infertillity</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=pituitary"
+                      >Pituitary Disorders</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=female-hormones"
+                      >Female Hormone Disorders</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=adrenal"
+                      >Adrenal Disorder</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=vitamin-d"
+                      >Vitamin D Deficiency</a
+                    >
+                  </li>
+                </ul>
+              </li>
 
-        <li>
-          <a href="#"><i class="fa-solid fa-dna"></i> Disorders
-           <i class="fa-solid fa-chevron-down"></i></a>
-           <ul class="submenu">
-            <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
-                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
-                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
-                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
-                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuripathy</a></li>
-                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
-              </ul>
+              <li class="has-children">
+                <a href="#" aria-haspopup="true"
+                  ><i class="fa-solid fa-question-circle"></i> FAQ
+                  <i class="fa-solid fa-chevron-down"></i
+                ></a>
+                <ul class="submenu">
+                  <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                  <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                  <li>
+                    <a href="./faq.html?faq=gdm"
+                      >Gestational Diabetes Mellitus</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=obesity">Obesity Overweight</a>
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=osteoporosis">Osteoporosis</a>
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=pcos-faq"
+                      >Polycystic Ovary Syndrome</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=ghd-faq"
+                      >Growth Hormone Deficiency</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a
+                  href="https://drsonalshrivastavaindore.blogspot.com/"
+                  target="_blank"
+                  ><i class="fa-solid fa-pen-nib"></i> Blog</a
+                >
+              </li>
+              <li>
+                <a href="./appoiment.html"
+                  ><i class="fa-solid fa-calendar-check"></i> Appointment</a
+                >
+              </li>
+              <li>
+                <a href="./contact.html"
+                  ><i class="fa-solid fa-envelope"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- MOBILE SECTION (visible <= 1024px) -->
+      <div class="header-mobile mobile-only">
+        <div class="mobile-inner">
+          <div class="logo-mobile">
+            <a href="./index.html" aria-label="Home">
+              <img
+                src="https://www.drsonalshrivastava.com/img/logo.png"
+                alt="Sovin Clinics logo"
+              />
+            </a>
+          </div>
+
+          <button
+            id="menu-btn-mobile"
+            class="menu-btn"
+            aria-controls="mobile-panel"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile sliding panel -->
+        <nav
+          id="mobile-panel"
+          class="mobile-panel"
+          aria-hidden="true"
+          aria-label="Mobile navigation"
+        >
+          <div class="mobile-panel-header">
+            <button id="mobile-close" aria-label="Close menu">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <ul class="menu-mobile">
+            <li>
+              <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
             </li>
-            <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
-                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
-                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
-              </ul>
+            <li>
+              <a href="./aboutus.html"
+                ><i class="fa-solid fa-user-doctor"></i> About</a
+              >
             </li>
-            <li><a href="#">Andrology <i class="fa-solid fa-chevron-right"></i></a>
-             <ul class="submenu">
-                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
-                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
-              </ul>
+
+            <!-- Use details/summary for accordion submenus on mobile -->
+            <li>
+              <details class="mobile-details">
+                <summary>
+                  <i class="fa-solid fa-dna"></i> Disorders
+                  <span class="caret">▸</span>
+                </summary>
+
+                <details class="mobile-details nested">
+                  <summary>
+                    Diabetes Millitus <span class="inner-caret">▸</span>
+                  </summary>
+                  <ul class="submenu-mobile">
+                    <li>
+                      <a href="./harmondisorder.html?page=hypoglycemia"
+                        >Hypoglycemia</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=dka"
+                        >Diabetic Ketoacidosis</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=kidney-disease"
+                        >Diabetic Kidney Disease</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=diabetic-neuropathy"
+                        >Diabetic Neuropathy</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=foot-care"
+                        >Diabetic Footcare</a
+                      >
+                    </li>
+                  </ul>
+                </details>
+
+                <details class="mobile-details nested">
+                  <summary>
+                    Thyroid Disorders <span class="inner-caret">▸</span>
+                  </summary>
+                  <ul class="submenu-mobile">
+                    <li>
+                      <a href="./harmondisorder.html?page=hyperthyroidism"
+                        >Hyperthyroidism</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=hypothyroidism"
+                        >Hypothyroidism</a
+                      >
+                    </li>
+                  </ul>
+                </details>
+                <details class="mobile-details nested">
+                  <summary>
+                    Andrology <span class="inner-caret">▸</span>
+                  </summary>
+                  <ul class="submenu-mobile">
+                    <li>
+                      <a href="./harmondisorder.html?page=erectile-dysfunction"
+                        >Erectile Dysfunction</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./harmondisorder.html?page=male-infertility"
+                        >Male Infertillity</a
+                      >
+                    </li>
+                  </ul>
+                </details>
+
+                <ul class="submenu-mobile">
+                  <li>
+                    <a href="./harmondisorder.html?page=pituitary"
+                      >Pituitary Disorders</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=female-hormones"
+                      >Female Hormone Disorders</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=adrenal"
+                      >Adrenal Disorder</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./harmondisorder.html?page=vitamin-d"
+                      >Vitamin D Deficiency</a
+                    >
+                  </li>
+                </ul>
+              </details>
             </li>
-            <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
-            <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
-            <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
-            <li><a href="./harmondisorder.html?page=vitamin-d">vitamin D Deficiency</a></li>
+
+            <li>
+              <details class="mobile-details">
+                <summary>
+                  <i class="fa-solid fa-question-circle"></i> FAQ
+                  <span class="caret">▸</span>
+                </summary>
+                <ul class="submenu-mobile">
+                  <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                  <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                  <li>
+                    <a href="./faq.html?faq=gdm"
+                      >Gestational Diabetes Mellitus</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=obesity">Obesity Overweight</a>
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=osteoporosis">Osteoporosis</a>
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=pcos-faq"
+                      >Polycystic Ovary Syndrome</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./faq.html?faq=ghd-faq"
+                      >Growth Hormone Deficiency</a
+                    >
+                  </li>
+                </ul>
+              </details>
+            </li>
+
+            <li>
+              <a
+                href="https://drsonalshrivastavaindore.blogspot.com/"
+                target="_blank"
+                ><i class="fa-solid fa-pen-nib"></i> Blog</a
+              >
+            </li>
+            <li>
+              <a href="./appoiment.html"
+                ><i class="fa-solid fa-calendar-check"></i> Appointment</a
+              >
+            </li>
+            <li>
+              <a href="./contact.html"
+                ><i class="fa-solid fa-envelope"></i> Contact</a
+              >
+            </li>
           </ul>
-        </li>
-        <li>
-          <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ  <i class="fa-solid fa-chevron-down"></i></a>
-          <ul class="submenu">
-                <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
-                <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
-                <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
-                <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
-                <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
-                <li><a href="./faq.html?faq=pcos-faq">Polycystic Overy syndrome</a></li>
-                <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
-              </ul>
-        </li>
-        <li>
-          <a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a>
-        </li>
-        <li>
-          <a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
-        </li>
-        <li>
-          <a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
-        </li>
-      </ul>
-    </nav>
+        </nav>
+      </div>
 
-    <div id="menu-btn"><i class="fa-solid fa-bars"></i></div>
-  </header>
+      <!-- spacer (keeps page content visible below header) -->
+      <div class="header-spacer" aria-hidden="true"></div>
+    </header>
 
     <div id="app-root">
       <div class="status-message" id="loading-screen">
         Loading Client Data...
       </div>
     </div>
+
+    <script src="header.js"></script>
 
     <script>
       // --- 1. Master Data Structure for Dynamic Pages ---
@@ -1307,7 +1627,7 @@
                 <main id="main-content">
                     ${sectionsHtml}
                 </main>
-                <footer style="
+                 <footer style="
     background:#081c34;
     color:#dbe7ff;
     padding:70px 20px 35px;
@@ -1441,25 +1761,25 @@
 
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Home</a>
+            <a href="./index.html" style="color:#c7d4ec;text-decoration:none;">Home</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#about" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+            <a href="./aboutus.html" style="color:#c7d4ec;text-decoration:none;">About Us</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+            <a href="./appoiment.html" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+            <a href="https://drsonalshrivastavaindore.blogspot.com/" style="color:#c7d4ec;text-decoration:none;">Blog</a>
           </li>
           <li>
-            <a href="#" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+            <a href="./contact.html" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div style="
+    <div id="copyright" style="
       max-width:1250px;
       margin:45px auto 0;
       padding-top:25px;
@@ -1469,6 +1789,7 @@
       color:#aabbd9;
     ">
       © ${new Date().getFullYear()} Sovin Hormone Clinic
+    </div>
   </footer>
             `;
 

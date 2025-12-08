@@ -91,18 +91,18 @@ h3 {
     color: var(--navy-2);
 }
 
-ul {
+.card ul {
     list-style: none;
     padding: 0;
 }
 
-li {
+.card ul li {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
     position: relative;
 }
 
-li:before {
+.card ul li:before {
     content: '•'; /* Custom bullet point */
     color: var(--sky);
     font-size: 1.5rem;
