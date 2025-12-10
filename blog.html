@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Blog — Dr. Sonal Shrivastava</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./header.css">
+  
+  <style>
+    :root {
+      --sky: #38bdf8;
+      --sky-hover: #0ea5e9;
+      --navy: #0a1a44;
+      --sky-light: #e0f2fe;
+      --sky-lighter: #f0f9ff;
+      --white: #ffffff;
+      --muted: #64748b;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8fafc;
+      color: var(--navy);
+    }
+    
+    /* Reuse consistent hero style from Gallery */
+    .blog-hero {
+      background: radial-gradient(circle at top right, #0f172a, var(--navy));
+      color: white;
+      padding: 100px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+      z-index: 1;
+    }
+
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .blog-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #fff, #b9e5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .blog-hero p {
+      font-size: 1rem;
+      color: #e2e8f0;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Filter Tabs */
+    .blog-controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: -24px auto 50px;
+      position: relative;
+      z-index: 10;
+      max-width: 90%;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid transparent;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--navy);
+      background: var(--sky-lighter);
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 8px 20px rgba(10, 26, 68, 0.25);
+    }
+
+    /* Blog Grid */
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      display: flex; /* Flex layout */
+      flex-direction: column;
+      height: 100%;
+      cursor: pointer;
+      text-decoration: none; /* Link style reset */
+      color: inherit;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(10, 26, 68, 0.15);
+    }
+
+    .blog-img-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .blog-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .blog-card:hover .blog-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .blog-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .blog-content {
+      padding: 25px;
+      flex-grow: 1; /* Pushes footer down */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .blog-meta .author {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .blog-meta .author i {
+      color: var(--sky);
+    }
+
+    .blog-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0 0 10px;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .blog-card:hover .blog-title {
+      color: var(--sky-hover);
+    }
+
+    .blog-stats {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: auto; /* Push to bottom if needed */
+      padding-top: 15px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .stars {
+      color: #fbbf24; /* Amber */
+    }
+
+    .comments-count {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Skeleton Loading Animation (Optional polish) */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .blog-hero { padding: 90px 20px 50px; }
+      .blog-hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-desktop desktop-only">
+      <div class="container-desktop">
+        <div class="logo">
+          <a href="./index.html" aria-label="Home">
+            <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
+          </a>
+        </div>
+        <nav class="nav-desktop" aria-label="Primary navigation">
+          <ul class="menu-desktop">
+            <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
+            <li class="has-children">
+              <a href="#" aria-haspopup="true"><i class="fa-solid fa-dna"></i> Disorders <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                       <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                       <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                       <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                       <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
+                       <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                      <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                      <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Andrology<i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                      <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                      <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+                    </ul>
+                </li>
+                <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+                <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+                <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+                <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
+              </ul>
+            </li>
+            <li class="has-children">
+             <a href="#" aria-haspopup="true"><i class="fa-solid fa-question-circle"></i> FAQ <i class="fa-solid fa-chevron-down"></i></a>
+             <ul class="submenu">
+               <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+               <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+               <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+               <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+               <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+               <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
+               <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+             </ul>
+           </li>
+            <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="./blog.html" class="active"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+            <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
+            <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Mobile nav -->
+    <div class="header-mobile mobile-only">
+      <div class="mobile-inner">
+        <div class="logo-mobile">
+          <a href="./index.html" aria-label="Home"><img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" /></a>
+        </div>
+        <button id="menu-btn-mobile" class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      <nav id="mobile-panel" class="mobile-panel" aria-hidden="true">
+        <div class="mobile-panel-header"><button id="mobile-close"><i class="fa-solid fa-xmark"></i></button></div>
+        <ul class="menu-mobile">
+          <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
+           <!-- Simplified Mobile Menu for brevity, matches header.js logic -->
+          <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+          <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-spacer" aria-hidden="true"></div>
+  </header>
+
+  <!-- LISTING HERO -->
+  <section class="blog-hero">
+    <h1>Health Insights & Articles</h1>
+    <p>Expert advice on hormones, diabetes, and healthy living from Dr. Sonal Shrivastava.</p>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="blog-controls" id="blogFilters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="Diabetes">Diabetes</button>
+    <button class="filter-btn" data-filter="Thyroid">Thyroid</button>
+    <button class="filter-btn" data-filter="Women's Health">Women's Health</button>
+    <button class="filter-btn" data-filter="Lifestyle">Lifestyle</button>
+  </div>
+
+  <!-- BLOG GRID -->
+  <div class="blog-container">
+    <div class="blog-grid" id="blogGrid">
+      <!-- Cards Injected JS -->
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:#081c34;color:#dbe7ff;padding:70px 20px 35px;">
+    <div style="max-width:1250px;margin:0 auto;display:flex;flex-wrap:wrap;gap:50px;justify-content:space-between;">
+      <div style="flex:1 1 330px;min-width:260px;">
+        <h3 style="margin:0 0 22px;font-size:22px;font-weight:600;color:#fff;">Quick Contact</h3>
+        <p style="margin:0 0 12px;font-size:18px;color:#fff;font-weight:600;">+91-91650-17732</p>
+        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
+          <p style="margin:0 0 12px;"><strong style="color:#fff;">Sovin Hormone Clinic — Dehradun</strong><br/>G14/15, Race Course, Near MLA Hostel, Uttarakhand</p>
+          <p style="margin:0 0 12px;"><strong style="color:#fff;">Sovin Hormone Clinic — Indore</strong><br/>2nd Floor, Above JMB Sweets, MIG Main Road, Indore 452011 (M.P.)</p>
+        </div>
+      </div>
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="margin:0 0 22px;font-size:22px;font-weight:600;color:#fff;">Follow Us</h3>
+        <div style="display:flex;gap:14px;">
+           <a href="#" style="color:white; font-size: 24px;"><i class="fa-brands fa-facebook"></i></a>
+           <a href="#" style="color:white; font-size: 24px;"><i class="fa-brands fa-whatsapp"></i></a>
+           <a href="#" style="color:white; font-size: 24px;"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div id="copyright" style="max-width:1250px;margin:45px auto 0;padding-top:25px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;font-size:14px;color:#aabbd9;">
+      &copy; 2024 Dr. Sonal Shrivastava. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="header.js"></script>
+  <script src="blogs-data.js"></script>
+
+  <script>
+    // -----------------------
+    // RENDER LOGIC
+    // -----------------------
+    const grid = document.getElementById('blogGrid');
+    const filters = document.querySelectorAll('.filter-btn');
+    
+    // Note: 'blogs' variable is now available from blogs-data.js
+
+   
+    
+
+    function renderBlogs(filter) {
+      grid.innerHTML = '';
+      
+      // Safety check
+      if(typeof blogData === 'undefined') return;
+
+      const filtered = filter === 'all' ? blogData : blogData.filter(b => b.category === filter);
+      
+      if(filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#64748b;">No articles found in this category.</div>`;
+        return;
+      }
+
+      filtered.forEach((b, i) => {
+        const card = document.createElement('a');
+        card.href = `./blog-details.html?id=${b.id}`;
+        card.className = 'blog-card';
+        // Remove opacity and explicit animation delay for immediate visibility
+        // If animation is desired, ensure the keyframe is valid or use a class
+        // card.style.animation = ... 
+        // card.style.opacity = '0'; 
+        // card.style.transform = 'translateY(20px)';
+        card.style.animationDelay = `${i * 0.1}s`;
+
+        // Star generation
+        let starsHtml = '';
+        for(let s=1; s<=5; s++) {
+          if(s <= Math.round(b.rating)) starsHtml += '<i class="fa-solid fa-star"></i>';
+          else starsHtml += '<i class="fa-regular fa-star"></i>';
+        }
+
+        card.innerHTML = `
+          <div class="blog-img-wrapper">
+             <img src="${b.image}" alt="${b.title}" loading="lazy">
+             <span class="blog-badge">${b.category}</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="author"><i class="fa-solid fa-user-doctor"></i> ${b.author}</span>
+              <span class="date"><i class="fa-regular fa-calendar"></i> ${b.date}</span>
+            </div>
+            <h3 class="blog-title">${b.title}</h3>
+            
+            <div class="blog-stats">
+              <div class="stars">${starsHtml}</div>
+              <div class="comments-count"><i class="fa-regular fa-comment-dots"></i> ${b.comments}</div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Click Events
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderBlogs(btn.dataset.filter);
+      });
+    });
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      // Just in case the script loads async or data is large
+      if(typeof blogData !== 'undefined') {
+         renderBlogs('all');
+      } else {
+         console.warn("blogData not found. Please check blogs-data.js linkage.");
+         // fallback
+         grid.innerHTML = "<p>Data unavailable from blogs-data.js</p>";
+      }
+    });
+
+  </script>
+</body>
+</html>

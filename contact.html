@@ -44,23 +44,65 @@
 
         /* --- 3. Layout and Section Styling --- */
 
+        /* --- Hero Section (Matches About Us / Gallery) --- */
         .header-div {
-            background-color: var(--navy);
-            padding: 80px 0;
+            background: radial-gradient(circle at top right, #0f172a, var(--navy));
             color: var(--white);
+            padding: 100px 20px 50px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Pattern Overlay */
+        .header-div::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .header-div::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+            z-index: 1;
         }
 
         .header-div h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin: 0 0 15px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            /* Gradient Text */
+            background: linear-gradient(to right, #fff, #b9e5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .header-div p {
-            font-size: 1.25rem;
-            color: var(--sky);
-            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #dbeafe;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            opacity: 0.9;
         }
 
         .section {
@@ -87,11 +129,11 @@
         }
 
         .clinic-card {
-            background-color: var(--sky-lighter);
+            background-color: var(--white);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--navy);
+            transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -99,7 +141,6 @@
 
         .clinic-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .clinic-card h3 {
@@ -135,32 +176,41 @@
 
         /* Highlight box for main number */
         .call-box {
-            background-color: var(--sky);
-            color: var(--white);
+            color: var(--sky);
             padding: 20px;
-            border-radius: 12px;
             text-align: center;
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.5);
+            border-bottom: 1px solid var(--navy);
         }
         
         .call-box a {
-            color: var(--white);
-            text-decoration: underline;
+            color: var(--sky);
+            text-decoration: none;
         }
 
-        /* --- 5. Contact Form Styling (Modern/Rich) --- */
+        /* --- 5. Contact Form Styling --- */
+
+        .form-map-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        @media (min-width: 768px) {
+            .form-map-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
 
         .form-container {
-            max-width: 800px;
-            margin: 0 auto;
+            flex: 1;
             background-color: var(--white);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-top: 5px solid var(--sky);
         }
 
         .form-group {
@@ -170,27 +220,26 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--navy-2);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
-            border: 1px solid var(--sky-lighter);
-            border-radius: 8px;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 1px solid var(--navy);
+            border-radius: 0;
             font-size: 1rem;
-            background-color: var(--sky-light);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--white);
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--sky);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-            background-color: var(--white);
+            border-bottom-color: var(--sky);
         }
 
         .form-group textarea {
@@ -202,38 +251,30 @@
             display: block;
             width: 100%;
             padding: 15px;
-            background-color: var(--sky);
+            background: linear-gradient(65deg, var(--sky), var(--navy));
             color: var(--white);
             border: none;
             border-radius: 8px;
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
+            transition: opacity 0.3s ease, transform 0.1s ease;
         }
 
         .submit-btn:hover {
-            background-color: var(--sky-hover);
+            opacity: 0.9;
             transform: translateY(-1px);
         }
 
-        /* --- 6. Map Section (Placeholder) --- */
+        /* --- 6. Map Section --- */
         
         .map-container {
-            height: 400px;
-            width: 100%;
+            flex: 1;
+            height: 500px;
             background-color: #ccc;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--navy);
-            font-weight: 600;
-            text-align: center;
-            line-height: 1.8;
-            border: 5px solid var(--sky-light);
+            border: 1px solid var(--navy);
         }
         
         .map-text {
@@ -307,7 +348,7 @@
             </ul>
           </li>
 
-          <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
           <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
           <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
@@ -406,15 +447,13 @@
 </header>
 
     <div class="header-div">
-        <div class="container">
-            <h1>Contact Dr. Sonal Shrivastava</h1>
-            <p>Connect with the Sovin Hormone Clinic Team</p>
-        </div>
+        <h1>Contact Dr. Sonal Shrivastava</h1>
+        <p>Connect with the Sovin Hormone Clinic Team</p>
     </div>
 
     <main>
         <!-- Section 1: Contact Information -->
-        <section class="section">
+        <section class="section" style="background: linear-gradient(180deg, #ffffff 20%, var(--sky-light) 80%);">
             <div class="container">
                 <h2 class="section-title">Clinic Locations & Timings</h2>
                 
@@ -491,50 +530,45 @@
             </div>
         </section>
 
-        <!-- Section 2: Map Placeholder -->
-        <section class="section" style="padding-top: 0;">
-            <div class="container">
-                <div class="map-container">
-                    <div class="map-text">
-                        [Map Placeholder: Geographic Locations of all 3 Clinics]
-                        <br>
-                        (In a live environment, a fully interactive map widget would be embedded here for navigation.)
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Contact Form -->
+        <!-- Section 2: Map & Contact Form -->
         <section class="section" style="background-color: var(--sky-light);">
             <div class="container">
-                <h2 class="section-title">Send a Message</h2>
+                <h2 class="section-title">Get in Touch</h2>
 
-                <div class="form-container">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+91-XXXXX XXXXX">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Appointment Query / General Inquiry">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Type your detailed message here..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Submit Inquiry
-                        </button>
-                    </form>
+                <div class="form-map-wrapper">
+                    <!-- Map -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13778.452343992652!2d78.02541588715822!3d30.305074599999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929d5c66f9f4b%3A0xa860a7aed4953cf7!2sDr%20Bhavin%20Brahmbhatt%20Nephrologist%20Sovin%20Kidney%20Clinic!5e0!3m2!1sen!2sin!4v1762662318047!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="form-container">
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number (Optional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91-XXXXX XXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required placeholder="Appointment Query / General Inquiry">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Type your detailed message..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Submit Inquiry
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

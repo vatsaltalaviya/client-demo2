@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article — Dr. Sonal Shrivastava</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./header.css">
+  
+  <style>
+    :root {
+      --sky: #38bdf8;
+      --sky-hover: #0ea5e9;
+      --navy: #0a1a44;
+      --navy-light: #1e293b;
+      --white: #ffffff;
+      --muted: #64748b;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8fafc;
+      color: var(--navy);
+    }
+
+    /* Reuse Blog Hero style */
+    .blog-hero {
+      background: radial-gradient(circle at top right, #0f172a, var(--navy));
+      color: white;
+      padding: 120px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      position: relative;
+      z-index: 2;
+      color: var(--sky);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    
+    .blog-hero h1 {
+      font-size: 2.2rem;
+      max-width: 800px;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 2;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, #b9e5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .meta-info {
+        position: relative;
+        z-index: 2;
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+    }
+    .meta-info i { color: var(--sky); }
+
+    /* CONTENT SECTION */
+    .article-container {
+        max-width: 800px;
+        margin: -40px auto 80px;
+        position: relative;
+        z-index: 5;
+        padding: 0 20px;
+    }
+
+    .featured-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+        margin-bottom: 40px;
+    }
+
+    .content-body {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--navy-light);
+    }
+    .content-body p { margin-bottom: 24px; }
+    .content-body h2 { margin: 40px 0 20px; color: var(--navy); }
+
+    /* COMMENTS SECTION */
+    .comments-section {
+        max-width: 800px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 40px;
+    }
+
+    .comments-header {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .comment-form {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin-bottom: 40px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
+    .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border 0.3s;
+    }
+    .form-control:focus { border-color: var(--sky); outline: none; }
+    
+    .rating-input { display: flex; gap: 8px; font-size: 1.5rem; color: #fbbf24; cursor: pointer; }
+
+    .submit-btn {
+        background: var(--navy);
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .submit-btn:hover { background: var(--sky-hover); }
+
+    .comment-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .comment-item {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid var(--sky);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .comment-head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .comment-user { font-weight: 700; color: var(--navy); }
+    .comment-date { font-size: 0.85rem; color: var(--muted); }
+    .comment-rating { color: #fbbf24; font-size: 0.9rem; }
+    .comment-text { line-height: 1.6; color: #475569; }
+
+    @media(max-width: 768px) {
+        .featured-img { height: 250px; }
+        .blog-hero h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+     <!-- Desktop -->
+     <div class="header-desktop desktop-only">
+       <div class="container-desktop">
+         <div class="logo">
+           <a href="./index.html"><img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics" /></a>
+         </div>
+         <nav class="nav-desktop">
+           <ul class="menu-desktop">
+             <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+             <li><a href="./blog.html"><i class="fa-solid fa-arrow-left"></i> Back to Blog</a></li>
+           </ul>
+         </nav>
+       </div>
+     </div>
+     
+     <!-- Mobile -->
+     <div class="header-mobile mobile-only">
+       <div class="mobile-inner">
+         <div class="logo-mobile">
+           <a href="./index.html"><img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics" /></a>
+         </div>
+         <a href="./blog.html" style="font-size:1.2rem; color:var(--navy);"><i class="fa-solid fa-arrow-left"></i></a>
+       </div>
+     </div>
+     <div class="header-spacer"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="breadcrumb" id="blogCategory">Health</div>
+    <h1 id="blogTitle">Loading Article...</h1>
+    <div class="meta-info">
+        <span id="blogAuthor"><i class="fa-solid fa-user-doctor"></i> Dr. Sonal</span>
+        <span id="blogDate"><i class="fa-regular fa-calendar"></i> ...</span>
+        <span id="blogRating"><i class="fa-solid fa-star"></i> 5.0</span>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <article class="article-container">
+    <img id="blogImage" class="featured-img" src="" alt="Featured Article Image">
+    <div class="content-body" id="blogContent">
+        <!-- Javascript injected Content -->
+        <p>Loading content...</p>
+    </div>
+  </article>
+
+  <!-- COMMENTS -->
+  <section class="comments-section">
+    <div class="comments-header"><i class="fa-regular fa-comments"></i> Discussion (<span id="commentCount">0</span>)</div>
+    
+    <!-- Form -->
+    <div class="comment-form">
+        <h4 style="margin-top:0;margin-bottom:20px;">Leave a Comment</h4>
+        <form id="newCommentForm">
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" class="form-control" id="formName" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Rating</label>
+                <div class="rating-input" id="starInput">
+                    <i class="fa-regular fa-star" data-val="1"></i>
+                    <i class="fa-regular fa-star" data-val="2"></i>
+                    <i class="fa-regular fa-star" data-val="3"></i>
+                    <i class="fa-regular fa-star" data-val="4"></i>
+                    <i class="fa-regular fa-star" data-val="5"></i>
+                </div>
+                <!-- Hidden input -->
+                <input type="number" id="ratingValue" value="5" style="display:none;" />
+            </div>
+            <div class="form-group">
+                <label>Comment</label>
+                <textarea class="form-control" id="formText" rows="4" required placeholder="Share your thoughts..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+        </form>
+    </div>
+
+    <!-- List -->
+    <div class="comment-list" id="commentList"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#081c34;color:#dbe7ff;padding:40px 20px; text-align:center;">
+    <p>&copy; 2024 Dr. Sonal Shrivastava. All Rights Reserved.</p>
+  </footer>
+
+  <script src="header.js"></script>
+  <script src="blogs-data.js"></script>
+
+  <script>
+    // -----------------------
+    // INITIALIZATION
+    // -----------------------
+    // Note: 'blogData' variable is available from blogs-data.js
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = parseInt(urlParams.get('id')) || 1; // Default to ID 1 if missing
+    
+    // Safety check
+    const data = window.blogData || [];
+    
+    const blog = data.find(b => b.id === blogId) || data[0] || {};
+
+    // Populate Page
+    function loadBlog() {
+        document.getElementById('blogCategory').innerText = blog.category;
+        document.getElementById('blogTitle').innerText = blog.title;
+        document.getElementById('blogAuthor').innerHTML = `<i class="fa-solid fa-user-doctor"></i> ${blog.author}`;
+        document.getElementById('blogDate').innerHTML = `<i class="fa-regular fa-calendar"></i> ${blog.date}`;
+        document.getElementById('blogRating').innerHTML = `<i class="fa-solid fa-star"></i> ${blog.rating}`;
+        
+        document.getElementById('blogImage').src = blog.image;
+        
+        // Dynamic Content Rendering
+        const contentContainer = document.getElementById('blogContent');
+        if(Array.isArray(blog.content)) {
+           contentContainer.innerHTML = blog.content.map(block => {
+              if(block.type === 'h2') return `<h2>${block.text}</h2>`;
+              if(block.type === 'p') return `<p>${block.text}</p>`;
+              if(block.type === 'ul') return `<ul>${block.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+              return '';
+           }).join('');
+        } else {
+           // Fallback for string
+           contentContainer.innerHTML = blog.content || "<p>Content coming soon...</p>";
+        }
+        
+        document.title = `${blog.title} — Dr. Sonal Shrivastava`;
+    }
+
+    loadBlog();
+
+    // -----------------------
+    // COMMENT LOGIC
+    // -----------------------
+    // Fake storage for demo
+    let localComments = [
+        { name: "Rahul Verma", date: "Just now", rating: 5, text: "Very informative article! Thanks doctor." },
+        { name: "Priya Singh", date: "Yesterday", rating: 4, text: "I have been facing these symptoms. Will visit soon." }
+    ];
+
+    const commentListEl = document.getElementById('commentList');
+    const commentCountEl = document.getElementById('commentCount');
+    const form = document.getElementById('newCommentForm');
+    const starInput = document.getElementById('starInput');
+    const ratingValue = document.getElementById('ratingValue');
+
+    function renderComments() {
+        commentListEl.innerHTML = '';
+        commentCountEl.innerText = localComments.length;
+
+        localComments.forEach(c => {
+            // Stars
+            let stars = '';
+            for(let i=1; i<=5; i++) {
+                stars += (i <= c.rating) ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+            }
+
+            const div = document.createElement('div');
+            div.className = 'comment-item';
+            div.innerHTML = `
+               <div class="comment-head">
+                   <span class="comment-user">${c.name}</span>
+                   <span class="comment-rating">${stars}</span>
+               </div>
+               <div class="comment-text">${c.text}</div>
+               <div class="comment-date" style="margin-top:8px;">${c.date}</div>
+            `;
+            commentListEl.appendChild(div);
+        });
+    }
+
+    // Star Click Interaction
+    starInput.addEventListener('click', (e) => {
+        if(e.target.dataset.val) {
+            const val = parseInt(e.target.dataset.val);
+            ratingValue.value = val;
+            updateStarVisuals(val);
+        }
+    });
+
+    function updateStarVisuals(val) {
+        const stars = starInput.querySelectorAll('i');
+        stars.forEach((s, idx) => {
+            if(idx < val) s.className = 'fa-solid fa-star';
+            else s.className = 'fa-regular fa-star';
+        });
+    }
+
+    // Form Submit
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('formName').value;
+        const text = document.getElementById('formText').value;
+        const rating = parseInt(ratingValue.value);
+
+        const newComment = {
+            name: name,
+            date: "Just now",
+            rating: rating,
+            text: text
+        };
+
+        localComments.unshift(newComment); // Add to top
+        renderComments();
+        
+        // Reset form
+        form.reset();
+        updateStarVisuals(5);
+        ratingValue.value = 5;
+    });
+
+    // Init Comments
+    renderComments();
+    updateStarVisuals(5);
+
+  </script>
+</body>
+</html>

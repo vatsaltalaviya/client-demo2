@@ -56,23 +56,65 @@
 
         /* --- 3. header-div & Main Call-to-Action --- */
 
+        /* --- Hero Section (Matches About Us / Gallery) --- */
         .header-div {
-            background-color: var(--navy);
-            padding: 80px 0;
+            background: radial-gradient(circle at top right, #0f172a, var(--navy));
             color: var(--white);
+            padding: 100px 20px 50px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Pattern Overlay */
+        .header-div::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .header-div::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+            z-index: 1;
         }
 
         .header-div h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin: 0 0 15px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            /* Gradient Text */
+            background: linear-gradient(to right, #fff, #b9e5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .header-div p {
-            font-size: 1.25rem;
-            color: var(--sky);
-            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #dbeafe;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            opacity: 0.9;
         }
 
         .section {
@@ -96,33 +138,31 @@
             margin: 0 auto 60px auto;
             padding: 30px;
             border-radius: 12px;
-            background-color: var(--sky);
-            color: var(--white);
+            background-color: var(--sky-light);
+            color: var(--navy);
             text-align: center;
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
-            border: 2px solid var(--white);
         }
 
         .booking-alert h2 {
-            color: var(--white);
+            color: var(--navy);
             font-size: 1.8rem;
             margin-bottom: 10px;
-            border-bottom: none;
+            font-weight: 500;
         }
 
         .booking-alert .phone-number {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 500;
             display: block;
             margin-bottom: 15px;
-            color: var(--white);
+            color: var(--navy);
             text-decoration: none;
         }
 
         .booking-alert .warning-text {
             font-size: 1.1rem;
-            font-weight: 500;
-            opacity: 0.9;
+            font-weight: 400;
+            color: var(--navy);
         }
 
 
@@ -137,16 +177,15 @@
         }
 
         .clinic-card {
-            background-color: var(--sky-lighter);
+            background-color: var(--white);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--navy);
+            transition: transform 0.3s ease;
         }
 
         .clinic-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
         .clinic-card h3 {
@@ -254,7 +293,7 @@
             </ul>
           </li>
 
-          <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
           <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
           <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
@@ -353,15 +392,13 @@
 </header>
 
     <div class="header-div">
-        <div class="container">
-            <h1>Book Your Appointment</h1>
-            <p>Dr. Sonal Shrivastava</p>
-        </div>
+        <h1>Book Your Appointment</h1>
+        <p>Dr. Sonal Shrivastava</p>
     </div>
 
     <main>
         <!-- Section 1: Call to Action & Warning -->
-        <section class="section" style="background-color: var(--sky-light);">
+        <section class="section" style="background: linear-gradient(180deg, #ffffff 20%, var(--sky-light) 80%);">
             <div class="container">
                 <div class="booking-alert">
                     <h2>For Appointments Call</h2>

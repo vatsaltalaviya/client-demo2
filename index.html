@@ -493,7 +493,8 @@
             </ul>
           </li>
 
-          <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+          <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
           <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
           <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
@@ -580,6 +581,7 @@
           </details>
         </li>
 
+        <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
         <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
         <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
         <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
@@ -1032,113 +1034,7 @@ font-family:'Inter',sans-serif;
     </div>
   </section>
 
-  <script>
-    // Card data
-    const services = [
-      {
-        title: "Hypoglycemia",
-        img: "https://www.drsonalshrivastava.com/img/ht.jpg",
-        desc: "Hypoglycemia is a condition that occurs when your blood sugar (glucose) is too low.",
-        link: "./harmondisorder.html?page=hypoglycemia",
-      },
-      {
-        title: "Diabetic Ketoacidosis",
-        img: "https://www.drsonalshrivastava.com/img/dk.jpg",
-        desc: "Diabetic ketoacidosis (DKA) is a medical emergency that can occur in people with diabetes.",
-        link: "./harmondisorder.html?page=dka",
-      },
-      {
-        title: "Diabetic Kidney Disease",
-        img: "https://www.drsonalshrivastava.com/img/dm.jpg",
-        desc: "Diabetes is the most common cause of kidney failure, accounting for nearly half of cases.",
-        link: "./harmondisorder.html?page=kidney-disease",
-      },
-      {
-        title: "Diabetic Foot Care",
-        img: "https://www.drsonalshrivastava.com/img/dfc.jpg",
-        desc: "Diabetes can be dangerous to your feet – even a small cut can produce serious complications.",
-        link: "./harmondisorder.html?page=foot-care",
-      },
-      {
-        title: "Pituitary Disorders",
-        img: "https://www.drsonalshrivastava.com/img/pituitary-disorders.jpg",
-        desc: "Growth hormone excess – Results in gigantism and acromegaly. Hyperprolactinemia may occur.",
-        link: "./harmondisorder.html?page=pituitary",
-      },
-      {
-        title: "Adrenal Disorder",
-        img: "https://www.drsonalshrivastava.com/img/adrenal-disorder.jpg",
-        desc: "Cushing's Syndrome: Most commonly occurs as a side effect of steroid use.",
-        link: "./harmondisorder.html?page=adrenal",
-      },
-      {
-        title: "Prediabetes",
-        img: "https://www.drsonalshrivastava.com/img/Prediabetes.jpg",
-        desc: "Prediabetes occurs when a person's blood glucose levels are higher than normal but not yet diabetic.",
-        link: "./harmondisorder.html?page=prediabetes",
-      },
-      {
-        title: "Hyperthyroidism",
-        img: "https://www.drsonalshrivastava.com/img/Hyperprolactinemia.jpg",
-        desc: "Hyperthyroidism is a condition in which the thyroid gland makes too much thyroid hormone.",
-        link: "./harmondisorder.html?page=hyperthyroidism",
-      },
-      {
-        title: "Hypothyroidism",
-        img: "https://www.drsonalshrivastava.com/img/Hypothyroidism.jpg",
-        desc: "Hypothyroidism is a condition in which the thyroid gland does not make enough thyroid hormone.",
-        link: "./harmondisorder.html?page=hypothyroidism",
-      },
-      {
-        title: "Female Hormone Disorders",
-        img: "https://www.drsonalshrivastava.com/img/femalehormonedisorders.jpg",
-        desc: "PCOD, also called polycystic ovary syndrome (PCOS), is one of the most common hormonal disorders in women.",
-        link: "./harmondisorder.html?page=female-hormones",
-      },
-      {
-        title: "Polycystic Ovarian Syndrome",
-        img: "https://www.drsonalshrivastava.com/img/Polycysticovariansyndrome.jpg",
-        desc: "PCOS affects an estimated 5-10 percent of women of childbearing age and can cause hormonal imbalance.",
-        link: "./harmondisorder.html?page=pcos-detail",
-      },
-      {
-        title: "Growth Hormone Deficiency",
-        img: "https://www.drsonalshrivastava.com/img/Growthhormonedeficiency.jpg",
-        desc: "Growth hormone deficiency is a disorder that involves the pituitary gland not producing enough growth hormone.",
-        link: "./harmondisorder.html?page=ghd",
-      },
-    ];
 
-    // Render cards
-    const grid = document.getElementById("services-grid");
-    services.forEach((s) => {
-      const card = document.createElement("div");
-      card.className = "service-card";
-      card.innerHTML = `
-          <img src="${s.img}" alt="${s.title}">
-          <h3>${s.title}</h3>
-          <p>${s.desc}</p>
-          <a href="${s.link}">Read More</a>
-        `;
-      grid.appendChild(card);
-
-      // Gentle tilt effect (limited)
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        // smaller rotation for subtlety
-        const rotateX = ((y - centerY) / centerY) * 8;
-        const rotateY = ((x - centerX) / centerX) * 8;
-        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      });
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
-      });
-    });
-  </script>
 
   <!-- TESTIMONIALS -->
   <section class="testimonials-section">
@@ -1153,89 +1049,7 @@ font-family:'Inter',sans-serif;
     </div>
   </section>
 
-  <script>
-    // Testimonial Data
-    const testimonials = [
-      {
-        text: "Sonal mam is very understanding... I feel completely normal now.",
-        author: "Mrs Nirmala J, 43 years, Jabalpur",
-      },
-      {
-        text: "I was suffering from PCOS and overweight... Now my periods are regular.",
-        author: "Miss Anshu S, 23 years, Indore",
-      },
-      {
-        text: "I had infertility and thyroid problem... I have conceived now.",
-        author: "Mrs Sushila B, 37 years, Ujjain",
-      },
-      {
-        text: "I have diabetes since 15 years... Now my sugar is controlled.",
-        author: "Mr Babulal J, 54 years, Indore",
-      },
-      {
-        text: "My child was very short in height... now reached normal height.",
-        author: "Child Piyush S, 8 years, Khandwa",
-      },
-      {
-        text: "I had pimples and facial hair... My face is clear and I lost weight.",
-        author: "Pinky M, 25 years, Indore",
-      },
-      {
-        text: "I have PCOS for 2 years... After 6 months periods became regular.",
-        author: "Manisha P, 20 years, Indore",
-      },
-    ];
-
-    const track = document.getElementById("testimonialTrack");
-    const dotsContainer = document.getElementById("carouselDots");
-
-    testimonials.forEach((t, i) => {
-      const card = document.createElement("div");
-      card.className = "testimonial-card";
-      card.innerHTML = `<p>"${t.text}"</p><h3>- ${t.author}</h3>`;
-      track.appendChild(card);
-
-      const dot = document.createElement("span");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => moveToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
-
-    let currentIndex = 0;
-
-    function updateDots() {
-      document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    }
-
-    function moveToSlide(index) {
-      const cardEl = track.querySelector(".testimonial-card");
-      if (!cardEl) return;
-      const cardWidth = cardEl.offsetWidth + 20; // card + gap
-      track.style.transform = `translateX(-${cardWidth * index}px)`;
-      currentIndex = index;
-      updateDots();
-    }
-
-    document.querySelector(".next").addEventListener("click", () => {
-      if (currentIndex < testimonials.length - 1) currentIndex++;
-      else currentIndex = 0;
-      moveToSlide(currentIndex);
-    });
-
-    document.querySelector(".prev").addEventListener("click", () => {
-      if (currentIndex > 0) currentIndex--;
-      else currentIndex = testimonials.length - 1;
-      moveToSlide(currentIndex);
-    });
-
-    // Auto Slide
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % testimonials.length;
-      moveToSlide(currentIndex);
-    }, 5000);
-  </script>
+ 
 
   <!-- FOOTER -->
    <footer style="
@@ -1404,13 +1218,98 @@ font-family:'Inter',sans-serif;
   </footer>
 
  
+ <script>
+    // Testimonial Data
+    const testimonials = [
+      {
+        text: "Sonal mam is very understanding... I feel completely normal now.",
+        author: "Mrs Nirmala J, 43 years, Jabalpur",
+      },
+      {
+        text: "I was suffering from PCOS and overweight... Now my periods are regular.",
+        author: "Miss Anshu S, 23 years, Indore",
+      },
+      {
+        text: "I had infertility and thyroid problem... I have conceived now.",
+        author: "Mrs Sushila B, 37 years, Ujjain",
+      },
+      {
+        text: "I have diabetes since 15 years... Now my sugar is controlled.",
+        author: "Mr Babulal J, 54 years, Indore",
+      },
+      {
+        text: "My child was very short in height... now reached normal height.",
+        author: "Child Piyush S, 8 years, Khandwa",
+      },
+      {
+        text: "I had pimples and facial hair... My face is clear and I lost weight.",
+        author: "Pinky M, 25 years, Indore",
+      },
+      {
+        text: "I have PCOS for 2 years... After 6 months periods became regular.",
+        author: "Manisha P, 20 years, Indore",
+      },
+    ];
 
+    const track = document.getElementById("testimonialTrack");
+    const dotsContainer = document.getElementById("carouselDots");
+
+    testimonials.forEach((t, i) => {
+      const card = document.createElement("div");
+      card.className = "testimonial-card";
+      card.innerHTML = `<p>"${t.text}"</p><h3>- ${t.author}</h3>`;
+      track.appendChild(card);
+
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => moveToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    let currentIndex = 0;
+
+    function updateDots() {
+      document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    function moveToSlide(index) {
+      const cardEl = track.querySelector(".testimonial-card");
+      if (!cardEl) return;
+      const cardWidth = cardEl.offsetWidth + 20; // card + gap
+      track.style.transform = `translateX(-${cardWidth * index}px)`;
+      currentIndex = index;
+      updateDots();
+    }
+
+    document.querySelector(".next").addEventListener("click", () => {
+      if (currentIndex < testimonials.length - 1) currentIndex++;
+      else currentIndex = 0;
+      moveToSlide(currentIndex);
+    });
+
+    document.querySelector(".prev").addEventListener("click", () => {
+      if (currentIndex > 0) currentIndex--;
+      else currentIndex = testimonials.length - 1;
+      moveToSlide(currentIndex);
+    });
+
+    // Auto Slide
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      moveToSlide(currentIndex);
+    }, 5000);
+  </script>
 
   <!-- Swiper JS (once) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
   <script>
-    // Initialize Swiper
+
+    // ----------------------------------------------------------------
+    // 1. SWIPER INITIALIZATION
+    // ----------------------------------------------------------------
     const swiper = new Swiper(".mySwiper", {
       loop: true,
       speed: 1400,
@@ -1440,9 +1339,132 @@ font-family:'Inter',sans-serif;
       },
     });
 
-    // Safe initialize first slide zoom
     const firstActive = document.querySelector(".swiper-slide-active img");
     if (firstActive) firstActive.style.transform = "scale(1.08)";
+
+    // ----------------------------------------------------------------
+    // 2. SERVICES (EXPERTISE) DATA RENDERING
+    // ----------------------------------------------------------------
+    const services = [
+      {
+        title: "Hypoglycemia",
+        img: "https://www.drsonalshrivastava.com/img/ht.jpg",
+        desc: "Hypoglycemia is a condition that occurs when your blood sugar (glucose) is too low.",
+        link: "./harmondisorder.html?page=hypoglycemia",
+      },
+      {
+        title: "Diabetic Ketoacidosis",
+        img: "https://www.drsonalshrivastava.com/img/dk.jpg",
+        desc: "Diabetic ketoacidosis (DKA) is a medical emergency that can occur in people with diabetes.",
+        link: "./harmondisorder.html?page=dka",
+      },
+      {
+        title: "Diabetic Kidney Disease",
+        img: "https://www.drsonalshrivastava.com/img/dm.jpg",
+        desc: "Diabetes is the most common cause of kidney failure, accounting for nearly half of cases.",
+        link: "./harmondisorder.html?page=kidney-disease",
+      },
+      {
+        title: "Diabetic Foot Care",
+        img: "https://www.drsonalshrivastava.com/img/dfc.jpg",
+        desc: "Diabetes can be dangerous to your feet – even a small cut can produce serious complications.",
+        link: "./harmondisorder.html?page=foot-care",
+      },
+      {
+        title: "Pituitary Disorders",
+        img: "https://www.drsonalshrivastava.com/img/pituitary-disorders.jpg",
+        desc: "Growth hormone excess – Results in gigantism and acromegaly. Hyperprolactinemia may occur.",
+        link: "./harmondisorder.html?page=pituitary",
+      },
+      {
+        title: "Adrenal Disorder",
+        img: "https://www.drsonalshrivastava.com/img/adrenal-disorder.jpg",
+        desc: "Cushing's Syndrome: Most commonly occurs as a side effect of steroid use.",
+        link: "./harmondisorder.html?page=adrenal",
+      },
+      {
+        title: "Prediabetes",
+        img: "https://www.drsonalshrivastava.com/img/Prediabetes.jpg",
+        desc: "Prediabetes occurs when a person's blood glucose levels are higher than normal but not yet diabetic.",
+        link: "./harmondisorder.html?page=prediabetes", // Assuming standard FAQ or page logic
+      },
+      {
+        title: "Hyperthyroidism",
+        img: "https://www.drsonalshrivastava.com/img/Hyperprolactinemia.jpg",
+        desc: "Hyperthyroidism is a condition in which the thyroid gland makes too much thyroid hormone.",
+        link: "./harmondisorder.html?page=hyperthyroidism",
+      },
+      {
+        title: "Hypothyroidism",
+        img: "https://www.drsonalshrivastava.com/img/Hypothyroidism.jpg",
+        desc: "Hypothyroidism is a condition in which the thyroid gland does not make enough thyroid hormone.",
+        link: "./harmondisorder.html?page=hypothyroidism",
+      },
+      {
+        title: "Female Hormone Disorders",
+        img: "https://www.drsonalshrivastava.com/img/femalehormonedisorders.jpg",
+        desc: "PCOD, also called polycystic ovary syndrome (PCOS), is one of the most common hormonal disorders in women.",
+        link: "./harmondisorder.html?page=female-hormones",
+      },
+      {
+        title: "Polycystic Ovarian Syndrome",
+        img: "https://www.drsonalshrivastava.com/img/Polycysticovariansyndrome.jpg",
+        desc: "PCOS affects an estimated 5-10 percent of women of childbearing age and can cause hormonal imbalance.",
+        link: "./harmondisorder.html?page=pcos-detail", // Assuming logic maps this
+      },
+      {
+        title: "Growth Hormone Deficiency",
+        img: "https://www.drsonalshrivastava.com/img/Growthhormonedeficiency.jpg",
+        desc: "Growth hormone deficiency is a disorder that involves the pituitary gland not producing enough growth hormone.",
+        link: "./harmondisorder.html?page=ghd", // Assuming logic maps this
+      },
+    ];
+
+    const grid = document.getElementById("services-grid");
+    
+    // Clear any existing content to prevent duplication if script runs twice
+    if(grid) {
+      grid.innerHTML = ''; 
+      
+      services.forEach((s) => {
+        const card = document.createElement("div");
+        card.className = "service-card";
+        
+        // Structure the inner HTML
+        card.innerHTML = `
+            <div class="card-image-wrapper" style="width:100%; height:160px; overflow:hidden;">
+              <img src="${s.img}" alt="${s.title}" loading="lazy">
+            </div>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+            <div style="padding: 0 18px 18px;">
+              <a href="${s.link}">Read More</a>
+            </div>
+          `;
+        grid.appendChild(card);
+
+        // --------------------------------------------------------------
+        // 3D TILT EFFECT (Micro-interaction)
+        // --------------------------------------------------------------
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          // Calculate rotation
+          const rotateX = ((y - centerY) / centerY) * 8;
+          const rotateY = ((x - centerX) / centerX) * 8;
+          
+          card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+      });
+    }
   </script>
 
   <!-- Optional header.js if you have menu toggling logic -->

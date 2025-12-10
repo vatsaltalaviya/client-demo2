@@ -71,24 +71,66 @@
 
       /* --- 3. Component Styles (Tailwind-like Classes) --- */
 
-      /* header-div */
+      /* header-div (Matches About Us / Gallery / Appointment / Contact) */
       .header-div {
-        background-color: var(--navy);
-        padding: 96px 0;
+        background: radial-gradient(circle at top right, #0f172a, var(--navy));
         color: var(--white);
+        padding: 100px 20px 50px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       }
 
+      /* Pattern Overlay */
+        .header-div::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .header-div::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+            z-index: 1;
+        }
+
       .header-div h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 800;
-        margin-bottom: 8px;
+        margin: 0 0 15px;
+        position: relative;
+        z-index: 2;
+        letter-spacing: -1px;
+        /* Gradient Text */
+        background: linear-gradient(to right, #fff, #b9e5ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
       }
 
-      .header-div-div p {
-        font-size: 1.5rem;
+      .header-div p {
+        font-size: 1.2rem;
         font-weight: 300;
-        color: var(--sky);
+        color: #dbeafe;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        opacity: 0.9;
       }
 
       /* Section Container */
@@ -616,19 +658,6 @@
                     >
                   </li>
                 </ul>
-              </details>
-            </li>
-
-            <li>
-              <a
-                href="https://drsonalshrivastavaindore.blogspot.com/"
-                target="_blank"
-                ><i class="fa-solid fa-pen-nib"></i> Blog</a
-              >
-            </li>
-            <li>
-              <a href="./appoiment.html"
-                ><i class="fa-solid fa-calendar-check"></i> Appointment</a
               >
             </li>
             <li>
@@ -1616,18 +1645,17 @@
             .trim();
         }
 
-        // Removed dynamic identifier line as requested
-        const html = `
-                <div class="header-div">
-                    <div class="container">
-                        <h1>${data.title}</h1>
-                        <p>${subtitleText}</p>
-                    </div>
-                </div>
-                <main id="main-content">
-                    ${sectionsHtml}
-                </main>
-                 <footer style="
+        // Removed dynamic identifier          // Build page content
+          const html = `
+            <div class="header-div">
+                <h1>${data.title}</h1>
+                <p>Learn more about symptoms, diagnosis, and treatment.</p>
+            </div>
+            
+            <main>
+              ${sectionsHtml}
+            </main>
+             <footer style="
     background:#081c34;
     color:#dbe7ff;
     padding:70px 20px 35px;

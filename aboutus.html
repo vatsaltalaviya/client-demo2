@@ -4,230 +4,519 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Dr. Sonal Shrivastava | Sovin Hormone Clinic</title>
-    <link rel="stylesheet" href="styles.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-...omitted-for-clarity..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="header.css">
+
+    <style>
+        /* --- 1. THEME VARIABLES (Sky Blue Main) --- */
+        :root {
+            --primary: #0ea5e9;       /* Vivid Sky Blue */
+            --primary-dark: #0284c7;   /* Darker Sky Blue */
+            --primary-light: #e0f2fe;  /* Very Light Sky */
+            --accent: #0f172a;         /* Slate/Navy for contrast text */
+            --text-body: #334155;      /* Slate 700 */
+            --text-light: #64748b;     /* Slate 500 */
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-body);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--accent);
+        }
+        
+        /* --- 2. HERO HEADER (Matches Gallery/Navy Style) --- */
+        .about-hero {
+            background: radial-gradient(circle at top right, #0f172a, var(--navy));
+            color: var(--white);
+            padding: 100px 20px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Pattern Overlay from Gallery */
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 25%);
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 15px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            /* Gradient Text */
+            background: linear-gradient(to right, #fff, #b9e5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #dbeafe; /* lighter sky text */
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* --- 3. DOCTOR PROFILE (Clean & Simple) --- */
+        .profile-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .profile-container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .profile-image-wrapper {
+            flex: 0 0 400px;
+            position: relative;
+        }
+
+        .profile-image-wrapper img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); /* Sky blue shadow */
+            display: block;
+        }
+
+        /* Decorative element behind image */
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px;
+            width: 100px; height: 100px;
+            background: var(--primary-light);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .profile-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--text-body);
+        }
+
+        .bio-highlight {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* --- 4. QUALIFICATIONS TABLE (Clean) --- */
+        .qual-section {
+            padding: 80px 20px;
+            background: var(--primary-light); /* Sky blue tint background */
+        }
+
+        .qual-table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0 15px; /* Spacing between rows */
+        }
+
+        .qual-table tr {
+            background: var(--white);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .qual-table tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.1);
+        }
+
+        .qual-table th {
+            padding: 30px;
+            width: 25%;
+            font-size: 1.2rem;
+            color: var(--primary); 
+            font-weight: 600;
+            vertical-align: middle;
+            border-radius: 12px 0 0 12px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .qual-table td {
+            padding: 30px;
+            vertical-align: middle;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .qual-table ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-body);
+        }
+        
+        .qual-table li {
+            margin-bottom: 8px;
+        }
+        
+        .qual-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-image-wrapper {
+                flex: none;
+                width: 80%;
+                max-width: 400px;
+            }
+            .bio-highlight {
+                border-left: none;
+                border-top: 4px solid var(--primary);
+                padding-left: 0;
+                padding-top: 20px;
+            }
+            .qual-table th, .qual-table td {
+                display: block;
+                width: 100%;
+                border-radius: 12px;
+            }
+            .qual-table th {
+                border-left: none;
+                border-bottom: 2px solid var(--primary-light);
+                padding-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header class="site-header">
+      <!-- DESKTOP SECTION (visible >= 1025px) -->
+      <div class="header-desktop desktop-only">
+        <div class="container-desktop">
+          <div class="logo">
+            <a href="./index.html" aria-label="Home">
+              <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
+            </a>
+          </div>
 
-  <!-- DESKTOP SECTION (visible >= 1025px) -->
-  <div class="header-desktop desktop-only">
-    <div class="container-desktop">
-      <div class="logo">
-        <a href="./index.html" aria-label="Home">
-          <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
-        </a>
-      </div>
+          <nav class="nav-desktop" aria-label="Primary navigation">
+            <ul class="menu-desktop">
+              <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+              <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
 
-      <nav class="nav-desktop" aria-label="Primary navigation">
-        <ul class="menu-desktop">
-          <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-          <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
-
-          <li class="has-children">
-            <a href="#" aria-haspopup="true"><i class="fa-solid fa-dna"></i> Disorders <i class="fa-solid fa-chevron-down"></i></a>
-            <ul class="submenu">
-              <li>
-                <a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+              <li class="has-children">
+                <a href="#" aria-haspopup="true"><i class="fa-solid fa-dna"></i> Disorders <i class="fa-solid fa-chevron-down"></i></a>
                 <ul class="submenu">
-                  <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
-                  <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
-                  <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
-                  <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
-                  <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+                  <li>
+                    <a href="#">Diabetes Millitus <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                      <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                      <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                      <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                      <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
+                      <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                      <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                      <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Andrology<i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="submenu">
+                      <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                      <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+                  <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+                  <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+                  <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="#">Thyroid Disorders <i class="fa-solid fa-chevron-right"></i></a>
+
+              <li class="has-children">
+                <a href="#" aria-haspopup="true"><i class="fa-solid fa-question-circle"></i> FAQ <i class="fa-solid fa-chevron-down"></i></a>
                 <ul class="submenu">
-                  <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
-                  <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+                  <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                  <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                  <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                  <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                  <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                  <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
+                  <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="#">Andrology<i class="fa-solid fa-chevron-right"></i></a>
-                <ul class="submenu">
-                  <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
-                  <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+
+              <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+              <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+              <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
+              <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- MOBILE SECTION (visible <= 1024px) -->
+      <div class="header-mobile mobile-only">
+        <div class="mobile-inner">
+          <div class="logo-mobile">
+            <a href="./index.html" aria-label="Home">
+              <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
+            </a>
+          </div>
+
+          <button id="menu-btn-mobile" class="menu-btn" aria-controls="mobile-panel" aria-expanded="false" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Mobile sliding panel -->
+        <nav id="mobile-panel" class="mobile-panel" aria-hidden="true" aria-label="Mobile navigation">
+          <div class="mobile-panel-header">
+            <button id="mobile-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <ul class="menu-mobile">
+            <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
+
+            <!-- Use details/summary for accordion submenus on mobile -->
+            <li>
+              <details class="mobile-details">
+                <summary><i class="fa-solid fa-dna"></i> Disorders <span class="caret">▸</span></summary>
+
+                <details class="mobile-details nested">
+                  <summary>Diabetes Millitus <span class="inner-caret">▸</span></summary>
+                  <ul class="submenu-mobile">
+                    <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
+                    <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
+                    <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
+                    <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
+                    <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
+                  </ul>
+                </details>
+
+                <details class="mobile-details nested">
+                  <summary>Thyroid Disorders <span class="inner-caret">▸</span></summary>
+                  <ul class="submenu-mobile">
+                    <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
+                    <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
+                  </ul>
+                </details>
+                <details class="mobile-details nested">
+                  <summary>Andrology <span class="inner-caret">▸</span></summary>
+                  <ul class="submenu-mobile">
+                    <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
+                    <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
+                  </ul>
+                </details>
+
+                <ul class="submenu-mobile">
+                  <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
+                  <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
+                  <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
+                  <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
                 </ul>
-              </li>
-              <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
-              <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
-              <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
-              <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
-            </ul>
-          </li>
+              </details>
+            </li>
 
-          <li class="has-children">
-            <a href="#" aria-haspopup="true"><i class="fa-solid fa-question-circle"></i> FAQ <i class="fa-solid fa-chevron-down"></i></a>
-            <ul class="submenu">
-              <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
-              <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
-              <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
-              <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
-              <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
-              <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
-              <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
-            </ul>
-          </li>
+            <li>
+              <details class="mobile-details">
+                <summary><i class="fa-solid fa-question-circle"></i> FAQ <span class="caret">▸</span></summary>
+                <ul class="submenu-mobile">
+                  <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
+                  <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
+                  <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
+                  <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
+                  <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
+                  <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
+                  <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
+                </ul>
+              </details>
+            </li>
 
-          <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
-          <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
-          <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-
-  <!-- MOBILE SECTION (visible <= 1024px) -->
-  <div class="header-mobile mobile-only">
-    <div class="mobile-inner">
-      <div class="logo-mobile">
-        <a href="./index.html" aria-label="Home">
-          <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics logo" />
-        </a>
+            <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+            <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
+            <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+          </ul>
+        </nav>
       </div>
 
-      <button id="menu-btn-mobile" class="menu-btn" aria-controls="mobile-panel" aria-expanded="false" aria-label="Open menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Mobile sliding panel -->
-    <nav id="mobile-panel" class="mobile-panel" aria-hidden="true" aria-label="Mobile navigation">
-      <div class="mobile-panel-header">
-        <button id="mobile-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <ul class="menu-mobile">
-        <li><a href="./index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="./aboutus.html"><i class="fa-solid fa-user-doctor"></i> About</a></li>
-
-        <!-- Use details/summary for accordion submenus on mobile -->
-        <li>
-          <details class="mobile-details">
-            <summary><i class="fa-solid fa-dna"></i> Disorders <span class="caret">▸</span></summary>
-
-            <details class="mobile-details nested">
-              <summary>Diabetes Millitus <span class="inner-caret">▸</span></summary>
-              <ul class="submenu-mobile">
-                <li><a href="./harmondisorder.html?page=hypoglycemia">Hypoglycemia</a></li>
-                <li><a href="./harmondisorder.html?page=dka">Diabetic Ketoacidosis</a></li>
-                <li><a href="./harmondisorder.html?page=kidney-disease">Diabetic Kidney Disease</a></li>
-                <li><a href="./harmondisorder.html?page=diabetic-neuropathy">Diabetic Neuropathy</a></li>
-                <li><a href="./harmondisorder.html?page=foot-care">Diabetic Footcare</a></li>
-              </ul>
-            </details>
-
-            <details class="mobile-details nested">
-              <summary>Thyroid Disorders <span class="inner-caret">▸</span></summary>
-              <ul class="submenu-mobile">
-                <li><a href="./harmondisorder.html?page=hyperthyroidism">Hyperthyroidism</a></li>
-                <li><a href="./harmondisorder.html?page=hypothyroidism">Hypothyroidism</a></li>
-              </ul>
-            </details>
-            <details class="mobile-details nested">
-              <summary>Andrology <span class="inner-caret">▸</span></summary>
-              <ul class="submenu-mobile">
-                <li><a href="./harmondisorder.html?page=erectile-dysfunction">Erectile Dysfunction</a></li>
-                <li><a href="./harmondisorder.html?page=male-infertility">Male Infertillity</a></li>
-              </ul>
-            </details>
-
-            <ul class="submenu-mobile">
-              <li><a href="./harmondisorder.html?page=pituitary">Pituitary Disorders</a></li>
-              <li><a href="./harmondisorder.html?page=female-hormones">Female Hormone Disorders</a></li>
-              <li><a href="./harmondisorder.html?page=adrenal">Adrenal Disorder</a></li>
-              <li><a href="./harmondisorder.html?page=vitamin-d">Vitamin D Deficiency</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <details class="mobile-details">
-            <summary><i class="fa-solid fa-question-circle"></i> FAQ <span class="caret">▸</span></summary>
-            <ul class="submenu-mobile">
-              <li><a href="./faq.html?faq=prediabetes">prediabetes</a></li>
-              <li><a href="./faq.html?faq=thyroid-topics">Thyroid</a></li>
-              <li><a href="./faq.html?faq=gdm">Gestational Diabetes Mellitus</a></li>
-              <li><a href="./faq.html?faq=obesity">Obesity Overweight</a></li>
-              <li><a href="./faq.html?faq=osteoporosis">Osteoporosis</a></li>
-              <li><a href="./faq.html?faq=pcos-faq">Polycystic Ovary Syndrome</a></li>
-              <li><a href="./faq.html?faq=ghd-faq">Growth Hormone Deficiency</a></li>
-            </ul>
-          </details>
-        </li>
-
-        <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
-        <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
-        <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <!-- spacer (keeps page content visible below header) -->
-  <div class="header-spacer" aria-hidden="true"></div>
-</header>
+      <!-- spacer (keeps page content visible below header) -->
+      <div class="header-spacer" aria-hidden="true"></div>
+    </header>
 
     <main>
-        <section class="section intro-section sky-light-bg">
-            <div class="container">
-                <h2 class="section-title fade-in-up">A Holistic Approach to Health</h2>
-                <div class="content-block rich-text fade-in-up delay-3">
-                    <p>Dr. Sonal Shrivastava is a  renowned Endocrinologist  specializing in Diabetes, Thyroid, Obesity, PCOS, Infertility, and general Hormone health. Based in  Indore, India , she is the visionary Founder & Director of  Sovin Hormone Clinic .</p>
-                    <p>Attached to  CHL Hospitals , one of Indore's best medical institutions, Dr. Shrivastava is also the founder of  Hormone Health Awareness , an initiative dedicated to public education and empowerment.</p>
+        
+        <!-- 1. HERO SECTION (Navy + Pattern) -->
+        <section class="about-hero">
+            <h1>About Us</h1>
+            <p>Compassionate Care. Holistic Healing. Proven Expertise.</p>
+        </section>
+
+        <!-- 2. DOCTOR BIO SECTION (Simplified & Described) -->
+        <section class="profile-section">
+            <div class="container profile-container">
+                <!-- Left: Image -->
+                <div class="profile-image-wrapper">
+                    <img src="./images/dr-sonal.jpg" alt="Dr. Sonal Shrivastava">
                 </div>
-                <div class="integrative-block sky-lighter-bg fade-in-up delay-4">
-                    <h3>Integrative Endocrinology: Treating the Whole Person</h3>
-                    <p>Dr. Sonal is the  pioneer of Integrative Endocrinology in India , and among the very few such specialists globally. This advanced philosophy adds scientifically proven modalities to conventional treatments, focusing on the patient as a  whole —not just a disease or system.</p>
-                    <p class="quote-text">Her philosophy: "To live an optimal life, each individual must be balanced at all three levels:  body, mind, and soul ."</p>
-                    <p class="cta-text">For more insight, visit <a href="#" target="_blank">Hormone Health Awareness on Facebook</a> or <a href="#" target="_blank">YouTube channel Dr Sonal Endo</a>.</p>
+
+                <!-- Right: Content -->
+                <div class="profile-content">
+                    <span class="section-label">Meet the Doctor</span>
+                    <h2>Dr. Sonal Shrivastava</h2>
+                    
+                    <p>Dr. Sonal Shrivastava is a renowned <strong>Endocrinologist</strong> specializing in Diabetes, Thyroid, Obesity, PCOS, Infertility & Hormone disorders. She is based in <strong>Indore, India</strong> and is the <strong>Founder & Director</strong> of Sovin Hormone Clinic.</p>
+                    <p>She is also attached to <strong>CHL Hospitals</strong>, one of the best hospitals in Indore. Dr. Sonal is the founder of <strong>"Hormone Health Awareness"</strong>, an initiative dedicated to public education.</p>
+
+                    <div class="bio-highlight">
+                        "Integrative Endocrinology adds scientifically proven modalities to conventional treatment. To live an optimal life, each individual must be balanced at all three levels: body, mind, and soul."
+                    </div>
+
+                    <p>She is the pioneer of <strong>Integrative Endocrinology</strong> in India and is among the very few specialists worldwide to practice this holistic approach, treating the patient as a whole rather than just a disease.</p>
+                    
+                    <p style="margin-top: 20px; font-size: 0.95rem; color: var(--text-light);">
+                        For more info, visit <strong>Hormone Health Awareness</strong> on Facebook or her YouTube channel <strong>Dr Sonal Endo</strong>.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="section qualifications-section">
+        <!-- 3. QUALIFICATIONS (Clean Table Style) -->
+        <section class="qual-section">
             <div class="container">
-                <h2 class="section-title fade-in-up">Exceptional Qualifications & Expertise</h2>
-                <div class="content-block fade-in-up delay-5">
-                    <p class="lead-text">Dr. Sonal Shrivastava holds the distinction of being the  only qualified female Endocrinologist (Hormone Specialist) in Central India  to date, a testament to her dedication and academic excellence.</p>
-                </div>
-
-                <div class="qualification-grid">
-                    <div class="card sky-lighter-bg fade-in-up delay-6">
-                        <h3>Academic Distinction</h3>
-                        <ul>
-                            <li> NTSE Scholar  and school topper throughout her early education.</li>
-                            <li>Selected in the first attempt in  MP-PMT (1994) , achieving 15th rank across the state.</li>
-                            <li>Received  Merit-Scholarship throughout MBBS  at MGM Medical College, Indore (1999).</li>
-                        </ul>
-                    </div>
-
-                    <div class="card sky-lighter-bg fade-in-up delay-7">
-                        <h3>Specialized Training</h3>
-                        <ul>
-                            <li> MD in Internal Medicine  (2004) from Government Medical College Baroda, MS University, Baroda, Gujarat.</li>
-                            <li>Super-speciality in  Endocrinology  from Amrita Institute of Medical Sciences, Cochin, Kerala.</li>
-                            <li>Further training at the Department of Endocrinology,  Post Graduate Institute, Chandigarh .</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="certification-block rich-text fade-in-up delay-8">
-                    <h3>Global Certification & Memberships</h3>
-                    <p>Dr. Shrivastava is a  Diplomate National Board in Endocrinology  and a  Member of the National Academy of Medical Sciences .</p>
-                    <p class="highlight-text">She cleared the Speciality Certification Exam of Endocrinology by the  Royal College of Physicians, UK , making her one of the very few  UK Certified Endocrinologists of India .</p>
-                    <p>She is an active member of several prestigious medical societies, including the  Endocrine Society, USA , the Indian Thyroid Society, Endocrine Society of India, and the Association of Physicians of India.</p>
-                    <p>As a  National Speaker  at various CMEs and conferences, and through extensive community service and awareness camps, she continues to shape the future of endocrine health in India.</p>
-                </div>
-
+                <table class="qual-table">
+                    <tr>
+                        <th>
+                            <i class="fa-solid fa-graduation-cap qual-icon"></i>
+                            Education
+                        </th>
+                        <td>
+                            <ul>
+                                <li><strong>MBBS (1999)</strong> - MGM Medical College, Indore (Merit-Scholarship throughout).</li>
+                                <li><strong>MD in Internal Medicine (2004)</strong> - Govt. Medical College Baroda, MS University, Gujarat (Selected via All-India Pre-PG merit).</li>
+                                <li><strong>Super-speciality in Endocrinology</strong> - Amrita Institute of Medical Sciences (AIMS), Cochin.</li>
+                                <li>Further training at the Department of Endocrinology, <strong>PGIMER, Chandigarh</strong>.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="fa-solid fa-certificate qual-icon"></i>
+                            Certifications
+                        </th>
+                        <td>
+                            <ul>
+                                <li><strong>Diplomate National Board (DNB)</strong> in Endocrinology.</li>
+                                <li><strong>Speciality Certificate in Endocrinology (UK)</strong> - Royal College of Physicians.</li>
+                                <li>One of the very few UK-certified Endocrinologists in India.</li>
+                                <li><strong>Only qualified female Endocrinologist</strong> (Hormone Specialist) in Central India to date.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="fa-solid fa-trophy qual-icon"></i>
+                            Honours & Memberships
+                        </th>
+                        <td>
+                            <ul>
+                                <li><strong>NTSE Scholar</strong> & School Topper.</li>
+                                <li>Selected in 1st attempt in MP-PMT (1994) with <strong>15th Rank</strong> in MP state.</li>
+                                <li>Member of <strong>National Academy of Medical Sciences</strong>.</li>
+                                <li>Member of prestigious societies: Endocrine Society (USA), Indian Thyroid Society, Endocrine Society of India, Association of Physicians of India.</li>
+                                <li>National Speaker in various endocrine, Thyroid, and Diabetes CMEs/conferences.</li>
+                                <li>Active in community service via health camps and public awareness.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </section>
+
     </main>
 
     <footer style="
@@ -395,8 +684,40 @@
     </div>
   </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="header.js"></script>
-    <script src="animations.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero fade in
+    gsap.from(".about-hero h1", {
+        y: 20, opacity: 0, duration: 1, ease: "power3.out"
+    });
+    gsap.from(".about-hero p", {
+        y: 20, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
+    });
+
+    // Profile reveal
+    gsap.from(".profile-container", {
+        scrollTrigger: {
+            trigger: ".profile-section",
+            start: "top 85%"
+        },
+        y: 40, opacity: 0, duration: 1, ease: "power3.out"
+    });
+
+    // Table row stagger
+    gsap.from(".qual-table tr", {
+        scrollTrigger: {
+            trigger: ".qual-table",
+            start: "top 80%"
+        },
+        y: 20, opacity: 0, duration: 0.6, stagger: 0.2, ease: "power2.out"
+    });
+  </script>
+  <script src="header.js"></script>
+
 </body>
 </html>
