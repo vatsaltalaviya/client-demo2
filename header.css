@@ -22,8 +22,65 @@ a{color:inherit}
 /* ---------------- DESKTOP (>=1025px) ---------------- */
 @media (min-width:1025px){
   .desktop-only{display:block}
+  
+  /* Top Bar */
+  .header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--navy);
+    color: var(--white);
+    z-index: 1201; 
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .header-top .top-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  .header-top .top-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    opacity: 0.95;
+  }
+  .header-top .top-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .header-top .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.9;
+  }
+  .header-top .contact-item a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .header-top .contact-item a:hover {
+    color: var(--sky);
+  }
+  .header-top i { color: var(--sky); }
+
+  /* Adjust spacer for top bar + nav bar */
+  .header-spacer { height: 116px; }
+
+
   .header-desktop{
-    position:fixed;top:0;left:0;right:0;height:76px;
+    position:fixed;top:40px;left:0;right:0;height:76px;
     background:var(--white);border-bottom:1px solid var(--gray-light);
     z-index:1200;display:flex;align-items:center;padding:0 20px;
   }
@@ -31,9 +88,9 @@ a{color:inherit}
 
   .logo img{height:54px;object-fit:contain}
 
-  .menu-desktop{display:flex;gap:18px;list-style:none;align-items:center}
+  .menu-desktop{display:flex;gap:8px;list-style:none;align-items:center}
   .menu-desktop li{position:relative ; list-style:none !important;}
-  .menu-desktop a{display:inline-block;position: relative; gap:8px;align-items:center;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--navy);transition:all .18s}
+  .menu-desktop a{display:inline-block;position: relative; gap:8px;align-items:center;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:500;color:var(--navy);transition:all .18s}
   .menu-desktop a::after {
   content: "";
   width: 0;

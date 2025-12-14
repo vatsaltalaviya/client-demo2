@@ -416,13 +416,13 @@
 
     .hero-section {
       margin-top: 0;
-      min-height: 120vh;
+      min-height: 90vh; /* Decreased from 120vh */
     }
 
     @media (max-width: 768px) {
       .hero-section {
         /* margin-top: 80px !important; */
-        min-height: 150vh !important;
+        min-height: 100vh !important; /* Decreased from 150vh */
       }
     }
   </style>
@@ -431,6 +431,30 @@
 <body>
 
 <header class="site-header">
+
+  <!-- TOP BAR (visible >= 1025px) -->
+  <div class="header-top desktop-only">
+    <div class="container-desktop top-container">
+      <div class="top-left">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Sovin Hormone Clinic, G 14/15, Race Course, Near MLA Hostel, Dehradun, Uttarakhand</span>
+      </div>
+      <div class="top-right">
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>Indore & Ujjain: 9165017732</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>Dehradun: +91-9368212601</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:drsonalshrivastava@yahoo.in">drsonalshrivastava@yahoo.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- DESKTOP SECTION (visible >= 1025px) -->
   <div class="header-desktop desktop-only">
@@ -669,7 +693,7 @@
         font-size:clamp(15px,1.3vw,20px);
         color:#E2EEF7;
         line-height:1.75;
-        font-weight:300;
+        font-weight:400;
         max-width:95%;
         opacity:0.95;
       ">
@@ -832,7 +856,7 @@
 
 
         <!-- CTA BUTTON -->
-        <a href="#appointment" style="
+        <a href="./appoiment.html" style="
     display:inline-block;
     margin-top:38px;
     background:linear-gradient(135deg,#0066C8,#00A7E9);
@@ -1038,14 +1062,116 @@ font-family:'Inter',sans-serif;
 
   <!-- TESTIMONIALS -->
   <section class="testimonials-section">
-    <div class="container">
+    <div class="container" style="max-width:1200px; margin:0 auto; position:relative; padding:0 20px;">
       <h1>Testimonials</h1>
-      <div class="carousel-wrapper">
-        <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-        <div class="carousel-track" id="testimonialTrack"></div>
-        <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-        <div class="carousel-dots" id="carouselDots"></div>
+      
+      <!-- Swiper -->
+      <div class="swiper testimonialSwiper">
+        <div class="swiper-wrapper" id="testimonialTrack">
+          <!-- Slides injected via JS -->
+        </div>
       </div>
+
+      <!-- Controls Wrapper (Flexbox) -->
+      <div class="testimonial-controls">
+        <div class="swiper-button-prev t-prev"></div>
+        <div class="swiper-pagination t-pagination"></div>
+        <div class="swiper-button-next t-next"></div>
+      </div>
+
+      <style>
+        .testimonialSwiper {
+          padding-bottom: 20px; /* Reduced padding, controls moved out */
+        }
+        .testimonial-card {
+          background: #fff;
+          border-radius: 16px;
+          padding: 30px;
+          box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+          border: 1px solid rgba(10, 26, 68, 0.05);
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 200px;
+        }
+        .testimonial-card p {
+          font-size: 1.05rem;
+          color: rgba(10, 26, 68, 0.85);
+          font-style: italic;
+          margin-bottom: 20px;
+        }
+        .testimonial-card h3 {
+          font-size: 1rem;
+          color: var(--navy);
+          font-weight: 700;
+          margin-top: auto;
+          text-align: right;
+        }
+
+        /* Flex Container for Controls */
+        .testimonial-controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+          margin-top: 20px;
+          position: relative;
+          width: 100%;
+        }
+
+        /* Buttons Reset & Style */
+        .t-prev, .t-next {
+          position: static !important; /* Remove absolute positioning */
+          width: 80px !important;
+          height: 40px !important;
+          background: var(--sky);
+          border-radius: 50px;
+          color: #fff !important;
+          margin: 0 !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.3s;
+          box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+        }
+        
+        .t-prev:after, .t-next:after {
+          font-size: 18px !important;
+          font-weight: 700;
+        }
+
+        .t-prev:hover, .t-next:hover {
+          background: var(--navy);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(10, 26, 68, 0.2);
+        }
+
+        /* Pagination Style */
+        .t-pagination {
+          position: static !important; /* Remove absolute positioning */
+          width: auto !important;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: var(--sky);
+          opacity: 0.5;
+          margin: 0 !important;
+          transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: var(--navy) !important;
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      </style>
+      </style>
     </div>
   </section>
 
@@ -1055,155 +1181,152 @@ font-family:'Inter',sans-serif;
    <footer style="
     background:#081c34;
     color:#dbe7ff;
-    padding:70px 20px 35px;
+    padding:0 0 35px;
     font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
   ">
+    <!-- Disclaimer Marquee -->
+    <div style="background:#051224; border-bottom:1px solid rgba(255,255,255,0.05); padding:12px 0;">
+      <marquee style="font-size:13px; color:#cfdbf0; letter-spacing:0.3px;" onmouseover="this.stop()" onmouseout="this.start()">
+        Disclaimer : This site is not designed to and does not provide medical advice, professional diagnosis, opinion, treatment or services to you or to any other individual. This site provides general information for educational purposes only. The information provided in this site, or through linkages to other sites, is not a substitute for medical or professional care, and you should not use the information in place of a visit, consultation or the advice of your physician or other healthcare providers. The author is not liable or responsible for any advice, course of treatment, diagnosis or any other information, services or product you obtain through this site.
+      </marquee>
+    </div>
+
     <div style="
       max-width:1250px;
       margin:0 auto;
+      padding:70px 20px 0;
       display:flex;
       flex-wrap:wrap;
       gap:50px;
       justify-content:space-between;
     ">
-      <!-- CONTACT -->
-      <div style="flex:1 1 330px;min-width:260px;">
+      <!-- LEFT: Logo & Address -->
+      <div style="flex:1 1 300px;min-width:280px;">
+        <!-- Logo -->
+        <a href="./index.html" style="display:inline-block; margin-bottom: 24px;">
+           <img src="https://www.drsonalshrivastava.com/img/logo.png" alt="Sovin Clinics" style="height:60px; filter:brightness(0) invert(1);" /> 
+           <!-- Using brightness(0) invert(1) to make the logo white if it's dark, adjusting for footer contrast -->
+        </a>
+
+        <!-- Address / Contact Info -->
+        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
+          <p style="margin:0 0 12px;">
+            <strong style="color:#fff;">Sovin Hormone Clinic</strong><br />
+            G14/15, Race Course, Near MLA Hostel, Dehradun, Uttarakhand<br>
+            2nd Floor, Above JMB Sweets, MIG Main Road, Indore (M.P.)
+          </p>
+          <p style="margin:0 0 12px; font-weight:600; font-size:17px; color:#fff;">
+            +91-91650-17732
+          </p>
+          <p style="margin:0;">
+            <a href="mailto:drsonalshrivastava@yahoo.in" style="color:#c7d4ec;text-decoration:none;">drsonalshrivastava@yahoo.in</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- MIDDLE: Quick Links -->
+      <div style="flex:1 1 200px;min-width:180px;">
         <h3 style="
           margin:0 0 22px;
-          font-size:22px;
+          font-size:20px;
           font-weight:600;
           color:#fff;
           letter-spacing:0.3px;
-        ">
-          Quick Contact
-        </h3>
-
-        <p style="margin:0 0 12px;font-size:18px;color:#fff;font-weight:600;">
-          +91-91650-17732
-        </p>
-
-        <div style="font-size:15px;line-height:1.7;color:#c7d4ec;">
-          <p style="margin:0 0 12px;">
-            <strong style="color:#fff;">Sovin Hormone Clinic — Dehradun</strong><br />
-            G14/15, Race Course, Near MLA Hostel, Uttarakhand
-          </p>
-
-          <p style="margin:0 0 12px;">
-            <strong style="color:#fff;">Sovin Hormone Clinic — Indore</strong><br />
-            2nd Floor, Above JMB Sweets, MIG Main Road, Indore 452011 (M.P.)
-          </p>
-
-          <p style="margin:0;">
-            <strong style="color:#fff;">Avanti Hospital — Ujjain</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- SOCIAL ICONS -->
-      <div style="flex:1 1 200px;min-width:200px;">
-        <h3 style="
-          margin:0 0 22px;
-          font-size:22px;
-          font-weight:600;
-          color:#fff;
-        ">
-          Follow Us
-        </h3>
-
-        <div style="display:flex;gap:14px;">
-          <!-- FB -->
-          <a href="#" style="
-            width:48px;height:48px;
-            border-radius:12px;
-            background:rgba(255,255,255,0.06);
-            display:flex;align-items:center;justify-content:center;
-            backdrop-filter:blur(7px);
-            transition:0.3s;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
-              <path
-                d="M22 12.07C22 6.48 17.52 2 11.93 2C6.35 2 1.87 6.48 1.87 12.07C1.87 17 5.26 21.06 9.84 22V14.9H7.08V12.07H9.84V9.92C9.84 7.2 11.41 5.74 13.9 5.74C15.09 5.74 16.34 5.95 16.34 5.95V8.63H15.06C13.8 8.63 13.42 9.4 13.42 10.19V12.07H16.22L15.78 14.9H13.42V22C18 21.06 22 17 22 12.07Z" />
-            </svg>
-          </a>
-
-          <!-- WHATSAPP -->
-          <a href="#" style="
-            width:48px;height:48px;
-            border-radius:12px;
-            background:rgba(255,255,255,0.06);
-            display:flex;align-items:center;justify-content:center;
-            backdrop-filter:blur(7px);
-            transition:0.3s;
-          ">
-            <svg width="22" height="22" viewBox="0 0 32 32" fill="#ffffff">
-              <path
-                d="M16 3C9.37 3 4 8.37 4 15c0 2.89.94 5.56 2.52 7.73L5 29l6.45-1.48C13.21 28.49 14.56 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm7.19 16.39c-.3.85-1.76 1.62-2.41 1.72-.62.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.07-.78-3.64-1.58-6-5.26-6.18-5.51-.18-.25-1.48-1.97-1.48-3.75 0-1.79.94-2.67 1.28-3.03.34-.36.74-.45.98-.45.24 0 .49 0 .7.01.22.01.53-.09.83.63.3.72 1.01 2.51 1.1 2.69.09.18.15.4.03.65-.12.25-.18.4-.36.62-.18.22-.38.48-.54.64-.18.18-.37.38-.16.74.21.36.94 1.57 2.02 2.54 1.39 1.25 2.58 1.65 2.94 1.83.36.18.57.15.78-.09.21-.25.9-1.05 1.15-1.41.25-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.88-.21 1.73z" />
-            </svg>
-          </a>
-
-          <!-- YOUTUBE -->
-          <a href="#" style="
-            width:48px;height:48px;
-            border-radius:12px;
-            background:rgba(255,255,255,0.06);
-            display:flex;align-items:center;justify-content:center;
-            backdrop-filter:blur(7px);
-            transition:0.3s;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
-              <path
-                d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.8-1.7-.9-2.1-.9-3-.2-7.5-.2-7.5-.2s-4.5 0-7.5.2c-.4 0-1.3.1-2.1.9-.7.7-.9 2.3-.9 2.3S2 8.1 2 10v4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.8 1.8.8 2.3.9 1.7.2 7.4.2 7.4.2s4.5 0 7.5-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-4c0-1.9-.2-3.8-.2-3.8zM10 15.3V8.7l5.8 3.3-5.8 3.3z" />
-            </svg>
-          </a>
-
-          <!-- INSTAGRAM -->
-          <a href="#" style="
-            width:48px;height:48px;
-            border-radius:12px;
-            background:rgba(255,255,255,0.06);
-            display:flex;align-items:center;justify-content:center;
-            backdrop-filter:blur(7px);
-            transition:0.3s;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
-              <path
-                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- LINKS -->
-      <div style="flex:1 1 200px;min-width:200px;">
-        <h3 style="
-          margin:0 0 22px;
-          font-size:22px;
-          font-weight:600;
-          color:#fff;
         ">
           Quick Links
         </h3>
 
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
           <li style="margin:0 0 12px;">
-            <a href="./index.html" style="color:#c7d4ec;text-decoration:none;">Home</a>
+            <a href="./index.html" style="color:#c7d4ec;text-decoration:none;transition:0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d4ec'">Home</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="./aboutus.html" style="color:#c7d4ec;text-decoration:none;">About Us</a>
+            <a href="./aboutus.html" style="color:#c7d4ec;text-decoration:none;transition:0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d4ec'">About Us</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="./appoiment.html" style="color:#c7d4ec;text-decoration:none;">Appointment</a>
+            <a href="./appoiment.html" style="color:#c7d4ec;text-decoration:none;transition:0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d4ec'">Appointment</a>
           </li>
           <li style="margin:0 0 12px;">
-            <a href="https://drsonalshrivastavaindore.blogspot.com/" style="color:#c7d4ec;text-decoration:none;">Blog</a>
+            <a href="./blog.html" style="color:#c7d4ec;text-decoration:none;transition:0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d4ec'">Blog</a>
           </li>
           <li>
-            <a href="./contact.html" style="color:#c7d4ec;text-decoration:none;">Contact Us</a>
+            <a href="./contact.html" style="color:#c7d4ec;text-decoration:none;transition:0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d4ec'">Contact Us</a>
           </li>
         </ul>
       </div>
+
+      <!-- RIGHT: Social Icons -->
+      <div style="flex:1 1 200px;min-width:200px;">
+        <h3 style="
+          margin:0 0 22px;
+          font-size:20px;
+          font-weight:600;
+          color:#fff;
+        ">
+          Follow Us
+        </h3>
+
+        <div style="display:flex;gap:14px; flex-wrap:wrap;">
+          <!-- FB -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.08);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          " onmouseover="this.style.background='#1877F2'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+              <path d="M22 12.07C22 6.48 17.52 2 11.93 2C6.35 2 1.87 6.48 1.87 12.07C1.87 17 5.26 21.06 9.84 22V14.9H7.08V12.07H9.84V9.92C9.84 7.2 11.41 5.74 13.9 5.74C15.09 5.74 16.34 5.95 16.34 5.95V8.63H15.06C13.8 8.63 13.42 9.4 13.42 10.19V12.07H16.22L15.78 14.9H13.42V22C18 21.06 22 17 22 12.07Z" />
+            </svg>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.08);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          " onmouseover="this.style.background='#25D366'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="#ffffff">
+              <path d="M16 3C9.37 3 4 8.37 4 15c0 2.89.94 5.56 2.52 7.73L5 29l6.45-1.48C13.21 28.49 14.56 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm7.19 16.39c-.3.85-1.76 1.62-2.41 1.72-.62.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.07-.78-3.64-1.58-6-5.26-6.18-5.51-.18-.25-1.48-1.97-1.48-3.75 0-1.79.94-2.67 1.28-3.03.34-.36.74-.45.98-.45.24 0 .49 0 .7.01.22.01.53-.09.83.63.3.72 1.01 2.51 1.1 2.69.09.18.15.4.03.65-.12.25-.18.4-.36.62-.18.22-.38.48-.54.64-.18.18-.37.38-.16.74.21.36.94 1.57 2.02 2.54 1.39 1.25 2.58 1.65 2.94 1.83.36.18.57.15.78-.09.21-.25.9-1.05 1.15-1.41.25-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.88-.21 1.73z" />
+            </svg>
+          </a>
+
+          <!-- YOUTUBE -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.08);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          " onmouseover="this.style.background='#FF0000'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.8-1.7-.9-2.1-.9-3-.2-7.5-.2-7.5-.2s-4.5 0-7.5.2c-.4 0-1.3.1-2.1.9-.7.7-.9 2.3-.9 2.3S2 8.1 2 10v4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.8 1.8.8 2.3.9 1.7.2 7.4.2 7.4.2s4.5 0 7.5-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-4c0-1.9-.2-3.8-.2-3.8zM10 15.3V8.7l5.8 3.3-5.8 3.3z" />
+            </svg>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a href="#" style="
+            width:48px;height:48px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.08);
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(7px);
+            transition:0.3s;
+          " onmouseover="this.style.background='#E1306C'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- Copyright (Preserving consistency) -->
     <div id="copyright" style="
       max-width:1250px;
       margin:45px auto 0;
@@ -1213,7 +1336,7 @@ font-family:'Inter',sans-serif;
       font-size:14px;
       color:#aabbd9;
     ">
-      
+      © 2025 Sovin Hormone Clinic. All Rights Reserved.
     </div>
   </footer>
 
@@ -1252,54 +1375,20 @@ font-family:'Inter',sans-serif;
     ];
 
     const track = document.getElementById("testimonialTrack");
-    const dotsContainer = document.getElementById("carouselDots");
+    // Clear track
+    if(track) track.innerHTML = '';
 
-    testimonials.forEach((t, i) => {
-      const card = document.createElement("div");
-      card.className = "testimonial-card";
-      card.innerHTML = `<p>"${t.text}"</p><h3>- ${t.author}</h3>`;
-      track.appendChild(card);
-
-      const dot = document.createElement("span");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => moveToSlide(i));
-      dotsContainer.appendChild(dot);
+    testimonials.forEach((t) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = `
+        <div class="testimonial-card">
+          <p>"${t.text}"</p>
+          <h3>- ${t.author}</h3>
+        </div>
+      `;
+      track.appendChild(slide);
     });
-
-    let currentIndex = 0;
-
-    function updateDots() {
-      document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    }
-
-    function moveToSlide(index) {
-      const cardEl = track.querySelector(".testimonial-card");
-      if (!cardEl) return;
-      const cardWidth = cardEl.offsetWidth + 20; // card + gap
-      track.style.transform = `translateX(-${cardWidth * index}px)`;
-      currentIndex = index;
-      updateDots();
-    }
-
-    document.querySelector(".next").addEventListener("click", () => {
-      if (currentIndex < testimonials.length - 1) currentIndex++;
-      else currentIndex = 0;
-      moveToSlide(currentIndex);
-    });
-
-    document.querySelector(".prev").addEventListener("click", () => {
-      if (currentIndex > 0) currentIndex--;
-      else currentIndex = testimonials.length - 1;
-      moveToSlide(currentIndex);
-    });
-
-    // Auto Slide
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % testimonials.length;
-      moveToSlide(currentIndex);
-    }, 5000);
   </script>
 
   <!-- Swiper JS (once) -->
@@ -1310,33 +1399,57 @@ font-family:'Inter',sans-serif;
     // ----------------------------------------------------------------
     // 1. SWIPER INITIALIZATION
     // ----------------------------------------------------------------
-    const swiper = new Swiper(".mySwiper", {
+    // ----------------------------------------------------------------
+    // 1. ORIGINAL SWIPER (if any)
+    // ----------------------------------------------------------------
+    try {
+      const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        speed: 1400,
+        effect: "fade",
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        fadeEffect: { crossFade: true },
+      });
+    } catch(e) {}
+
+    // ----------------------------------------------------------------
+    // 2. TESTIMONIAL SWIPER
+    // ----------------------------------------------------------------
+    const tSwiper = new Swiper(".testimonialSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
       loop: true,
-      speed: 1400,
-      effect: "fade",
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,
       },
       pagination: {
-        el: ".swiper-pagination",
+        el: ".t-pagination", // Updated selector
         clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".t-next",
+        prevEl: ".t-prev",
       },
-      fadeEffect: { crossFade: true },
-      on: {
-        slideChangeTransitionStart: function () {
-          const slides = document.querySelectorAll(".swiper-slide img");
-          slides.forEach((slide) => (slide.style.transform = "scale(1)"));
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
         },
-        slideChangeTransitionEnd: function () {
-          const activeImg = document.querySelector(".swiper-slide-active img");
-          if (activeImg) activeImg.style.transform = "scale(1.08)";
+        1024: {
+          slidesPerView: 3,
         },
-      },
+      }
     });
 
     const firstActive = document.querySelector(".swiper-slide-active img");
