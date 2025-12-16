@@ -421,8 +421,8 @@
 
     @media (max-width: 768px) {
       .hero-section {
-        /* margin-top: 80px !important; */
-        min-height: 100vh !important; /* Decreased from 150vh */
+        height: auto !important;
+        min-height: 100vh !important;
       }
     }
   </style>
@@ -606,7 +606,7 @@
         </li>
 
         <li><a href="./Gallary.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
-        <li><a href="https://drsonalshrivastavaindore.blogspot.com/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+        <li><a href="./blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
         <li><a href="./appoiment.html"><i class="fa-solid fa-calendar-check"></i> Appointment</a></li>
         <li><a href="./contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
       </ul>
@@ -625,7 +625,6 @@
     position:relative;
     font-family:'Inter','Helvetica Neue',Arial,sans-serif;
     background:url('https://images.pexels.com/photos/305565/pexels-photo-305565.jpeg') center/cover no-repeat;
-    overflow:auto;
   ">
 
     <!-- Soft Dark Overlay -->
@@ -1059,8 +1058,144 @@ font-family:'Inter',sans-serif;
   </section>
 
 
+  <!-- HEALTH INSIGHTS (VIDEOS) -->
+  <section class="video-section" style="
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+    position: relative;
+  ">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="
+          font-size: 2.6rem; 
+          color: var(--navy); 
+          margin-bottom: 16px; 
+          text-transform: uppercase; 
+          letter-spacing: 1px;
+        ">
+          Health Insights
+        </h1>
+        <p style="
+          font-size: 1.1rem; 
+          color: var(--muted); 
+          max-width: 600px; 
+          margin: 0 auto;
+        ">
+          Watch our latest reels for quick tips on managing your hormonal health.
+        </p>
+      </div>
 
-  <!-- TESTIMONIALS -->
+      <div class="video-grid" style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        justify-content: center;
+      ">
+        
+        <!-- Video Card 1 -->
+        <div class="video-card" style="
+          background: #fff;
+          padding: 10px;
+          border-radius: 20px;
+          box-shadow: 0 14px 34px rgba(0,0,0,0.08);
+          transition: transform 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="
+            width: 100%;
+            height: 550px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+          ">
+            <video controls style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            " loading="lazy">
+              <source src="./videos/Video.mp4" type="video/mp4">
+              <!-- Fallback -->
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 style="
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 14px 0 6px;
+            color: var(--navy);
+          ">Patient Awareness</h3>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card" style="
+          background: #fff;
+          padding: 10px;
+          border-radius: 20px;
+          box-shadow: 0 14px 34px rgba(0,0,0,0.08);
+          transition: transform 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="
+            width: 100%;
+            height: 550px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+          ">
+            <video controls style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            " loading="lazy">
+              <source src="./videos/Video_1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 style="
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 14px 0 6px;
+            color: var(--navy);
+          ">Health Tips</h3>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="video-card" style="
+          background: #fff;
+          padding: 10px;
+          border-radius: 20px;
+          box-shadow: 0 14px 34px rgba(0,0,0,0.08);
+          transition: transform 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-6px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="
+            width: 100%;
+            height: 550px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+          ">
+            <video controls style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            " loading="lazy">
+              <source src="./videos/Video_2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 style="
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 14px 0 6px;
+            color: var(--navy);
+          ">Expert Consultation</h3>
+        </div>
+
+      </div>
+    </div>
+  </section>  <!-- TESTIMONIALS -->
   <section class="testimonials-section">
     <div class="container" style="max-width:1200px; margin:0 auto; position:relative; padding:0 20px;">
       <h1>Testimonials</h1>

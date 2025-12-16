@@ -78,4 +78,4 @@
 
 const copyright = document.getElementById('copyright');
 copyright.innerHTML = `
-© ${new Date().getFullYear()} Sovin Hormone Clinic`
+© ${new Date().getFullYear()} Sovin Hormone Clinic. All Rights Reserved.`
