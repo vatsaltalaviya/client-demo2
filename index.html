@@ -621,7 +621,7 @@
   <!-- PREMIUM HERO SECTION -->
   <section class="hero-section" style="
     width:100%;
-  
+    min-height:100vh;
     position:relative;
     font-family:'Inter','Helvetica Neue',Arial,sans-serif;
     background:url('https://images.pexels.com/photos/305565/pexels-photo-305565.jpeg') center/cover no-repeat;
@@ -633,8 +633,8 @@
     inset:0;
     background:linear-gradient(
       to bottom right,
-      rgba(6, 70, 154, 0.614),
-      rgba(0, 45, 85, 0.686)
+      rgba(6, 70, 154, 0.85),
+      rgba(0, 45, 85, 0.90)
     );
     z-index:1;
   "></div>
@@ -646,42 +646,44 @@
     width:100%;
     display:flex;
     flex-wrap:wrap;
-    padding:8vw 6vw;
+    padding:6vw;
     align-items:center;
     justify-content:space-between;
     gap:60px;
+    max-width:1400px;
+    margin:0 auto;
   ">
 
-      <!-- LEFT TEXT -->
+      <!-- LEFT: DR. SONAL'S DETAILS -->
       <div style="
-      flex:1 1 380px;
-      max-width:620px;
+      flex:1 1 400px;
+      max-width:550px;
       color:white;
     ">
 
         <p style="
-        font-size:clamp(14px,1.7vw,22px);
+        font-size:clamp(12px,1.4vw,16px);
         color:#B9E5FF;
-        font-weight:300;
-        margin-bottom:14px;
+        font-weight:600;
+        margin-bottom:12px;
         text-transform:uppercase;
-        letter-spacing:1.8px;
+        letter-spacing:2.5px;
       ">
-          Consultant Endocrinologist
+          CONSULTANT ENDOCRINOLOGIST
         </p>
 
         <h1 style="
-        font-size:clamp(34px,5.4vw,76px);
+        font-size:clamp(38px,5.8vw,68px);
         font-weight:900;
-        margin-bottom:20px;
-        line-height:1.08;
+        margin-bottom:24px;
+        line-height:1.1;
         letter-spacing:-0.5px;
       ">
-          Dr. Sonal Shrivastava
+          Dr. Sonal<br>Shrivastava
         </h1>
 
         <div style="
-        width:120px;
+        width:100px;
         height:4px;
         background:linear-gradient(90deg,#1E90FF,#4DB8FF);
         border-radius:4px;
@@ -689,12 +691,13 @@
       "></div>
 
         <p style="
-        font-size:clamp(15px,1.3vw,20px);
+        font-size:clamp(15px,1.2vw,18px);
         color:#E2EEF7;
-        line-height:1.75;
+        line-height:1.8;
         font-weight:400;
         max-width:95%;
         opacity:0.95;
+        margin-bottom:20px;
       ">
           Delivering compassionate, evidence-based care for thyroid disorders, diabetes, PCOS,
           obesity, and hormonal health with a personalized and holistic approach.
@@ -702,153 +705,261 @@
 
       </div>
 
-      <!-- RIGHT EXPERTISE CARD -->
+      <!-- RIGHT: EXPERTISE LIST -->
       <div style="
-  flex:1 1 340px;
-  max-width:460px;
+  flex:1 1 380px;
+  max-width:500px;
   width:100%;
-  border-radius:20px;
-  padding:46px 40px;
-  backdrop-filter:blur(14px);
-  background:rgba(255,255,255,0.90);
+  border-radius:24px;
+  padding:42px 38px;
+  backdrop-filter:blur(20px);
+  background:linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
   box-shadow:
-    0 22px 60px rgba(0,0,0,0.17),
-    0 6px 18px rgba(0,0,0,0.08);
-  position:relative;
-  overflow:hidden;
-
-  /* BG images */
-  background-image:
-    url('https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg'),
-    url('https://www.drsonalshrivastava.com/img/slider_3.jpg');
-  background-repeat:no-repeat,no-repeat;
-  background-position:top left, bottom right;
-  background-size:cover, 38%;
-
-  /* Fade & float animation */
-  animation:fadeIn 1.4s ease-out, floatUp 6s ease-in-out infinite;
+    0 24px 64px rgba(0,0,0,0.25),
+    0 8px 20px rgba(0,0,0,0.15);
 ">
 
         <style>
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes floatUp {
-
-            0%,
-            100% {
-              transform: translateY(0);
-            }
-
-            50% {
-              transform: translateY(-10px);
-            }
-          }
-
-          .exitem:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 26px rgba(0, 122, 204, 0.22);
+          .hero-exitem:hover {
+            transform: translateX(6px);
+            background:rgba(255,255,255,1) !important;
+            box-shadow: 0 6px 18px rgba(0, 102, 200, 0.15);
           }
         </style>
 
         <h3 style="
-    font-size:24px;
-    color:#002244;
+    font-size:26px;
+    color:#0066C8;
     font-weight:700;
-    margin-bottom:36px;
-    border-left:5px solid #007ACC;
+    margin-bottom:28px;
+    border-left:5px solid #0066C8;
     padding-left:16px;
-    letter-spacing:0.4px;
-    background:rgba(255,255,255,0.65);
-    display:inline-block;
-    backdrop-filter:blur(6px);
+    letter-spacing:0.3px;
   ">Areas of Expertise</h3>
 
 
-        <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="display:flex; flex-direction:column; gap:12px;">
 
-          <!-- ITEM 1 -->
-          <div class="exitem" style="
+          <!-- LINE 1: Thyroid -->
+          <div class="hero-exitem" style="
       display:flex;
-      align-items:flex-start;
-      gap:16px;
-      padding:16px 18px;
-      border-radius:14px;
-      background:rgba(240,248,255,0.75);
-      border:1px solid #D6E9FF;
-      transition:0.35s;
-      backdrop-filter:blur(6px);
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-radius:12px;
+      background:rgba(240,248,255,0.6);
+      border:none;
+      transition:all 0.3s ease;
     ">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"
-                stroke="#007ACC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <div style="
+              width:40px;
+              height:40px;
+              min-width:40px;
+              background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+              border-radius:10px;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+            ">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"
+                  stroke="#0066C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
             <p style="
-        font-size:18px;
+        font-size:15px;
         font-weight:700;
-        color:#003A63;
-        line-height:1.45;
+        color:#0066C8;
+        line-height:1.3;
+        margin:0;
       ">Thyroid Disorders & Management</p>
           </div>
 
-          <!-- ITEM 2 -->
-          <div class="exitem" style="
+          <!-- LINE 2: Diabetes -->
+          <div class="hero-exitem" style="
       display:flex;
-      align-items:flex-start;
-      gap:16px;
-      padding:16px 18px;
-      border-radius:14px;
-      background:rgba(240,248,255,0.75);
-      border:1px solid #D6E9FF;
-      transition:0.35s;
-      backdrop-filter:blur(6px);
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-radius:12px;
+      background:rgba(240,248,255,0.6);
+      border:none;
+      transition:all 0.3s ease;
     ">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 21C16.4183 21 20 17.4183 20 13C20 8.58172 16.4183 5 12 5C7.58172 5 4 8.58172 4 13C4 17.4183 7.58172 21 12 21Z"
-                stroke="#007ACC" stroke-width="2" />
-              <path d="M12 9V13L14.5 15.5" stroke="#007ACC" stroke-width="2" stroke-linecap="round" />
-            </svg>
+            <div style="
+              width:40px;
+              height:40px;
+              min-width:40px;
+              background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+              border-radius:10px;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+            ">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 21C16.4183 21 20 17.4183 20 13C20 8.58172 16.4183 5 12 5C7.58172 5 4 8.58172 4 13C4 17.4183 7.58172 21 12 21Z"
+                  stroke="#0066C8" stroke-width="2.5" />
+                <path d="M12 9V13L14.5 15.5" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </div>
             <p style="
-        font-size:18px;
+        font-size:15px;
         font-weight:700;
-        color:#003A63;
-        line-height:1.45;
+        color:#0066C8;
+        line-height:1.3;
+        margin:0;
       ">Diabetes Care & Metabolism</p>
           </div>
 
-          <!-- ITEM 3 -->
-          <div class="exitem" style="
+          <!-- LINE 3: PCOS -->
+          <div class="hero-exitem" style="
       display:flex;
-      align-items:flex-start;
-      gap:16px;
-      padding:16px 18px;
-      border-radius:14px;
-      background:rgba(240,248,255,0.75);
-      border:1px solid #D6E9FF;
-      transition:0.35s;
-      backdrop-filter:blur(6px);
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-radius:12px;
+      background:rgba(240,248,255,0.6);
+      border:none;
+      transition:all 0.3s ease;
     ">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="8" r="4" stroke="#007ACC" stroke-width="2" />
-              <path d="M6 20C6 16.6863 8.68629 14 12 14C15.3137 14 18 16.6863 18 20" stroke="#007ACC" stroke-width="2"
-                stroke-linecap="round" />
-            </svg>
+            <div style="
+              width:40px;
+              height:40px;
+              min-width:40px;
+              background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+              border-radius:10px;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+            ">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="4" stroke="#0066C8" stroke-width="2.5" />
+                <path d="M6 20C6 16.6863 8.68629 14 12 14C15.3137 14 18 16.6863 18 20" stroke="#0066C8" stroke-width="2.5"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
             <p style="
-        font-size:18px;
+        font-size:15px;
         font-weight:700;
-        color:#003A63;
-        line-height:1.45;
+        color:#0066C8;
+        line-height:1.3;
+        margin:0;
       ">PCOS & Women's Hormonal Health</p>
+          </div>
+
+          <!-- LINE 4: Growth & Osteoporosis (2 items in one line) -->
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <!-- Growth & Puberty -->
+            <div class="hero-exitem" style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:14px 16px;
+        border-radius:12px;
+        background:rgba(240,248,255,0.6);
+        border:none;
+        transition:all 0.3s ease;
+        flex:1;
+        min-width:200px;
+      ">
+              <div style="
+                width:40px;
+                height:40px;
+                min-width:40px;
+                background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+                border-radius:10px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+              ">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2V22M12 2L8 6M12 2L16 6" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 12H18" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p style="
+          font-size:14px;
+          font-weight:700;
+          color:#0066C8;
+          line-height:1.3;
+          margin:0;
+        ">Growth & Puberty</p>
+            </div>
+
+            <!-- Osteoporosis -->
+            <div class="hero-exitem" style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:14px 16px;
+        border-radius:12px;
+        background:rgba(240,248,255,0.6);
+        border:none;
+        transition:all 0.3s ease;
+        flex:1;
+        min-width:200px;
+      ">
+              <div style="
+                width:40px;
+                height:40px;
+                min-width:40px;
+                background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+                border-radius:10px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+              ">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L12 8M12 16L12 22M8 12L4 12M20 12L16 12" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="3" stroke="#0066C8" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <p style="
+          font-size:14px;
+          font-weight:700;
+          color:#0066C8;
+          line-height:1.3;
+          margin:0;
+        ">Osteoporosis</p>
+            </div>
+          </div>
+
+          <!-- LINE 5: Adrenal & Pituitary -->
+          <div class="hero-exitem" style="
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border-radius:12px;
+      background:rgba(240,248,255,0.6);
+      border:none;
+      transition:all 0.3s ease;
+    ">
+            <div style="
+              width:40px;
+              height:40px;
+              min-width:40px;
+              background:linear-gradient(135deg, #E3F2FD, #BBDEFB);
+              border-radius:10px;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+            ">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="6" r="3" stroke="#0066C8" stroke-width="2.5"/>
+                <path d="M12 9V14" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M8 14L12 14L16 14" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M8 14L8 19M16 14L16 19" stroke="#0066C8" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p style="
+        font-size:15px;
+        font-weight:700;
+        color:#0066C8;
+        line-height:1.3;
+        margin:0;
+      ">Adrenal & Pituitary Disorders</p>
           </div>
 
         </div>
@@ -856,20 +967,21 @@
 
         <!-- CTA BUTTON -->
         <a href="./appoiment.html" style="
-    display:inline-block;
-    margin-top:38px;
-    background:linear-gradient(135deg,#0066C8,#00A7E9);
+    display:block;
+    width:100%;
+    text-align:center;
+    margin-top:32px;
+    background:linear-gradient(135deg,#0066C8,#0088FF);
     color:white;
-    padding:17px 48px;
-    font-size:18px;
+    padding:16px 32px;
+    font-size:17px;
     font-weight:700;
     text-decoration:none;
     border-radius:14px;
     letter-spacing:0.5px;
-    box-shadow:0 16px 40px rgba(0,105,188,0.35);
-    transition:0.35s;
-    backdrop-filter:blur(8px);
-  " onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+    box-shadow:0 12px 32px rgba(0,102,200,0.35);
+    transition:all 0.3s ease;
+  " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px rgba(0,102,200,0.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 12px 32px rgba(0,102,200,0.35)'">
           Book Expert Consultation
         </a>
 
@@ -996,13 +1108,15 @@ font-family:'Inter',sans-serif;
             line-height:1.8;
             margin-bottom:30px;
           ">
-            Dr. Sonal Shrivastava is a renowned Endocrinologist (Diabetes, Thyroid,
-            Obesity, PCOS, Infertility & Hormone Specialist). She is the founder of
-            <strong>Hormone Health Awareness</strong>, an initiative for public awareness.
-            Based in Indore, she is the Founder & Director of Sovin Hormone Clinic and
-            attached to CHL Hospitals, one of the best in the region.
+            She is based in Dehradun. She is founder of Sovin Hormone Clinic since 2011. 
+            She started her practice in Indore at CHL Apollo Hospital in 2011 and in 2021 
+            she shifted to Dehradun.
             <br><br>
-            <strong style="color:#06204A;">For consultation in Indore call +91-9165017732</strong>
+            <strong style="color:#06204A;">Appointment number for Dehradun: +91-9368212601</strong>
+            <br>
+            She regularly visits Indore and Ujjain for OPD.
+            <br>
+            <strong style="color:#06204A;">Appointment number for Indore and Ujjain: +91-9165017732</strong>
           </p>
 
           <!-- CTA BUTTONS -->
@@ -1124,7 +1238,7 @@ font-family:'Inter',sans-serif;
             font-size: 1.1rem;
             margin: 14px 0 6px;
             color: var(--navy);
-          ">Patient Awareness</h3>
+          ">Myth Busting: New weight loss drugs</h3>
         </div>
 
         <!-- Video Card 2 -->
@@ -1157,7 +1271,7 @@ font-family:'Inter',sans-serif;
             font-size: 1.1rem;
             margin: 14px 0 6px;
             color: var(--navy);
-          ">Health Tips</h3>
+          ">High TPO/Hashimoto</h3>
         </div>
 
         <!-- Video Card 3 -->
@@ -1190,7 +1304,7 @@ font-family:'Inter',sans-serif;
             font-size: 1.1rem;
             margin: 14px 0 6px;
             color: var(--navy);
-          ">Expert Consultation</h3>
+          ">Weight loss FAQ</h3>
         </div>
 
       </div>
@@ -1479,6 +1593,7 @@ font-family:'Inter',sans-serif;
  <script>
     // Testimonial Data
     const testimonials = [
+      // Original testimonials from Indore/MP region
       {
         text: "Sonal mam is very understanding... I feel completely normal now.",
         author: "Mrs Nirmala J, 43 years, Jabalpur",
@@ -1506,6 +1621,47 @@ font-family:'Inter',sans-serif;
       {
         text: "I have PCOS for 2 years... After 6 months periods became regular.",
         author: "Manisha P, 20 years, Indore",
+      },
+      // New testimonials from Dehradun/Uttarakhand region
+      {
+        text: "Doctor explained my thyroid problem very nicely and my weight is now under control.",
+        author: "Ms. Rawat, Dehradun",
+      },
+      {
+        text: "My sugar levels are stable now. I feel much better and more active.",
+        author: "Mr. Negi, Dehradun",
+      },
+      {
+        text: "My PCOS problem has improved and my periods are regular now.",
+        author: "Mrs. Chauhan, Dehradun",
+      },
+      {
+        text: "My diabetes is well controlled now after taking treatment here.",
+        author: "Mr. Panwar, Haridwar",
+      },
+      {
+        text: "My thyroid reports are normal now and I understand how to manage my health.",
+        author: "Mrs. Bisht, Haridwar",
+      },
+      {
+        text: "Very good treatment for PCOS. Doctor explained everything in simple words.",
+        author: "Ms. Rana, Rishikesh",
+      },
+      {
+        text: "I came from Uttarkashi and it was worth it. My sugar is under control now.",
+        author: "Mr. Nautiyal, Uttarkashi",
+      },
+      {
+        text: "My thyroid problem is much better and I feel more energetic.",
+        author: "Mrs. Thapliyal, Vikasnagar",
+      },
+      {
+        text: "Good doctor for diabetes. Medicines and advice really helped me.",
+        author: "Mr. Khanduri, Kotdwar",
+      },
+      {
+        text: "My thyroid symptoms have reduced and I feel healthy now.",
+        author: "Mrs. Saklani, Tehri",
       },
     ];
 

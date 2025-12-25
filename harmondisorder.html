@@ -1456,16 +1456,32 @@
         // Use standard content if provided, otherwise empty
         const contentHtml = section.content ? `<p>${section.content}</p>` : "";
 
+        // Check if there's any content to display in the highlight card
+        const hasCardContent = primaryList || secondaryList;
+
+        // Only render highlight card if there's content
+        const highlightCardHtml = hasCardContent
+          ? `<div class="highlight-card">
+                ${primaryList}
+                ${secondaryList}
+             </div>`
+          : "";
+
+        // Check if section has any content at all
+        const hasSectionContent = contentHtml || hasCardContent;
+
+        // Only render section if it has content
+        if (!hasSectionContent && !section.heading) {
+          return "";
+        }
+
         return `
                 <section id="${section.id}" class="content-section ${bgClass}">
                     <div class="container">
                         <div class="section-content">
-                            <h2>${section.heading}</h2>
+                            ${section.heading ? `<h2>${section.heading}</h2>` : ""}
                             ${contentHtml}
-                            <div class="highlight-card">
-                                ${primaryList}
-                                ${secondaryList}
-                            </div>
+                            ${highlightCardHtml}
                         </div>
                     </div>
                 </section>
@@ -1496,6 +1512,337 @@
             <main>
               ${sectionsHtml}
             </main>
+
+            <!-- OUR SERVICES SECTION -->
+            <section style="
+              padding: 60px 20px;
+              background: linear-gradient(135deg, #e8f1ff, #dbe8ff);
+            ">
+              <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 style="
+                  font-size: 2rem;
+                  font-weight: 800;
+                  color: var(--navy-2);
+                  margin-bottom: 2rem;
+                  text-align: center;
+                ">Our Services</h2>
+                
+                <!-- Scrollable Container -->
+                <div style="
+                  overflow-x: auto;
+                  overflow-y: hidden;
+                  -webkit-overflow-scrolling: touch;
+                  scrollbar-width: thin;
+                  scrollbar-color: var(--sky) #e0e0e0;
+                  padding-bottom: 15px;
+                ">
+                  <div style="
+                    display: flex;
+                    gap: 20px;
+                    min-width: min-content;
+                    padding: 10px 0;
+                  ">
+                    
+                    <!-- Service Card 1 -->
+                    <a href="./harmondisorder.html?page=hypoglycemia" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Hypoglycemia</h3>
+                    </a>
+
+                    <!-- Service Card 2 -->
+                    <a href="./harmondisorder.html?page=dka" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Diabetic Ketoacidosis</h3>
+                    </a>
+
+                    <!-- Service Card 3 -->
+                    <a href="./harmondisorder.html?page=kidney-disease" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Diabetic Kidney Disease</h3>
+                    </a>
+
+                    <!-- Service Card 4 -->
+                    <a href="./harmondisorder.html?page=diabetic-neuropathy" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Diabetic Neuropathy</h3>
+                    </a>
+
+                    <!-- Service Card 5 -->
+                    <a href="./harmondisorder.html?page=foot-care" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Diabetic Footcare</h3>
+                    </a>
+
+                    <!-- Service Card 6 -->
+                    <a href="./harmondisorder.html?page=hyperthyroidism" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Hyperthyroidism</h3>
+                    </a>
+
+                    <!-- Service Card 7 -->
+                    <a href="./harmondisorder.html?page=hypothyroidism" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Hypothyroidism</h3>
+                    </a>
+
+                    <!-- Service Card 8 -->
+                    <a href="./harmondisorder.html?page=pituitary" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Pituitary Disorders</h3>
+                    </a>
+
+                    <!-- Service Card 9 -->
+                    <a href="./harmondisorder.html?page=female-hormones" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Female Hormone Disorders</h3>
+                    </a>
+
+                    <!-- Service Card 10 -->
+                    <a href="./harmondisorder.html?page=adrenal" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Adrenal Disorder</h3>
+                    </a>
+
+                    <!-- Service Card 11 -->
+                    <a href="./harmondisorder.html?page=erectile-dysfunction" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Erectile Dysfunction</h3>
+                    </a>
+
+                    <!-- Service Card 12 -->
+                    <a href="./harmondisorder.html?page=male-infertility" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Male Infertility</h3>
+                    </a>
+
+                    <!-- Service Card 13 -->
+                    <a href="./harmondisorder.html?page=vitamin-d" class="service-card" style="
+                      flex: 0 0 280px;
+                      background: white;
+                      border-radius: 16px;
+                      padding: 14px;
+                      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+                      transition: all 0.3s ease;
+                      text-decoration: none;
+                      border: 2px solid transparent;
+                    ">
+                      <h3 style="
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #0a1a44;
+                        margin: 0;
+                        text-align: center;
+                      ">Vitamin D Deficiency</h3>
+                    </a>
+
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <style>
+              /* Hover effect for service cards */
+              .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 16px 40px rgba(56, 189, 248, 0.25);
+                border-color: var(--sky);
+              }
+
+              .service-card:hover h3 {
+                text-decoration: underline;
+                text-decoration-color: #0a1a44;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 4px;
+              }
+
+              /* Custom Scrollbar Styling */
+              section div::-webkit-scrollbar {
+                height: 6px;
+              }
+              section div::-webkit-scrollbar-track {
+                background: #e0e0e0;
+                border-radius: 10px;
+              }
+              section div::-webkit-scrollbar-thumb {
+                background: var(--sky);
+                border-radius: 10px;
+              }
+              section div::-webkit-scrollbar-thumb:hover {
+                background: var(--sky-hover);
+              }
+            </style>
+
+           
+
              <footer style="
     background:#081c34;
     color:#dbe7ff;
