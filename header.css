@@ -16,74 +16,113 @@ a{color:inherit}
 .desktop-only{display:none}
 .mobile-only{display:none}
 
-/* header spacer */
-.header-spacer{height:72px}
+/* Sticky Header Wrapper */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 2200;
+  width: 100%;
+}
+
+/* header spacer - no longer needed with sticky header occupying space */
+.header-spacer{display:none}
 
 /* ---------------- DESKTOP (>=1025px) ---------------- */
 @media (min-width:1025px){
   .desktop-only{display:block}
   
-  /* Top Bar */
-  .header-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: var(--navy);
-    color: var(--white);
-    z-index: 1201; 
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .header-top .top-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-  .header-top .top-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    opacity: 0.95;
-  }
-  .header-top .top-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .header-top .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    opacity: 0.9;
-  }
-  .header-top .contact-item a {
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .header-top .contact-item a:hover {
-    color: var(--sky);
-  }
-  .header-top i { color: var(--sky); }
-
-  /* Adjust spacer for top bar + nav bar */
-  .header-spacer { height: 116px; }
-
+  .header-spacer { display: none; }
 
   .header-desktop{
-    position:fixed;top:40px;left:0;right:0;height:76px;
+    position:relative; top:auto; left:auto; right:auto; height:auto; min-height:76px;
     background:var(--white);border-bottom:1px solid var(--gray-light);
     z-index:1200;display:flex;align-items:center;padding:0 20px;
   }
+}
+
+/* ---------------- TOP BAR (Global) ---------------- */
+.header-top {
+  position: relative;
+  background: var(--navy);
+  color: var(--white);
+  z-index: 1201; 
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 0;
+}
+.header-top .top-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.header-top .top-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  opacity: 0.95;
+  text-align: center;
+}
+.header-top .top-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.header-top .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.9;
+}
+.header-top .contact-item a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header-top .contact-item a:hover {
+  color: var(--sky);
+}
+.header-top i { color: var(--sky); }
+
+/* Social Icons in Header */
+.header-top .social-icons {
+    gap: 15px;
+}
+.header-top .social-icons a {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile Adjustments for Top Bar */
+@media (max-width: 1024px) {
+  .header-top {
+    display: none;
+  }
+}
+
+/* ---------------- DESKTOP (>=1025px) continued ---------------- */
+@media (min-width:1025px){
+  .header-top {
+    position: relative;
+    top: auto; 
+    left: auto; 
+    right: auto;
+    height: auto;
+    min-height: 40px;
+    padding: 0;
+  }
+
   .container-desktop{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 
   .logo img{height:54px;object-fit:contain}
@@ -119,9 +158,9 @@ a{color:inherit}
 .mobile-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
 @media (max-width:1024px){
   .mobile-only{display:block}
-  .header-spacer{height:64px}
+  .header-spacer{display:none}
 
-  .header-mobile{position:fixed;top:0;left:0;right:0;height:64px;padding:0 14px;background:var(--white);border-bottom:1px solid var(--gray-light);z-index:2200;display:flex;align-items:center;justify-content:space-between}
+  .header-mobile{position:sticky;top:0;left:0;right:0;width:100%;height:auto;min-height:64px;padding:0 14px;background:var(--white);border-bottom:1px solid var(--gray-light);z-index:2200;display:flex;align-items:center;justify-content:space-between}
   .logo-mobile img{height:52px;object-fit:contain}
 
   /* hamburger button */
